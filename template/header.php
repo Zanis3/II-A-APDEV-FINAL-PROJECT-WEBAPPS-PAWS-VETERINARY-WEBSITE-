@@ -1,6 +1,7 @@
 <div class="header">
         <div class="website-logo">
-            Paws Veterinary
+            <img src="img/gen/web-logo.png" class="web-logo">
+            <h1>Paws Veterinary</h1>
         </div>
         <div class="navbar">
             <a href="services.php">Services</a>

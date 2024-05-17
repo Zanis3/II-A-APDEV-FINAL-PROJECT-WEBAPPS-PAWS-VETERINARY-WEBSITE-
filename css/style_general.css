@@ -1,14 +1,25 @@
+@import url('https://fonts.googleapis.com/css2?family=Radio+Canada+Big:ital,wght@0,400..700;1,400..700&display=swap');
+
+:root{
+    --light-green: #65A30D;
+    --dark-green: #064E3B;
+}
+
 body{
     margin: 0;
     padding: 0;
+    font-family: "Radio Canada Big", 'Trebuchet MS';
 }
 
 .header{
-    width:100%;
-    height:50px;
+    width:98%;
+    height:80px;
     display:flex;
     align-items: center;
     justify-content: space-between;
+    background:grey;
+    padding-left:1%;
+    padding-right:1%;
 }
 
 .navbar{
@@ -18,18 +29,39 @@ body{
     gap:20px;
 }
 
-a{
+.navbar a{
     text-decoration:none;
-    color: #064E3B;
+    color: var(--dark-green);
+}
+
+.navbar a:hover{
+    color:var(--light-green);
+    transition: 0.5s;
 }
 
 #get-support{
     color:white;
-    background:#65A30D;
+    background:var(--light-green);
     height:30px;
     display: flex;
     align-items: center;
     justify-content: center;
     padding:10px;
     border-radius:10px;
+}
+
+#get-support:hover{
+    color:var(--light-green);
+    background:white;
+}
+
+.web-logo{
+    width:80px;
+    height:80px;
+}
+
+.website-logo{
+    display:flex;
+    align-items: center;
+    justify-content: center;
 }
