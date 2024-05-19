@@ -17,7 +17,7 @@ body{
     display:flex;
     align-items: center;
     justify-content: space-between;
-    background:grey;
+    background: #ECFDF5;
     padding-left:1%;
     padding-right:1%;
 }
@@ -25,8 +25,18 @@ body{
 .navbar{
     display:flex;
     align-items: center;
-    justify-content: center;
     gap:20px;
+}
+
+.navbar form {
+    position: relative;
+}
+
+.navbar form i{
+    position: absolute;
+    right: 10px;
+    top: 65%;
+    transform: translateY(-50%);
 }
 
 .navbar a{
@@ -39,6 +49,34 @@ body{
     transition: 0.5s;
 }
 
+#txtsearch {
+    margin-top: 6%; /* Remove top margin from the search input */
+    width: 280px;
+    height: 30px;
+    border-radius: 10px;
+    padding-left: 10px;
+    box-sizing: border-box;
+    border: none;
+    outline: none;
+    font-size: inherit;
+    line-height: inherit;
+}
+
+.icon-container {
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 30px;
+    height: 100px;
+    pointer-events: none;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.icon-container i {
+    pointer-events: all;
+}
 #get-support{
     color:white;
     background:var(--light-green);
