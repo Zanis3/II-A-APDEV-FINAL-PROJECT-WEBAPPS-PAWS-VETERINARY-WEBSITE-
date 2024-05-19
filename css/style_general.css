@@ -11,6 +11,10 @@ body{
     font-family: "Radio Canada Big", 'Trebuchet MS';
 }
 
+img{
+    pointer-events: none;
+}
+
 .header{
     width:98%;
     height:80px;
@@ -30,6 +34,7 @@ body{
 
 .navbar a{
     text-decoration:none;
+    text-align:center;
     color: var(--dark-green);
 }
 
@@ -90,3 +95,4 @@ body{
     align-items: center;
     justify-content: center;
 }
+
