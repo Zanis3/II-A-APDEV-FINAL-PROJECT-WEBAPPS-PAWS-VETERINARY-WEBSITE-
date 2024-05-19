@@ -3,6 +3,7 @@
 :root{
     --light-green: #65A30D;
     --dark-green: #064E3B;
+    --lighter-green: #E2EBE7;
 }
 
 body{
@@ -94,4 +95,3 @@ img{
     align-items: center;
     justify-content: center;
 }
-
