@@ -10,5 +10,27 @@
 </head>
 <body>
     <?php include_once 'template/header.php';?>
+    <br>
+    <br>
+    <center>
+        <h1 id="greeting"></h1>
+        <p><b> Please fill up the fields below. </b></p>
+        <br>
+        <br>
+        <div class="basic_info">
+            <div class="trigger">
+                <div class="text"> BASIC INFORMATION </div>
+                <div class="icon"><i class="fas fa-angle-up"></i></div>
+            </div>
+            <div class="content">
+                <ul>
+                    <li>Option 1</li>
+                    <li>Option 2</li>
+                    <li>Option 3</li>
+                </ul>
+            </div>
+        </div>
+    </center>
+    <script src="script/appointment.js"></script>
 </body>
 </html>

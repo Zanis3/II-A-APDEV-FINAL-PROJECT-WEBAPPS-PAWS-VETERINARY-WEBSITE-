@@ -1,0 +1,51 @@
+.basic_info {
+    position: relative;
+    display: inline-block;
+    width: 200px;
+}
+
+.trigger {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background-color: #f0f0f0;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.icon {
+    margin-right: 5px;
+}
+
+.icon i {
+    transition: transform 0.3s ease; /* Added "s" for seconds */
+    transform: rotate(90deg);
+}
+
+.rotate-down {
+    transform: rotate(180deg);
+}
+.content {
+    display: none;
+    position: absolute;
+    top: calc(100% + 5px);
+    left: 0;
+    background-color: white;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    width: 100%;
+}
+
+.content.active {
+    display: block;
+}
+
+.content ul li {
+    padding: 10px;
+}
+
+.content.active + .trigger + .icon {
+    transform: rotate(180deg);
+}
