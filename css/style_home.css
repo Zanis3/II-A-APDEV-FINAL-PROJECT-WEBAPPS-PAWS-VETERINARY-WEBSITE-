@@ -1,0 +1,25 @@
+@import url('style_general.css');
+
+.hero-container{
+    width:100%;
+    height:550px;
+    background-image: url("/img/login/dog-login.jpg");
+    display:flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.hero-text{
+    display:flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+#hero-title{
+    color:var(--light-green);
+}
+
+#hero-sub{
+    font-weight: bold;
+}
