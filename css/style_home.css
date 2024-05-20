@@ -1,12 +1,60 @@
+/*DEFAULTS*/
+
+
 @import url('style_general.css');
+
+.container{
+    height:500px;
+    width:100%;
+    display:flex;
+    align-items: center;
+    justify-content: space-around;
+}
+
+#text-title{
+    font-size: 50px;
+    color:var(--dark-green);
+    text-align:left;
+    margin-bottom:0;
+}
+
+#text-sub{
+    font-weight: bold;
+    font-size: 20px;
+    color:var(--dark-green);
+    margin-top:0;
+    text-align:left;
+}
+
+
+
+/*HERO CONTENT CSS*/
+
 
 .hero-container{
     width:100%;
     height:550px;
-    background-image: url("/img/login/dog-login.jpg");
+    background-image: url("../img/login/dog-login.jpg");
+    background-size:cover;
+    background-position: center;
+    background-repeat: no-repeat;
     display:flex;
     align-items: center;
-    justify-content: center;
+    justify-content: space-around;
+    position:relative;
+    z-index:0;
+}
+
+.hero-container::before{
+    content:'';
+    top:0;
+    left:0;
+    height:100%;
+    width:100%;
+    z-index:1;
+    background:black;
+    opacity:0.7;
+    position:absolute;
 }
 
 .hero-text{
@@ -14,12 +62,261 @@
     flex-direction: column;
     align-items: center;
     justify-content: center;
+    z-index:2;
 }
 
 #hero-title{
     color:var(--light-green);
+    font-size: 50px;
 }
 
 #hero-sub{
     font-weight: bold;
+    font-size: 24px;
+    color:var(--light-green);
+    margin-top:0;
+}
+
+.hero-img{
+    width:500px;
+    height:500px;
+    z-index:2;
+}
+
+.hero-img img{
+    width:100%;
+    height:100%;
+}
+
+
+/*OUR SERVICES CSS*/
+
+
+.services-items{
+    width:600px;
+    height:348px;
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+}
+
+.item{
+    height:100%;
+    width:250px;
+    border:1px solid grey;
+    border-radius: 5px;
+}
+
+.item-top{
+    background-image: url("../img/login/dog-login.jpg");
+    background-size:cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    width:100%;
+    height:65%;
+    position:relative;
+}
+
+.item-top::before{
+    content:'tyext';
+    top:0;
+    left:0;
+    width:80px;
+    height:24px;
+    background:grey;
+    position:absolute;
+}
+
+.item-desc{
+    width:100%;
+    height:35%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+}
+
+
+/*ARTICLE CSS*/
+
+
+.article{
+    background-image: linear-gradient(white 0%, var(--lighter-green) 5%, white 98%);
+}
+
+.article-menu{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    width:520px;
+}
+
+.article-items{
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+}
+
+.article-items:hover{
+    border: 2px solid grey;
+    border-radius:2px;
+    transition:0.1s;
+    cursor:pointer;
+}
+
+.article-image{
+    width:100px;
+    height:100px;
+    background-image: url("../img/login/dog-login.jpg");
+    background-size:cover;
+    background-position: center;
+    background-repeat: no-repeat;
+}
+
+.article-desc{
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    width:372px;
+    height:124px;
+    padding-left:5px;
+}
+
+#article-title{
+    font-weight: bold;
+    font-size: 24px;
+}
+
+#article-author{
+    display:flex;
+    align-items: center;
+}
+
+#author-image{
+    width:20px;
+    height:20px;
+    border-radius:10px;
+    background-image: url("../img/login/dog-login.jpg");
+    background-size:cover;
+    background-position: center;
+    background-repeat: no-repeat;
+}
+
+
+/*VET CSS*/
+
+.vet-menu{
+    width:600px;
+    height:348px;
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+}
+
+.vet-item, .vet-desc{
+    display:flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    text-align:center;
+}
+
+.vet-item{
+    width:250px;
+    gap:20px;
+}
+
+.vet-portrait{
+    width:100px;
+    height:100px;
+    border-radius:50px;
+    background-image: url("../img/login/dog-login.jpg");
+    background-size:cover;
+    background-position: center;
+    background-repeat: no-repeat;
+}
+
+.vet-name{
+    font-size: 20px;
+}
+
+.vet-title{
+    font-size: 16px;
+    color:grey;
+}
+
+.vet-fun-fact{
+    font-size: 26px;
+    font-weight: bold;
+    color:var(--dark-green);
+    padding-top:10px;
+}
+
+
+/*APPOINTMENT CSS*/
+
+
+.appointment-container{
+    height:530px;
+    display:flex;
+    align-items: center;
+    justify-content: center;
+    gap:100px;
+}
+
+.appointment-image{
+    width:500px;
+    height:420px;
+    background-image: url("../img/login/dog-login.jpg");
+    background-size:cover;
+    background-position: center;
+    background-repeat: no-repeat;
+}
+
+.appointment-form{
+    width:500px;
+    height:420px;
+    display: flex;
+    justify-content: space-around;
+    flex-direction: column;
+}
+
+.form-data{
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    width:100%;
+}
+
+input[type="text"], input[type="date"]{
+    width:500px;
+    height:36px;
+}
+
+.form-data .text-sub{
+    margin-bottom:0;
+    padding-bottom:0;
+}
+
+.radio-container{
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+}
+
+input[type="submit"]{
+    background:var(--light-green);
+    color:white;
+    width:160px;
+    height:48px;
+    outline:none;
+    border-radius:10px;
+    cursor:pointer;
+}
+
+input[type="submit"]:hover{
+    color:var(--light-green);
+    background:var(--dark-green);
+    transition:0.4s;
 }
