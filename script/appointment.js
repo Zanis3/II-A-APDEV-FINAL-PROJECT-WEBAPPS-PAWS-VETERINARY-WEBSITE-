@@ -1,3 +1,28 @@
+function toggleDropdown(trigger) {
+    var content = trigger.nextElementSibling;
+
+    // Toggle the active class
+    content.classList.toggle("active");
+    var isActive = content.classList.contains("active");
+
+    if (isActive) {
+        content.style.display = "block";
+        trigger.querySelector('.icon').innerHTML = '<i class="fas fa-angle-up"></i>';
+    } else {
+        content.style.display = "none";
+        trigger.querySelector('.icon').innerHTML = '<i class="fas fa-angle-down"></i>';
+    }
+
+    // Add or remove class to indicate basic info dropdown active status
+    if (trigger.querySelector('.text').innerText.trim() === "BASIC INFORMATION") {
+        if (isActive) {
+            document.body.classList.add("basic-info-active");
+        } else {
+            document.body.classList.remove("basic-info-active");
+        }
+    }
+}
+
 document.addEventListener("DOMContentLoaded", function() {
     const currentHour = new Date().getHours();
     const greetingElement = document.getElementById("greeting");
@@ -10,22 +35,4 @@ document.addEventListener("DOMContentLoaded", function() {
         greetingMessage = "Good Evening!";
     }
     greetingElement.textContent = greetingMessage;
-
-    const dropdownTrigger = document.querySelector('.trigger');
-    const dropdownContent = document.querySelector('.content');
-    const icon = document.querySelector('.icon i');
-
-    dropdownTrigger.addEventListener('click', function() {
-        dropdownContent.classList.toggle('active');
-        // Calculate the rotation based on the dropdown state
-        icon.style.transform = dropdownContent.classList.contains('active') ? 'rotate(180deg)' : 'rotate(90deg)';
-    });
-
-    // Add an event listener to close the dropdown and rotate the icon to face right when clicking outside the dropdown
-    document.addEventListener('click', function(event) {
-        if (!dropdownTrigger.contains(event.target)) {
-            dropdownContent.classList.remove('active');
-            icon.style.transform = 'rotate(90deg)'; // Ensure the icon faces right when the dropdown is closed
-        }
-    });
 });

@@ -1,7 +1,7 @@
-.basic_info {
+.drop_down {
     position: relative;
     display: inline-block;
-    width: 200px;
+    width: 80%;
 }
 
 .trigger {
@@ -20,22 +20,29 @@
 }
 
 .icon i {
-    transition: transform 0.3s ease; /* Added "s" for seconds */
+    transition: transform 0.3s ease;
     transform: rotate(90deg);
 }
 
 .rotate-down {
     transform: rotate(180deg);
 }
+
 .content {
     display: none;
     position: absolute;
-    top: calc(100% + 5px);
+    top: 100%; /* Place the content below the trigger */
     left: 0;
-    background-color: white;
-    border: 1px solid #ccc;
-    border-radius: 5px;
-    width: 100%;
+    background-color: #fff; /* Set background color */
+    z-index: 1; /* Ensure the dropdown content is on top */
+    border: 1px solid #ccc; /* Add a border for better visibility */
+    padding: 5px;
+    width: 99%; /* Occupy the full width of the parent cell */
+}
+
+.basic-info-active .drop_down:nth-child(2) .content {
+    position: relative;
+    top: 0;
 }
 
 .content.active {
