@@ -21,35 +21,32 @@
         <br>
 
         <div class="dropdown-container">
-            <div class="dropdown-header" onclick="toggleDropdown('information')">
+            <div class="dropdown-header" onclick="toggleDropdown('information', this)" data-dropdown-id="information">
                 <b>Information</b>
-                <span>&#9660;</span>
+                <i class="fas fa-angle-right icon"></i>
             </div>
             <div id="informationDropdown" class="dropdown-content">
                 <div class="dropdown-item">Text on the farther left</div>
-                <!-- Add more items here if needed -->
             </div>
         </div>
 
         <div class="dropdown-container">
-            <div class="dropdown-header" onclick="toggleDropdown('schedule')">
-                <b>Schedule</b>
-                <span>&#9660;</span>
-            </div>
-            <div id="scheduleDropdown" class="dropdown-content">
-                <div class="dropdown-item">Text on the farther left</div>
-                <!-- Add more items here if needed -->
-            </div>
-        </div>
-
-        <div class="dropdown-container">
-            <div class="dropdown-header" onclick="toggleDropdown('appointment')">
+            <div class="dropdown-header" onclick="toggleDropdown('appointment', this)" data-dropdown-id="appointment">
                 <b>Appointment</b>
-                <span>&#9660;</span>
+                <i class="fas fa-angle-right icon"></i>
             </div>
             <div id="appointmentDropdown" class="dropdown-content">
                 <div class="dropdown-item">Text on the farther left</div>
-                <!-- Add more items here if needed -->
+            </div>
+        </div>
+
+        <div class="dropdown-container">
+            <div class="dropdown-header" onclick="toggleDropdown('schedule', this)" data-dropdown-id="schedule">
+                <b>Schedule</b>
+                <i class="fas fa-angle-right icon"></i>
+            </div>
+            <div id="scheduleDropdown" class="dropdown-content">
+                <div class="dropdown-item">Text on the farther left</div>
             </div>
         </div>
     </center>

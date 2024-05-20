@@ -14,6 +14,22 @@ $(document).ready(function() {
 
     // Toggle dropdown function using jQuery
     $('.dropdown-header').click(function() {
-        $(this).next('.dropdown-content').slideToggle();
+        var dropdownId = $(this).data('dropdown-id');
+        var dropdown = $('#' + dropdownId + 'Dropdown');
+        var icon = $(this).find('.icon');
+
+        // Toggle the display of the dropdown with sliding animation
+        dropdown.slideToggle();
+
+        // Toggle the rotation class for the icon
+        icon.toggleClass('fa-angle-right fa-angle-down');
+    });
+
+    // Close dropdown when clicked outside
+    $(document).click(function(event) {
+        if (!$(event.target).closest('.dropdown-container').length) {
+            $('.dropdown-content').slideUp();
+            $('.icon').removeClass('fa-angle-down').addClass('fa-angle-right');
+        }
     });
 });
