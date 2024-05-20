@@ -4,8 +4,9 @@
     position: relative;
 }
 .dropdown-header {
-    background-color: #ECFDF5;
+    background-color: #064E3B;
     border: 1px solid #ccc;
+    border-radius: 10px;
     padding: 10px;
     cursor: pointer;
     display: flex;
@@ -17,15 +18,85 @@
     position: relative;
     top: 100%;
     width: 99.80%;
-    background-color: #fff;
-    border: 1px solid #ccc;
-    border: none;
+    background-color: #E2EBE7;
+    border: 1px solid #65A30D;
+    border-radius: 10px;
     z-index: 1;
+    margin-top: 5px;
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.3); 
 }
 .dropdown-item {
-    padding: 10px;
+    padding: 40px;
     cursor: pointer;
+    display: flex;
+    justify-content: space-between;
 }
+
+.form-group {
+    background-color: #ffffff;
+    width: 45%; /* Adjust width as needed */
+    border-radius: 10px;
+    padding-bottom: 10px;
+}
+
+.form-group input {
+    width: 300px; /* Adjust width of text boxes */
+}
+
+.button-container {
+    margin-top: 5px;
+    padding-bottom: 20px;
+}
+
+.button-container button {
+    margin-right: 10px;
+}
+
 .icon.right {
     transform: rotate(90deg);
+}
+
+.button-container button {
+    margin-right: 10px;
+    background-color: #064E3B;
+    color: white;
+    border-style: none;
+    border-radius: 10px;
+    width: 100px;
+    height: 50px;
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+    transition: background-color 0.3s, box-shadow 0.3s;
+}
+
+.button-container button:hover {
+    background-color: #045A46;
+    box-shadow: 0px 8px 16px rgba(0, 0, 0, 0.2);
+}
+
+.button-container button:active {
+    transform: translateY(2px);
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.container {
+    width: 100%;
+}
+
+.inside_container {
+    flex: 1;
+    background-color: rgab(255, 255, 255, 0.1);
+    margin: 5px;
+}
+
+select {
+    width: 200px;
+}
+
+input {
+    width: 193px;
+}
+
+.others {
+    width: 300px;
+    height: 150px;
 }
