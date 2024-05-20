@@ -7,6 +7,7 @@
     <link rel="stylesheet" href="css/style_general.css">
     <link rel="stylesheet" href="css/style_appointment.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 </head>
 <body>
     <?php include_once 'template/header.php';?>
@@ -18,47 +19,37 @@
         <br>
         <br>
         <br>
-        <div class="drop_down">
-            <div class="trigger" onclick="toggleDropdown(this)">
-                <div class="text"><b> BASIC INFORMATION </b></div>
-                <div class="icon"><i class="fas fa-angle-up"></i></div>
+
+        <div class="dropdown-container">
+            <div class="dropdown-header" onclick="toggleDropdown('information')">
+                <b>Information</b>
+                <span>&#9660;</span>
             </div>
-            <div class="content">
-                <ul>
-                    <li>Option 1</li>
-                    <li>Option 2</li>
-                    <li>Option 3</li>
-                </ul>
+            <div id="informationDropdown" class="dropdown-content">
+                <div class="dropdown-item">Text on the farther left</div>
+                <!-- Add more items here if needed -->
             </div>
         </div>
-        <br>
-        <br>
-        <div class="drop_down">
-            <div class="trigger" onclick="toggleDropdown(this)">
-                <div class="text"><b> APPOINTMENT </b></div>
-                <div class="icon"><i class="fas fa-angle-up"></i></div>
+
+        <div class="dropdown-container">
+            <div class="dropdown-header" onclick="toggleDropdown('schedule')">
+                <b>Schedule</b>
+                <span>&#9660;</span>
             </div>
-            <div class="content">
-                <ul>
-                    <li>Option 1</li>
-                    <li>Option 2</li>
-                    <li>Option 3</li>
-                </ul>
+            <div id="scheduleDropdown" class="dropdown-content">
+                <div class="dropdown-item">Text on the farther left</div>
+                <!-- Add more items here if needed -->
             </div>
         </div>
-        <br>
-        <br>
-        <div class="drop_down">
-            <div class="trigger" onclick="toggleDropdown(this)">
-                <div class="text"><b> SCHEDULE </b></div>
-                <div class="icon"><i class="fas fa-angle-up"></i></div>
+
+        <div class="dropdown-container">
+            <div class="dropdown-header" onclick="toggleDropdown('appointment')">
+                <b>Appointment</b>
+                <span>&#9660;</span>
             </div>
-            <div class="content">
-                <ul>
-                    <li>Option 1</li>
-                    <li>Option 2</li>
-                    <li>Option 3</li>
-                </ul>
+            <div id="appointmentDropdown" class="dropdown-content">
+                <div class="dropdown-item">Text on the farther left</div>
+                <!-- Add more items here if needed -->
             </div>
         </div>
     </center>

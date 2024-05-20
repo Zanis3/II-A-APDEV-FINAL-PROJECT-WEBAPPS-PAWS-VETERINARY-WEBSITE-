@@ -1,58 +1,28 @@
-.drop_down {
+.dropdown-container {
+    width: 90%;
+    margin: 20px auto;
     position: relative;
-    display: inline-block;
-    width: 80%;
 }
-
-.trigger {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    background-color: #f0f0f0;
-    padding: 10px;
+.dropdown-header {
+    background-color: #ECFDF5;
     border: 1px solid #ccc;
-    border-radius: 5px;
-    cursor: pointer;
-}
-
-.icon {
-    margin-right: 5px;
-}
-
-.icon i {
-    transition: transform 0.3s ease;
-    transform: rotate(90deg);
-}
-
-.rotate-down {
-    transform: rotate(180deg);
-}
-
-.content {
-    display: none;
-    position: absolute;
-    top: 100%; /* Place the content below the trigger */
-    left: 0;
-    background-color: #fff; /* Set background color */
-    z-index: 1; /* Ensure the dropdown content is on top */
-    border: 1px solid #ccc; /* Add a border for better visibility */
-    padding: 5px;
-    width: 99%; /* Occupy the full width of the parent cell */
-}
-
-.basic-info-active .drop_down:nth-child(2) .content {
-    position: relative;
-    top: 0;
-}
-
-.content.active {
-    display: block;
-}
-
-.content ul li {
     padding: 10px;
+    cursor: pointer;
+    display: flex;
+    justify-content: space-between;
+    border: none;
 }
-
-.content.active + .trigger + .icon {
-    transform: rotate(180deg);
+.dropdown-content {
+    display: none;
+    position: relative;
+    top: 100%;
+    width: 99.80%;
+    background-color: #fff;
+    border: 1px solid #ccc;
+    border: none;
+    z-index: 1;
+}
+.dropdown-item {
+    padding: 10px;
+    cursor: pointer;
 }
