@@ -17,9 +17,40 @@
         <p><b> Please fill up the fields below. </b></p>
         <br>
         <br>
-        <div class="basic_info">
-            <div class="trigger">
-                <div class="text"> BASIC INFORMATION </div>
+        <br>
+        <div class="drop_down">
+            <div class="trigger" onclick="toggleDropdown(this)">
+                <div class="text"><b> BASIC INFORMATION </b></div>
+                <div class="icon"><i class="fas fa-angle-up"></i></div>
+            </div>
+            <div class="content">
+                <ul>
+                    <li>Option 1</li>
+                    <li>Option 2</li>
+                    <li>Option 3</li>
+                </ul>
+            </div>
+        </div>
+        <br>
+        <br>
+        <div class="drop_down">
+            <div class="trigger" onclick="toggleDropdown(this)">
+                <div class="text"><b> APPOINTMENT </b></div>
+                <div class="icon"><i class="fas fa-angle-up"></i></div>
+            </div>
+            <div class="content">
+                <ul>
+                    <li>Option 1</li>
+                    <li>Option 2</li>
+                    <li>Option 3</li>
+                </ul>
+            </div>
+        </div>
+        <br>
+        <br>
+        <div class="drop_down">
+            <div class="trigger" onclick="toggleDropdown(this)">
+                <div class="text"><b> SCHEDULE </b></div>
                 <div class="icon"><i class="fas fa-angle-up"></i></div>
             </div>
             <div class="content">
