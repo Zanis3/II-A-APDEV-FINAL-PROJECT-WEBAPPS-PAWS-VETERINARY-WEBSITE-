@@ -11,6 +11,24 @@
 <body>
     <?php include_once 'template/header.php';?>
 
+    <div class="container title">
+        <div class="text-container">
+            <h2 class="text-title">Our Veterinary Services</h2>
+            <p class="text-sub">Explore a range of services for your beloved pets</p>
+        </div>
+    </div>
+
+    <div class="container">
+        <div class="text-container">
+            <h2 class="text-title">Medical Services</h2>
+        </div>
+        <div class="container-content">
+            <div class="item"></div>
+            <div class="item"></div>
+            <div class="item"></div>
+        </div>
+    </div>
+
     <?php include_once 'template/footer.php';?>
 </body>
 </html>
