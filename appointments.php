@@ -29,6 +29,7 @@
                 <div class="dropdown-item">
                     <div class="form-group">
                         <h3> OWNER'S INFORMATION </h3>
+                        <hr class="line">
                         <br>
                         <table>
                             <tr>
@@ -74,6 +75,7 @@
                     </div>
                     <div class="form-group">
                         <h3> PET INFORMATION </h3>
+                        <hr class="line">
                         <br>
                         <table>
                             <tr>
@@ -141,6 +143,7 @@
                                 <tr>
                                     <td>
                                         <label for="SelType"><b> Appointment Type: </b></label>
+                                        
                                     </td>
                                     <td>
                                         <select name="AppointmentType">
@@ -213,7 +216,170 @@
                 <i class="fas fa-angle-right icon" style="color: white"></i>
             </div>
             <div id="scheduleDropdown" class="dropdown-content">
-                <div class="dropdown-item">Text on the farther left</div>
+                <div class="dropdown-item">
+                    <div class="table-calendar">
+                    <br>
+                    <br>
+                        <table class="calendar">
+                            <tr>
+                                <td colspan="4" style="text-align: left; background-color: #064E3B; color: white">
+                                    <select id="monthSelect" style="width: 70%; height: 30px;"></select>
+                                    <script>
+                                        var monthSelect = document.getElementById('monthSelect');
+                                        var months = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
+
+                                        for (var i = 0; i < months.length; i++) {
+                                            var option = document.createElement('option');
+                                            option.text = months[i];
+                                            option.value = i + 1;
+                                            monthSelect.appendChild(option);
+                                        }
+                                    </script>
+                                </td>
+                                <td colspan="3" style="text-align: right; background-color: #064E3B; color: white" id="yearCell">
+                                    <strong>
+                                        <script>
+                                            // Function to update the year
+                                            function updateYear() {
+                                                var yearCell = document.getElementById('yearCell');
+                                                var currentYear = new Date().getFullYear();
+                                                yearCell.innerText = currentYear;
+                                            }
+                                            updateYear();
+
+                                            setInterval(updateYear, 10000);
+                                        </script>
+                                    </strong>
+                                </td>
+                            <tr>
+                                <td style="background-color: #0fa47c; color: white"><b></b></td>
+                                <td style="text-align: center; background-color: #0fa47c; color: white"><b>MON</b></td>
+                                <td style="text-align: center; background-color: #0fa47c; color: white"><b>TUE</b></td>
+                                <td style="text-align: center; background-color: #0fa47c; color: white"><b>WED</b></td>
+                                <td style="text-align: center; background-color: #0fa47c; color: white"><b>THU</b></td>
+                                <td style="text-align: center; background-color: #0fa47c; color: white"><b>FRI</b></td>
+                                <td style="text-align: center; background-color: #0fa47c; color: white"><b>SAT</b></td>
+                            </tr>
+                            <tr>
+                                <td style="text-align: right; background-color: #0fa47c; color: white"><b>9 AM - 10 AM</b></td>
+                                <td><button class="timeButton button">&nbsp;</button></td>
+                                <td><button class="timeButton button">&nbsp;</button></td>
+                                <td><button class="timeButton button">&nbsp;</button></td>
+                                <td><button class="timeButton button">&nbsp;</button></td>
+                                <td><button class="timeButton button">&nbsp;</button></td>
+                                <td><button class="timeButton button">&nbsp;</button></td>
+                            </tr>
+                            <tr>
+                                <td style="text-align: right; background-color: #0fa47c; color: white"><b>10 AM - 11 AM</b></td>
+                                <td><button class="timeButton button">&nbsp;</button></td>
+                                <td><button class="timeButton button">&nbsp;</button></td>
+                                <td><button class="timeButton button">&nbsp;</button></td>
+                                <td><button class="timeButton button">&nbsp;</button></td>
+                                <td><button class="timeButton button">&nbsp;</button></td>
+                                <td><button class="timeButton button">&nbsp;</button></td>
+                            </tr>
+                            <tr>
+                                <td style="text-align: right; background-color: #0fa47c; color: white"><b>11 AM - 12 PM</b></td>
+                                <td><button class="timeButton button">&nbsp;</button></td>
+                                <td><button class="timeButton button">&nbsp;</button></td>
+                                <td><button class="timeButton button">&nbsp;</button></td>
+                                <td><button class="timeButton button">&nbsp;</button></td>
+                                <td><button class="timeButton button">&nbsp;</button></td>
+                                <td><button class="timeButton button">&nbsp;</button></td>
+                            </tr>
+                            <tr>
+                                <td style="text-align: center; background-color: #0fa47c; color: white" colspan="7"><b>LUNCH BREAK</b></td>
+                            </tr>
+                            <tr>
+                                <td style="text-align: right; background-color: #0fa47c; color: white"><b>1 PM - 2 PM</b></td>
+                                <td><button class="timeButton button">&nbsp;</button></td>
+                                <td><button class="timeButton button">&nbsp;</button></td>
+                                <td><button class="timeButton button">&nbsp;</button></td>
+                                <td><button class="timeButton button">&nbsp;</button></td>
+                                <td><button class="timeButton button">&nbsp;</button></td>
+                                <td><button class="timeButton button">&nbsp;</button></td>
+                            </tr>
+                            <tr>
+                                <td style="text-align: right; background-color: #0fa47c; color: white"><b>2 PM - 3 PM</b></td>
+                                <td><button class="timeButton button">&nbsp;</button></td>
+                                <td><button class="timeButton button">&nbsp;</button></td>
+                                <td><button class="timeButton button">&nbsp;</button></td>
+                                <td><button class="timeButton button">&nbsp;</button></td>
+                                <td><button class="timeButton button">&nbsp;</button></td>
+                                <td><button class="timeButton button">&nbsp;</button></td>
+                            </tr>
+                            <tr>
+                                <td style="text-align: right; background-color: #0fa47c; color: white"><b>3 PM - 4 PM</b></td>
+                                <td><button class="timeButton button">&nbsp;</button></td>
+                                <td><button class="timeButton button">&nbsp;</button></td>
+                                <td><button class="timeButton button">&nbsp;</button></td>
+                                <td><button class="timeButton button">&nbsp;</button></td>
+                                <td><button class="timeButton button">&nbsp;</button></td>
+                                <td><button class="timeButton button">&nbsp;</button></td>
+                            </tr>
+                            <tr>
+                                <td style="text-align: right; background-color: #0fa47c; color: white"><b>4 PM - 5 PM</b></td>
+                                <td><button class="timeButton button">&nbsp;</button></td>
+                                <td><button class="timeButton button">&nbsp;</button></td>
+                                <td><button class="timeButton button">&nbsp;</button></td>
+                                <td><button class="timeButton button">&nbsp;</button></td>
+                                <td><button class="timeButton button">&nbsp;</button></td>
+                                <td><button class="timeButton button">&nbsp;</button></td>
+                            </tr>
+                        </table>
+                        <script>
+                            // Function to handle button click
+                            function toggleButtonColor() {
+                                var button = this;
+                                if (button.style.backgroundColor === 'rgb(240, 240, 240)') {
+                                    button.style.backgroundColor = '#65A30D';
+                                } else {
+                                    button.style.backgroundColor = '#f0f0f0';
+                                }
+                            }
+
+                            // Add click event listeners to all buttons with class "timeButton"
+                            var buttons = document.getElementsByClassName('timeButton');
+                            for (var i = 0; i < buttons.length; i++) {
+                                buttons[i].addEventListener('click', toggleButtonColor);
+                            }
+                        </script>
+                    </div>
+                    <div class="sched-container">
+                        <div class="legends">
+                            <p><b> LEGENDS </b></p>
+                            <hr class="line">
+                            <br>
+                            <table class="tbl-legends">
+                                <tr>
+                                    <td><i class="fas fa-circle" style="color: #65A30D"></i></td>
+                                    <td><i class="fas fa-circle" style="color: #00fffb"></i></td>
+                                    <td><i class="fas fa-circle" style="color: #ff0000"></i></td>
+                                </tr>
+                                <tr>
+                                    <td><p> Your Schedule </p></td>
+                                    <td><p> Taken </p></td>
+                                    <td><p> Not Available </p></td>
+                                </tr>
+                            </table>
+                        </div>
+                        <div class="output">
+                            <p><b> SCHEDULE </b></p>
+                            <hr class="line">
+                            <br>
+                            <input type="text" name="txtSchedule" class="sched-output" disabled>
+                        </div>
+                        <div class="notice">
+                            <p><b> REMINDERS </b></p>
+                            <p>Every schedules will start on time. Please come 30 mins. before the said appointment.</p>
+                            <p><b>- Paw's Veterinary Clinic</b></p>
+                        </div>
+                    </div>
+                </div>
+                <div class="button-container">
+                    <button onclick="submitForm()">Submit</button>
+                    <button onclick="clearForm()">Clear</button>
+                </div>
             </div>
         </div>
     </center>

@@ -37,6 +37,8 @@
     width: 45%; /* Adjust width as needed */
     border-radius: 10px;
     padding-bottom: 10px;
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+    transition: background-color 0.3s, box-shadow 0.3s;
 }
 
 .form-group input {
@@ -99,4 +101,70 @@ input {
 .others {
     width: 300px;
     height: 150px;
+}
+.table-calendar {
+    background-color: white;
+    padding: 15px;
+    margin-right: 1%;
+    width: 70%;
+    border-radius: 10px;
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+    transition: background-color 0.3s, box-shadow 0.3s;
+}
+.calendar td {
+    border: 1px solid black;
+    padding: 5px;
+    width: 14%;
+}
+.center {
+    text-align: center;
+}
+.button {
+    background-color: #f0f0f0; 
+    border: none; 
+    padding: 5px;
+    width: 100%;
+    height: 100%;
+}
+.sched-container {
+    width: 30%;
+    border: none;
+}
+
+.legends{
+    background-color: white;
+    border-radius: 10px;
+    margin-bottom: 3%;
+    height: 180px;
+    padding: 2px;
+}
+.tbl-legends td{
+    text-align: center;
+    padding-left: 5px;
+    padding-right: 10px;
+}
+
+.output {
+    background-color: white;
+    border-radius: 10px;
+    margin-bottom: 3%;
+    height: 150px;
+    padding: 2px;
+}
+
+.notice {
+    padding: 2px;
+}
+.line {
+    width: 90%;
+    background-color: #65A30D;
+    height: 1px;
+}
+.sched-output {
+    width: 80%;
+    height: 20%;
+    background-color: #cccccc61;
+    border: none;
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+    transition: background-color 0.3s, box-shadow 0.3s;
 }
