@@ -132,7 +132,7 @@
     </div>
 
     <!--APPOINTMENT CONTAINER-->
-    <div class="container apppointment">
+    <div class="container appointment">
         <div class="appointment-image"></div>
         <div class="text-container">
             <h2 class="text-title">Book an Appointment</h2>

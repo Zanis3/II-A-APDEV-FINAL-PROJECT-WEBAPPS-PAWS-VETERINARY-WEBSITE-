@@ -301,10 +301,9 @@
 
 
 .container.appointment{
-    height:530px;
+    height:500px;
     background:var(--lighter-green);
-    justify-content: center;
-    gap:10px;
+    justify-content: space-around;
 }
 
 .appointment-image{
@@ -330,7 +329,7 @@ form{
 
 #txtPetName, #txtDateOfAppointment{
     border:none;
-    background:var(--lighter-green);
+    background:white;
     width:500px;
     height:36px;
     padding: 8px 12px;
