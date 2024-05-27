@@ -490,6 +490,8 @@
             </div>
         </div>
     </center>
+
+    <?php include_once 'template/footer.php';?>
     <script src="script/appointment.js"></script>
 </body>
 </html>

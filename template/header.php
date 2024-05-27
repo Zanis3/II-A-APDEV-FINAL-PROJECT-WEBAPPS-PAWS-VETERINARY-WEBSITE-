@@ -10,11 +10,6 @@
         <a href="services.php"><b> Services </b></a>
         <a href="appointments.php"><b> Set Appointment </b></a>
         <a href="about.php"><b> About Us </b></a>
-        <form action="/search" method="GET">
-            <div class="searchbox">
-                <input type="text" id="txtsearch" name="search" class="search-input" placeholder="Search...">
-                <button type="submit" class="search-button"><i class="fas fa-search"></i></button>
-            </div>        
-        </form>
+        <a href="login.php" id="nav-unique"><b> Login </b></a>
     </div>
 </div>

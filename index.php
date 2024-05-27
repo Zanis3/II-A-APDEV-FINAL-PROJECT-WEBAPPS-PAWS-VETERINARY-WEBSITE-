@@ -10,7 +10,6 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
     <link rel="stylesheet" href="css/style_general.css">
     <link rel="stylesheet" href="css/style_home.css">
-    <script href="script/script.js" deter></script>
     <link rel="shortcut icon" href="img/gen/web-logo.png" type="image/png">
     
 </head>
@@ -144,7 +143,7 @@
                 <div class="warning" style="margin-bottom:5px;"><?php echo $nameError;?></div>
 
                 <label for="txtDateOfAppointment">Preferred Date</label>
-                <input type="date" name="txtDateOfAppointment" id="txtDateOfAppointment" min="<?php echo date('Y-m-d');?>" placeholder="Select date.">
+                <input type="date" name="txtDateOfAppointment" id="txtDateOfAppointment" min="<?php echo date('Y-m-d');?>" max ="<?php echo date('Y-m-d', strtotime('+1 month'))?>" placeholder="Select date.">
 
                 <label for="radio-group">Pet Type</label>
                 <div class="radio-group" id="radio-group">
@@ -168,9 +167,11 @@
         </div>        
     </div>
 
+    <!--EMBED MAP-->
     <div class="container">
         <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d36721.64408200152!2d120.93125248967084!3d14.662342305804902!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3397b5b2dae3a04f%3A0x5edf44f955d70f0f!2sFur-Paws%20Veterinary%20Clinic!5e0!3m2!1sen!2sph!4v1716812315376!5m2!1sen!2sph" width="1350" height="400" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
     </div>
+
     <?php include_once 'template/footer.php';?>
     
 </body>
