@@ -1,8 +1,10 @@
 <div class="header">
-    <div class="website-logo">
+    <a href="../II-A-APDEV-FINAL-PROJECT-WEBAPPS-PAWS-VETERINARY-WEBSITE-/index.php" id="header-link">
+        <div class="website-logo">
         <img src="img/gen/web-logo.png" class="web-logo">
         <h1>Paws Veterinary</h1>
-    </div>
+        </div>
+    </a>
     <div class="navbar">
         <a href="index.php"><b> Home </b></a>
         <a href="services.php"><b> Services </b></a>

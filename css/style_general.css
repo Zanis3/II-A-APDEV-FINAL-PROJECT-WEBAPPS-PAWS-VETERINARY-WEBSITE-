@@ -30,6 +30,12 @@ img{
     z-index:999;
 }
 
+#header-link{
+    cursor:pointer;
+    color:black;
+    text-decoration: none;
+}
+
 .navbar{
     display:flex;
     align-items: center;
@@ -97,4 +103,10 @@ img{
     display:flex;
     align-items: center;
     justify-content: center;
+}
+
+.warning{
+    color:red;
+    font-weight: bold;
+    margin-top:0;
 }

@@ -303,6 +303,8 @@
 .container.appointment{
     height:530px;
     background:var(--lighter-green);
+    justify-content: center;
+    gap:10px;
 }
 
 .appointment-image{
@@ -313,4 +315,66 @@
     background-size:cover;
     background-position: center;
     background-repeat: no-repeat;
+}
+
+label{
+    color:var(--dark-green);
+    font-weight: bold;
+}
+
+form{
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+}
+
+#txtPetName, #txtDateOfAppointment{
+    border:none;
+    background:var(--lighter-green);
+    width:500px;
+    height:36px;
+    padding: 8px 12px;
+    outline:var(--dark-green);
+    margin-bottom:20px;
+}
+
+.radio-group{
+    display:flex;
+    gap:10px;
+    margin-top:5px;
+}
+
+.radio-options{
+    display:none;
+}
+
+.radio-labels{
+    padding:5px 15px;
+    background:var(--light-green);
+    color:white;
+    cursor:pointer;
+    font-size:14px;
+    border-radius:5px;
+}
+
+.radio-options:checked + .radio-labels {
+    background: var(--dark-green);
+}
+
+.btnAppointmentHome{
+    color:white;
+    background:var(--light-green);
+    width:35%;
+    padding:10px 10px;
+    border:none;
+    font-size: 18px;
+    font-weight: bold;
+    margin-top:15px;
+    cursor:pointer;
+    border-radius:5px;
+}
+
+.btnAppointmentHome:hover , .radio-labels:hover{
+    background:var(--dark-green);
+    transition:0.7s;
 }
