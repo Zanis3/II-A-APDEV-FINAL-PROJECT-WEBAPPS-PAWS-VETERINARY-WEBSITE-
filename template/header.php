@@ -9,7 +9,7 @@
         <a href="appointments.php"><b> Set Appointment </b></a>
         <a href="about.php"><b> About Us </b></a>
         <form action="/search" method="GET">
-            <div class="container">
+            <div class="searchbox">
                 <input type="text" id="txtsearch" name="search" class="search-input" placeholder="Search...">
                 <button type="submit" class="search-button"><i class="fas fa-search"></i></button>
             </div>        

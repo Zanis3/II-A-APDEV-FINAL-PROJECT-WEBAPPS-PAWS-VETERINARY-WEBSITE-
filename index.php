@@ -18,6 +18,7 @@
         include_once 'template/header.php';
     ?>
 
+    <!--HERO CONTAINER-->
     <div class="hero-container">
         <div class="hero-text">
             <h1 id="hero-title">Welcome to Paws Veterinary Clinic</h1>
@@ -28,114 +29,90 @@
         </div>
     </div>
 
+    <!--SERVICES CONTAINER-->
     <div class="container">
         <div class="text-container">
-            <h1 id="text-title">Our Services</h1>
-            <p id="text-sub">Browse our range of veterinary services</p>
+            <h2 class="text-title">Our Services</h2>
+            <p class="text-sub">Browse our range of veterinary services</p>
         </div>
         <div class="services-items">
-            <div class="item">
-                <div class="item-top"></div>
-                <div class="item-desc">test alpha</div>
+            <div class="services-item">
+                <div class="serv-item-header one"></div>
+                <div class="serv-item-desc">
+                    <p class="serv-title">Vaccination Services</p>
+                    <p class="serv-desc">Protect your pet from...</p>
+                </div>
             </div>
-            <div class="item">
-                <div class="item-top"></div>
-                <div class="item-desc">test beta</div>
+            <div class="services-item">
+                <div class="serv-item-header two"></div>
+                <div class="serv-item-desc">
+                    <p class="serv-title">Surgical Procedures</p>
+                    <p class="serv-desc">Providing surgical sol...</p>
+                </div>
             </div>
         </div>
     </div>
 
-    <div class="container article">
+    <!--ARTICLE CONTAINER-->
+    <div class="container sec">
         <div class="text-container">
-            <h1 id="text-title">Healthy Pets for a Happy Life</h1>
-            <p id="text-sub">Read informative articles on pet care</p>
+            <h2 class="text-title">Healthy Pets for a Happy Life</h2>
+            <p class="text-sub">Read informative articles on pet care</p>
         </div>
-        <div class="article-menu">
-            <div class="article-items">
-                <div class="article-image"></div>
-                <div class="article-desc">
-                    <div id="article-title">test article</div>
-                    <div id="article-summary">test summary test summary test summ...</div>
-                    <div id="article-author">
-                        <div id="author-image"></div>
-                        <p id="article-author-name">Tester Anderson</p> 
-                    </div>
+        <div class="article-items">
+            <div class="arc-item">
+                <div class="arc-image one"></div>
+                <div class="arc-desc">
+                    <p class="arc-title">Benefits of Regular Check-ups</p>
+                    <p class="arc-descr">Regular vet check-ups can help detect health issues early on.</p>
                 </div>
             </div>
-            <div class="article-items">
-                <div class="article-image"></div>
-                <div class="article-desc">
-                    <div id="article-title">test article</div>
-                    <div id="article-summary">test summary test summary test summ...</div>
-                    <div id="article-author">
-                        <div id="author-image"></div>
-                        <p id="article-author-name">Tester Anderson</p> 
-                    </div>
+            <div class="arc-item">
+                <div class="arc-image two"></div>
+                <div class="arc-desc">
+                    <p class="arc-title">Pet Nutrition Tips</p>
+                    <p class="arc-descr">Learn about the importance of a balanced diet for your pet's health.</p>
                 </div>
             </div>
-        </div> 
+        </div>
     </div>
 
+    <!--TEAM CONTAINER-->
     <div class="container">
         <div class="text-container">
-            <h1 id="text-title">Our Team</h1>
-            <p id="text-sub">Meet our experienced veterinarians!</p>
+            <h2 class="text-title">Our Team</h2>
+            <p class="text-sub">Meet our experienced veterinarians</p>
         </div>
-        <div class="vet-menu">
-            <div class="vet-item">
-                <div class="vet-portrait"></div>
-                <div class="vet-desc">
-                    <div class="vet-name">Tester Anderson</div>
-                    <div class="vet-title">Veterinarian</div>
-                    <div class="vet-fun-fact">10+ Years of Experience!</div>
+        <div class="doctor-items">
+            <div class="doctor-item">
+                <div class="doc-image one"></div>
+                <div class="doc-text">
+                    <div class="doc-name">
+                        <p class="vet-name">Dr. Emily Johnson</p>
+                        <p class="vet-title">Veterinarian</p>
+                    </div>
+                    <p class="doc-desc">10+ Years of Experience</p>
                 </div>
             </div>
-            <div class="vet-item">
-                <div class="vet-portrait"></div>
-                <div class="vet-desc">
-                    <div class="vet-name">Tester Anderson</div>
-                    <div class="vet-title">Surgeon</div>
-                    <div class="vet-fun-fact">Specializes in Complex Surgeries</div>
+            <div class="doctor-item">
+                <div class="doc-image two"></div>
+                <div class="doc-text">
+                    <div class="doc-name">
+                        <p class="vet-name">Dr. Michael Brown</p>
+                        <p class="vet-title">Surgeon</p>
+                    </div>
+                    <p class="doc-desc">Specializes in complex surgeries</p>
                 </div>
             </div>
         </div>
     </div>
 
-    <div class="appointment-container">
+    <!--APPOINTMENT CONTAINER-->
+    <div class="container apppointment">
         <div class="appointment-image"></div>
-        <div class="appointment-form">
-            <div class="appointment-title">
-                <h1 id="text-title">Book an Appointment</h1>
-                <p id="text-sub">Schedule a visit with your pet</p>
-            </div>
-            <form action="" method="post">
-                <div id="form-data">
-                    <p id="text-sub">Pet Name: </p>
-                    <input type="text" name="txtPetName" placeholder="Enter name of pet">
-                </div>
-                <div id="form-data">
-                    <p id="text-sub">Preferred Date: </p>
-                    <input type="date" name="txtAppointmentDate" min="<?php echo date('Y-m-d');?>">
-                </div>
-                <div id="form-data">
-                    <p id="text-sub">Pet Type: </p>
-                    <div class="radio-container">
-                        <span>
-                            <input type="radio" name="rdoPetType" value="Cat">
-                            Cat
-                        </span>
-                        <span>
-                            <input type="radio" name="rdoPetType" value="Dog">
-                            Dog
-                        </span>
-                        <span>
-                            <input type="radio" name="rdoPetType" value="Bird">
-                            Bird
-                        </span> 
-                    </div>
-                </div>
-                <input type="submit" value="Schedule Now" name="btnScheduleNow">
-            </form>
+        <div class="text-container">
+            <h2 class="text-title">Book an Appointment</h2>
+            <p class="text-sub">Schedule a visit for your pet!</p>
         </div>
     </div>
 

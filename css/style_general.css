@@ -25,6 +25,9 @@ img{
     background: #ECFDF5;
     padding-left:1%;
     padding-right:1%;
+    position:sticky;
+    top:0;
+    z-index:999;
 }
 
 .navbar{
@@ -44,15 +47,15 @@ img{
     transition: 0.5s;
 }
 
-.container {
+.searchbox {
     background-color: white;
     border-radius: 5px;
-    padding: 1px; /* Adjusted padding to reduce height */
+    padding: 1px;
     display: flex;
-    width: 300px; /* Adjusted width to fit the reduced height */
+    width: 300px;
     align-items: center;
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); 
-    margin-top: 1px; /* Keep some space at the top */
+    margin-top: 1px;
 }
 
 .search-input {
