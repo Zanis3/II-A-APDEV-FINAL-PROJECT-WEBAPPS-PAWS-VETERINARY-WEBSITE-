@@ -1,5 +1,6 @@
 <?php
     session_start();
+    ini_set('display_errors', 0);
 ?>
 
 <!DOCTYPE html>
@@ -9,15 +10,39 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
     <link rel="stylesheet" href="css/style_general.css">
     <link rel="stylesheet" href="css/style_home.css">
-    <script href="script/script.js" deter></script>
     <link rel="shortcut icon" href="img/gen/web-logo.png" type="image/png">
     
 </head>
 <body>
     <?php 
         include_once 'template/header.php';
+
+        $nameError = '';
+        $radioError = '';
+
+        if($_SERVER['REQUEST_METHOD'] === 'POST'){
+            if(isset($_POST['btnAppointmentHome'])){
+                $petName = $_POST['txtPetName'];
+
+                if(empty($petName) || !isset($_POST['rdoPetType'])){
+                    if(empty($petName)){
+                        $nameError = "Please input your pet's name and try again.";
+                    }
+
+                    if(!isset($_POST['rdoPetType'])){
+                        $radioError = "Please select the type of your pet and try again.";
+                    }
+                }
+                else{
+                    $_SESSION['petName'] = $petName;
+                    $_SESSION['petType'] = $_POST['rdoPetType'];
+                    header('Location: appointments.php');
+                }
+            }
+        }
     ?>
 
+    <!--HERO CONTAINER-->
     <div class="hero-container">
         <div class="hero-text">
             <h1 id="hero-title">Welcome to Paws Veterinary Clinic</h1>
@@ -28,115 +53,123 @@
         </div>
     </div>
 
+    <!--SERVICES CONTAINER-->
     <div class="container">
         <div class="text-container">
-            <h1 id="text-title">Our Services</h1>
-            <p id="text-sub">Browse our range of veterinary services</p>
+            <h2 class="text-title">Our Services</h2>
+            <p class="text-sub">Browse our range of veterinary services</p>
         </div>
         <div class="services-items">
-            <div class="item">
-                <div class="item-top"></div>
-                <div class="item-desc">test alpha</div>
+            <div class="services-item">
+                <div class="serv-item-header one"></div>
+                <div class="serv-item-desc">
+                    <p class="serv-title">Vaccination Services</p>
+                    <p class="serv-desc">Protect your pet from...</p>
+                </div>
             </div>
-            <div class="item">
-                <div class="item-top"></div>
-                <div class="item-desc">test beta</div>
+            <div class="services-item">
+                <div class="serv-item-header two"></div>
+                <div class="serv-item-desc">
+                    <p class="serv-title">Surgical Procedures</p>
+                    <p class="serv-desc">Providing surgical sol...</p>
+                </div>
             </div>
         </div>
     </div>
 
-    <div class="container article">
+    <!--ARTICLE CONTAINER-->
+    <div class="container sec">
         <div class="text-container">
-            <h1 id="text-title">Healthy Pets for a Happy Life</h1>
-            <p id="text-sub">Read informative articles on pet care</p>
+            <h2 class="text-title">Healthy Pets for a Happy Life</h2>
+            <p class="text-sub">Read informative articles on pet care</p>
         </div>
-        <div class="article-menu">
-            <div class="article-items">
-                <div class="article-image"></div>
-                <div class="article-desc">
-                    <div id="article-title">test article</div>
-                    <div id="article-summary">test summary test summary test summ...</div>
-                    <div id="article-author">
-                        <div id="author-image"></div>
-                        <p id="article-author-name">Tester Anderson</p> 
-                    </div>
+        <div class="article-items">
+            <div class="arc-item">
+                <div class="arc-image one"></div>
+                <div class="arc-desc">
+                    <p class="arc-title">Benefits of Regular Check-ups</p>
+                    <p class="arc-descr">Regular vet check-ups can help detect health issues early on.</p>
                 </div>
             </div>
-            <div class="article-items">
-                <div class="article-image"></div>
-                <div class="article-desc">
-                    <div id="article-title">test article</div>
-                    <div id="article-summary">test summary test summary test summ...</div>
-                    <div id="article-author">
-                        <div id="author-image"></div>
-                        <p id="article-author-name">Tester Anderson</p> 
-                    </div>
+            <div class="arc-item">
+                <div class="arc-image two"></div>
+                <div class="arc-desc">
+                    <p class="arc-title">Pet Nutrition Tips</p>
+                    <p class="arc-descr">Learn about the importance of a balanced diet for your pet's health.</p>
                 </div>
             </div>
-        </div> 
+        </div>
     </div>
 
+    <!--TEAM CONTAINER-->
     <div class="container">
         <div class="text-container">
-            <h1 id="text-title">Our Team</h1>
-            <p id="text-sub">Meet our experienced veterinarians!</p>
+            <h2 class="text-title">Our Team</h2>
+            <p class="text-sub">Meet our experienced veterinarians</p>
         </div>
-        <div class="vet-menu">
-            <div class="vet-item">
-                <div class="vet-portrait"></div>
-                <div class="vet-desc">
-                    <div class="vet-name">Tester Anderson</div>
-                    <div class="vet-title">Veterinarian</div>
-                    <div class="vet-fun-fact">10+ Years of Experience!</div>
+        <div class="doctor-items">
+            <div class="doctor-item">
+                <div class="doc-image one"></div>
+                <div class="doc-text">
+                    <div class="doc-name">
+                        <p class="vet-name">Dr. Emily Johnson</p>
+                        <p class="vet-title">Veterinarian</p>
+                    </div>
+                    <p class="doc-desc">10+ Years of Experience</p>
                 </div>
             </div>
-            <div class="vet-item">
-                <div class="vet-portrait"></div>
-                <div class="vet-desc">
-                    <div class="vet-name">Tester Anderson</div>
-                    <div class="vet-title">Surgeon</div>
-                    <div class="vet-fun-fact">Specializes in Complex Surgeries</div>
+            <div class="doctor-item">
+                <div class="doc-image two"></div>
+                <div class="doc-text">
+                    <div class="doc-name">
+                        <p class="vet-name">Dr. Michael Brown</p>
+                        <p class="vet-title">Surgeon</p>
+                    </div>
+                    <p class="doc-desc">Specializes in complex surgeries</p>
                 </div>
             </div>
         </div>
     </div>
 
-    <div class="appointment-container">
+    <!--APPOINTMENT CONTAINER-->
+    <div class="container apppointment">
         <div class="appointment-image"></div>
-        <div class="appointment-form">
-            <div class="appointment-title">
-                <h1 id="text-title">Book an Appointment</h1>
-                <p id="text-sub">Schedule a visit with your pet</p>
-            </div>
-            <form action="" method="post">
-                <div id="form-data">
-                    <p id="text-sub">Pet Name: </p>
-                    <input type="text" name="txtPetName" placeholder="Enter name of pet">
+        <div class="text-container">
+            <h2 class="text-title">Book an Appointment</h2>
+            <p class="text-sub">Schedule a visit for your pet!</p>
+            <form action="<?php echo htmlspecialchars($_SERVER['PHP_SELF'])?>" method="post">
+                <label for="txtPetName">Pet Name</label>
+                <input type="text" name="txtPetName" id="txtPetName" placeholder="Enter pet's name here." style="<?php if(!empty($nameError)){echo 'margin-bottom:auto;';}?>">
+                <div class="warning" style="margin-bottom:5px;"><?php echo $nameError;?></div>
+
+                <label for="txtDateOfAppointment">Preferred Date</label>
+                <input type="date" name="txtDateOfAppointment" id="txtDateOfAppointment" min="<?php echo date('Y-m-d');?>" max ="<?php echo date('Y-m-d', strtotime('+1 month'))?>" placeholder="Select date.">
+
+                <label for="radio-group">Pet Type</label>
+                <div class="radio-group" id="radio-group">
+
+                    <input type="radio" name="rdoPetType" id="pet-dog" value="Dog" class="radio-options">
+                    <label for="pet-dog" class="radio-labels">Dog</label>
+                    
+                    <input type="radio" name="rdoPetType" id="pet-cat" value="Cat" class="radio-options">
+                    <label for="pet-cat" class="radio-labels">Cat</label>
+                    
+                    <input type="radio" name="rdoPetType" id="pet-bird" value="Bird" class="radio-options">
+                    <label for="pet-bird" class="radio-labels">Bird</label>
+
                 </div>
-                <div id="form-data">
-                    <p id="text-sub">Preferred Date: </p>
-                    <input type="date" name="txtAppointmentDate" min="<?php echo date('Y-m-d');?>">
-                </div>
-                <div id="form-data">
-                    <p id="text-sub">Pet Type: </p>
-                    <div class="radio-container">
-                        <span>
-                            <input type="radio" name="rdoPetType" value="Cat">
-                            Cat
-                        </span>
-                        <span>
-                            <input type="radio" name="rdoPetType" value="Dog">
-                            Dog
-                        </span>
-                        <span>
-                            <input type="radio" name="rdoPetType" value="Bird">
-                            Bird
-                        </span> 
-                    </div>
-                </div>
-                <input type="submit" value="Schedule Now" name="btnScheduleNow">
+
+                <div class="warning"><?php echo $radioError;?></div>
+
+                <input type="submit" name="btnAppointmentHome" class="btnAppointmentHome" value="Schedule Now">
+
             </form>
-        </div>
+        </div>        
+    </div>
+
+    <!--EMBED MAP-->
+    <div class="container">
+        <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d36721.64408200152!2d120.93125248967084!3d14.662342305804902!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3397b5b2dae3a04f%3A0x5edf44f955d70f0f!2sFur-Paws%20Veterinary%20Clinic!5e0!3m2!1sen!2sph!4v1716812315376!5m2!1sen!2sph" width="1350" height="400" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
     </div>
 
     <?php include_once 'template/footer.php';?>

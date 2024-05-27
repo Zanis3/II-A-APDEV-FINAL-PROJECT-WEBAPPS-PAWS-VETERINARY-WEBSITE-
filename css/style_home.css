@@ -5,20 +5,19 @@
 
 .container{
     height:500px;
-    width:100%;
     display:flex;
     align-items: center;
     justify-content: space-around;
 }
 
-#text-title{
+.text-title{
     font-size: 50px;
     color:var(--dark-green);
     text-align:left;
     margin-bottom:0;
 }
 
-#text-sub{
+.text-sub{
     font-weight: bold;
     font-size: 20px;
     color:var(--dark-green);
@@ -27,14 +26,13 @@
 }
 
 
-
 /*HERO CONTENT CSS*/
 
 
 .hero-container{
     width:100%;
     height:550px;
-    background-image: url("../img/login/dog-login.jpg");
+    background-image: url("../img/home/hero.jpg");
     background-size:cover;
     background-position: center;
     background-repeat: no-repeat;
@@ -89,234 +87,294 @@
 }
 
 
-/*OUR SERVICES CSS*/
+/*SERVICES CONTAINER CSS*/
 
 
 .services-items{
-    width:600px;
-    height:348px;
-    display: flex;
+    display:flex;
     align-items: center;
-    justify-content: space-around;
+    justify-self: center;
+    gap:20px;
 }
 
-.item{
-    height:100%;
-    width:250px;
+.services-item{
     border:1px solid grey;
-    border-radius: 5px;
+    border-radius:5px;
 }
 
-.item-top{
-    background-image: url("../img/login/dog-login.jpg");
-    background-size:cover;
-    background-position: center;
-    background-repeat: no-repeat;
-    width:100%;
-    height:65%;
+.services-item:hover{
+    cursor:pointer;
+    transition:0.5s;
+}
+
+.serv-item-header{
+    width:240px;
+    height:240px;
+    background:var(--lighter-green);
     position:relative;
 }
 
-.item-top::before{
-    content:'tyext';
+.serv-item-header.one::before{
+    content:'Starting from 1,800php';
+}
+
+.serv-item-header.two::before{
+    content:'Contact us for more details';
+}
+
+.serv-item-header::before{
     top:0;
     left:0;
-    width:80px;
+    width:200px;
     height:24px;
+    font-weight: bold;
     background:grey;
     position:absolute;
 }
 
-.item-desc{
-    width:100%;
-    height:35%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    flex-direction: column;
+.serv-item-header.one{
+    background-image: url("../img/home/serv-vaccination.png");
+    background-size:cover;
+    background-position: center;
+    background-repeat: no-repeat;
+}
+
+.serv-item-header.two{
+    background-image: url("../img/home/serv-surgery.png");
+    background-size:cover;
+    background-position: center;
+    background-repeat: no-repeat;
+}
+
+.serv-title{
+    margin-bottom:0;
+}
+
+.serv-desc{
+    font-weight: bold;
+    font-size: 20px;
+    color:var(--dark-green);
+    margin-top:0;
 }
 
 
-/*ARTICLE CSS*/
+/*PET ARTICLE CONTAINER CSS*/
 
 
-.article{
-    background-image: linear-gradient(white 0%, var(--lighter-green) 5%, white 98%);
-}
-
-.article-menu{
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    flex-direction: column;
-    width:520px;
+.container.sec{
+    background:var(--lighter-green);
 }
 
 .article-items{
+    height:400px;
+    width:520px;
     display: flex;
-    align-items: center;
-    justify-content: space-around;
-}
-
-.article-items:hover{
-    border: 2px solid grey;
-    border-radius:2px;
-    transition:0.1s;
-    cursor:pointer;
-}
-
-.article-image{
-    width:100px;
-    height:100px;
-    background-image: url("../img/login/dog-login.jpg");
-    background-size:cover;
-    background-position: center;
-    background-repeat: no-repeat;
-}
-
-.article-desc{
-    display: flex;
-    justify-content: center;
     flex-direction: column;
-    width:372px;
-    height:124px;
-    padding-left:5px;
-}
-
-#article-title{
-    font-weight: bold;
-    font-size: 24px;
-}
-
-#article-author{
-    display:flex;
-    align-items: center;
-}
-
-#author-image{
-    width:20px;
-    height:20px;
-    border-radius:10px;
-    background-image: url("../img/login/dog-login.jpg");
-    background-size:cover;
-    background-position: center;
-    background-repeat: no-repeat;
-}
-
-
-/*VET CSS*/
-
-.vet-menu{
-    width:600px;
-    height:348px;
-    display: flex;
-    align-items: center;
-    justify-content: space-around;
-}
-
-.vet-item, .vet-desc{
-    display:flex;
-    align-items: center;
+    align-items:center;
     justify-content: center;
-    flex-direction: column;
-    text-align:center;
-}
-
-.vet-item{
-    width:250px;
     gap:20px;
 }
 
-.vet-portrait{
+.arc-item{
+    display:flex;
+    align-items: center;
+    justify-content: center;
+    border:1px solid black;
+    gap:20px;
+    transition:0.7s;
+}
+
+.arc-item:hover{
+    cursor:pointer;
+    height: 150px;
+    width: 520px;
+}
+
+.arc-image{
     width:100px;
     height:100px;
-    border-radius:50px;
-    background-image: url("../img/login/dog-login.jpg");
+}
+
+.arc-image.one{
+    background-image: url("../img/home/art-one.png");
     background-size:cover;
     background-position: center;
     background-repeat: no-repeat;
 }
 
+.arc-image.two{
+    background-image: url("../img/home/art-two.png");
+    background-size:cover;
+    background-position: center;
+    background-repeat: no-repeat;
+}
+
+.arc-title{
+    font-weight: bold;
+}
+
+.arc-desc{
+    display:flex;
+    justify-content: center;
+    flex-direction: column;
+}
+
+.arc-descr{
+    width:380px;
+}
+
+
+/*TEAM CSS*/
+
+
+.doc-image{
+    width:100px;
+    height:100px;
+}
+
+.doctor-items{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap:20px;
+}
+
+.doctor-item{
+    width:240px;
+    height:290px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.doc-image.one{
+    background-image: url("../img/home/doc-one.png");
+    background-size:cover;
+    background-position: center;
+    background-repeat: no-repeat;
+}
+
+.doc-image.two{
+    background-image: url("../img/home/doc-two.png");
+    background-size:cover;
+    background-position: center;
+    background-repeat: no-repeat;
+}
+
+.doc-text{
+    display:flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+}
+
+.doc-name{
+    display:flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+}
+
 .vet-name{
+    font-weight: bold;
+    margin-bottom:0;
     font-size: 20px;
 }
 
 .vet-title{
+    margin-top:0;
     font-size: 16px;
     color:grey;
 }
 
-.vet-fun-fact{
-    font-size: 26px;
+.doc-desc{
     font-weight: bold;
     color:var(--dark-green);
-    padding-top:10px;
+    font-size: 26px;
+    text-align:center;
+    margin-top:5px;
 }
 
 
 /*APPOINTMENT CSS*/
 
 
-.appointment-container{
+.container.appointment{
     height:530px;
-    display:flex;
-    align-items: center;
+    background:var(--lighter-green);
     justify-content: center;
-    gap:100px;
+    gap:10px;
 }
 
 .appointment-image{
     width:500px;
-    height:420px;
-    background-image: url("../img/login/dog-login.jpg");
+    height:380px;
+    background:var(--lighter-green);
+    background-image: url("../img/home/appointment-image.png");
     background-size:cover;
     background-position: center;
     background-repeat: no-repeat;
 }
 
-.appointment-form{
-    width:500px;
-    height:420px;
-    display: flex;
-    justify-content: space-around;
-    flex-direction: column;
+label{
+    color:var(--dark-green);
+    font-weight: bold;
 }
 
-.form-data{
+form{
     display: flex;
     justify-content: center;
     flex-direction: column;
-    width:100%;
 }
 
-input[type="text"], input[type="date"]{
+#txtPetName, #txtDateOfAppointment{
+    border:none;
+    background:var(--lighter-green);
     width:500px;
     height:36px;
+    padding: 8px 12px;
+    outline:var(--dark-green);
+    margin-bottom:20px;
 }
 
-.form-data .text-sub{
-    margin-bottom:0;
-    padding-bottom:0;
+.radio-group{
+    display:flex;
+    gap:10px;
+    margin-top:5px;
 }
 
-.radio-container{
-    display: flex;
-    justify-content: center;
-    flex-direction: column;
+.radio-options{
+    display:none;
 }
 
-input[type="submit"]{
+.radio-labels{
+    padding:5px 15px;
     background:var(--light-green);
     color:white;
-    width:160px;
-    height:48px;
-    outline:none;
-    border-radius:10px;
     cursor:pointer;
+    font-size:14px;
+    border-radius:5px;
 }
 
-input[type="submit"]:hover{
-    color:var(--light-green);
+.radio-options:checked + .radio-labels {
+    background: var(--dark-green);
+}
+
+.btnAppointmentHome{
+    color:white;
+    background:var(--light-green);
+    width:35%;
+    padding:10px 10px;
+    border:none;
+    font-size: 18px;
+    font-weight: bold;
+    margin-top:15px;
+    cursor:pointer;
+    border-radius:5px;
+}
+
+.btnAppointmentHome:hover , .radio-labels:hover{
     background:var(--dark-green);
-    transition:0.4s;
+    transition:0.7s;
 }
