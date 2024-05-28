@@ -132,7 +132,7 @@
     </div>
 
     <!--APPOINTMENT CONTAINER-->
-    <div class="container apppointment">
+    <div class="container appointment">
         <div class="appointment-image"></div>
         <div class="text-container">
             <h2 class="text-title">Book an Appointment</h2>
@@ -143,7 +143,7 @@
                 <div class="warning" style="margin-bottom:5px;"><?php echo $nameError;?></div>
 
                 <label for="txtDateOfAppointment">Preferred Date</label>
-                <input type="date" name="txtDateOfAppointment" id="txtDateOfAppointment" min="<?php echo date('Y-m-d');?>" max ="<?php echo date('Y-m-d', strtotime('+1 month'))?>" placeholder="Select date.">
+                <input type="date" name="txtDateOfAppointment" id="txtDateOfAppointment" min="<?php echo date('Y-m-d');?>" max ="<?php echo date('Y-m-d', strtotime('+2 weeks'))?>" placeholder="Select date.">
 
                 <label for="radio-group">Pet Type</label>
                 <div class="radio-group" id="radio-group">

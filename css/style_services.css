@@ -1,0 +1,108 @@
+/*DEFAULTS*/
+
+
+@import url('style_general.css');
+
+.container{
+    height:500px;
+    display:flex;
+    align-items: center;
+    justify-content: space-around;
+    flex-direction: column;
+}
+
+.text-title{
+    font-size: 50px;
+    color:var(--dark-green);
+    text-align:left;
+    margin-bottom:0;
+    text-align:center;
+    font-weight: bold;
+}
+
+.text-sub{
+    font-weight: bold;
+    font-size: 20px;
+    color:var(--dark-green);
+    margin-top:0;
+    text-align:left;
+    text-align:center;
+}
+
+
+/*TITLE CONTAINER*/
+
+
+.container.title{
+    background:var(--grey-green);
+    height:215px;
+}
+
+.container.title p, .container.title h2{
+    color:white;
+    font-weight:400;
+}
+
+.item{
+    display:flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+}
+
+.item-image{
+    width:100px;
+    height:100px;
+    background-size:cover;
+    background-position: center;
+    background-repeat: no-repeat;
+}
+
+.item-image.one{
+    background-image: url("../img/services/check-ups.png");
+}
+
+.item-image.two{
+    background-image: url("../img/services/vaccination.png");   
+}
+
+.item-image.three{
+    background-image: url("../img/services/surgery.png");
+}
+
+.item-image.four{
+    background-image: url("../img/services/emergency-care.png");
+}
+
+.item-image.five{
+    background-image: url("../img/services/neurologist.png");
+}
+
+.item-image.six{
+    background-image: url("../img/services/pharmacy.png");
+}
+
+.item-image.seven{
+    background-image: url("../img/services/grooming.png");
+}
+
+.item-image.eight{
+    background-image: url("../img/services/bathing.png");
+}
+
+.item-image.nine{
+    background-image: url("../img/services/pet-training.png");
+}
+
+.container-content{
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    width:100%;
+}
+
+.item-desc{
+    font-weight: 400;
+    font-size: 20px;
+    text-align:center;
+}
