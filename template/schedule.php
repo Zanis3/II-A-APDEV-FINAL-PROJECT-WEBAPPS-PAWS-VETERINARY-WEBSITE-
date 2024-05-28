@@ -1,5 +1,6 @@
 <?php
-
+    ini_set('display_errors', 1);
+    error_reporting(E_ALL & ~E_NOTICE);
 ?>
 <head>
     <link rel="stylesheet" href="css/style_general.css">
@@ -237,8 +238,8 @@
                 </div>
             </div>
             <div class="button-container">
-                <button onclick="submitForm()">Submit</button>
-                <button onclick="clearForm()">Clear</button>
+                <button type="submit" name="scheduleSubmit" >Submit</button>
+                <button type="reset" name="clear">Clear</button>
             </div>
         </div>
     </div>

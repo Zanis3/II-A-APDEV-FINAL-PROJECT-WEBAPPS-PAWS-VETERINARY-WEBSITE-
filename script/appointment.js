@@ -32,4 +32,9 @@ $(document).ready(function() {
             $('.icon').removeClass('fa-angle-down').addClass('fa-angle-right');
         }
     });
+
+    // Prevent form submission from closing the dropdown for the information form
+    $('#informationForm').submit(function(event) {
+        event.stopPropagation();
+    });
 });

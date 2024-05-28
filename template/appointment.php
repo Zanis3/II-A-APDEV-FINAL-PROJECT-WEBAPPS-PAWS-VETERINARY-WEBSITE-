@@ -1,5 +1,26 @@
 <?php
+    ini_set('display_errors', 1);
+    error_reporting(E_ALL & ~E_NOTICE);
 
+    session_start(); // Start the session
+    
+    if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['appointmentSubmit'])) {
+        if (empty($_POST['appointmentType'])) {
+            echo "<script>alert('Please set appointment type.');</script>";
+        } else {
+            $_SESSION['appointmentType'] = $_POST['appointmentType'];
+            $_SESSION['specialization'] = $_POST['specialization'];
+            $_SESSION['prefferedVet'] = $_POST['prefferedVet'];
+            $_SESSION['complaints'] = $_POST['complaints'];
+        }
+    }
+
+    if (isset($_POST['appointmentClear'])) {
+        unset($_SESSION['appointmentType']); // Unset specific session variables related to appointment form
+        unset($_SESSION['specialization']);
+        unset($_SESSION['prefferedVet']);
+        unset($_SESSION['complaints']);
+    }
 ?>
 <head>
     <link rel="stylesheet" href="css/style_general.css">
@@ -14,24 +35,23 @@
             <i class="fas fa-angle-right icon" style="color: white"></i>
         </div>
         <div id="appointmentDropdown" class="dropdown-content">
-            <div class="dropdown-item">
-                <div class="container">
-                    <div class="inside_container">
+            <form method="post" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>" id="appointmentForm">
+                <div class="dropdown-item">
+                    <div class="form-group">
                         <br>
                         <br>
                         <table>
                             <tr>
                                 <td>
-                                    <label for="SelType"><b> Appointment </b></label>
-                                    
+                                    <label for="selAppointmentType"><b> Appointment </b></label>
                                 </td>
                                 <td>
-                                    <select name="AppointmentType" id="AppointmentType" onchange="updateSpecialization()">
-                                        <option></option>
-                                        <option value="Check Up">Check Up</option>
-                                        <option value="Consultation">Consultation</option>
-                                        <option value="Dental">Dental</option>
-                                        <option value="Grooming">Grooming</option>
+                                    <select name="appointmentType" id="selAppointmentType" onchange="updateSpecialization()">
+                                        <option value="" <?php echo ($_SESSION['appointmentType'] ?? '') == '' ? 'selected' : ''; ?>></option>
+                                        <option value="Check Up" <?php echo ($_SESSION['appointmentType'] ?? '') == 'Check Up' ? 'selected' : ''; ?>>Check Up</option>
+                                        <option value="Consultation" <?php echo ($_SESSION['appointmentType'] ?? '') == 'Consultation' ? 'selected' : ''; ?>>Consultation</option>
+                                        <option value="Dental" <?php echo ($_SESSION['appointmentType'] ?? '') == 'Dental' ? 'selected' : ''; ?>>Dental</option>
+                                        <option value="Grooming" <?php echo ($_SESSION['appointmentType'] ?? '') == 'Grooming' ? 'selected' : ''; ?>>Grooming</option>
                                     </select>
                                 </td>
                             </tr>
@@ -42,10 +62,10 @@
                             </tr>
                             <tr>
                                 <td>
-                                    <label for="txtSpecialization"><b> Specialization: </b></label>
+                                    <label for="hiddenSpecialization"><b> Specialization: </b></label>
                                 </td>
                                 <td>
-                                    <input type="text" id="txtSpecialization" name="specialization" disabled>
+                                    <input style="width: 97%" type="text" id="hiddenSpecialization" name="specialization" value="<?php echo isset($_SESSION['specialization']) ? htmlspecialchars($_SESSION['specialization']) : ''; ?>">
                                 </td>
                             </tr>
                             <tr>
@@ -55,21 +75,32 @@
                             </tr>
                             <tr>
                                 <td>
-                                    <label for="txtVet"><b> Preffered Vet: </b></label>
+                                    <label for="selVet"><b> Preffered Vet: </b></label>
                                 </td>
                                 <td>
-                                    <select name="PrefferedVet" id="PreferredVet">
+                                    <select name="prefferedVet" id="selVet">
                                         <option></option>
+                                            <?php
+                                                // Array of preferred vets
+                                                $preferredVets = array("Dr. Emily Patel", "Dr. Michael Chang", "Dr. Sarah Jones", "Dr. David Smith", "Dr. Jennifer Lee", "Dr. Christopher Taylor", "Ms. Rebecca Garcia", "Mr. Daniel Nguyen");
+
+                                                // Loop through each preferred vet and generate <option> elements
+                                                foreach ($preferredVets as $vet) {
+                                                    // Check if the current vet matches the one stored in session
+                                                    $selected = ($_SESSION['prefferedVet'] ?? '') == $vet ? 'selected' : '';
+                                                    echo "<option value='$vet' $selected>$vet</option>";
+                                                }
+                                            ?>
                                     </select>
                                 </td>
                             </tr>                                 
                         </table>
                         <script>
                             function updateSpecialization() {
-                                var appointmentType = document.getElementById("AppointmentType").value;
-                                var specializationField = document.getElementById("txtSpecialization");
+                                var appointmentType = document.getElementById("selAppointmentType").value;
+                                var specializationField = document.getElementById("hiddenSpecialization");
                                 var specialization = "";
-                                var vetDropdown = document.getElementById("PreferredVet");
+                                var vetDropdown = document.getElementById("selVet");
 
                                 // Determine the specialization based on the selected appointment type
                                 switch (appointmentType) {
@@ -91,12 +122,12 @@
                                         break;
                                     default:
                                         specialization = "";
-                                        populateVetDropdown(["Vet3", "Vet4"], vetDropdown); 
+                                        populateVetDropdown([""], vetDropdown); 
                                         break;
                                 }
 
                                 // Update the specialization field
-                                specializationField.value = specialization;
+                                document.getElementById("hiddenSpecialization").value = specialization;
                             }
                             function populateVetDropdown(vets, dropdown) {
                                 // Clear previous options
@@ -114,24 +145,27 @@
                         <br>
                         <br>
                     </div>
-                    <div class="inside_container">
+                    <div class="form-group">
+                        <br>
                         <table>
                             <tr>
                                 <td>
-                                    <label for="txtOthers"> Complaints:  </label>
+                                    <label for="txtComplaints"> Complaints:  </label>
                                 </td>
                                 <td>
-                                    <input type="text" id="txtOthers" name="Others" class="others">
+                                    <input type="text" id="txtComplaints" name="complaints" class="others" value="<?php echo isset($_SESSION['complaints']) ? htmlspecialchars($_SESSION['complaints']) : ''; ?>">
                                 </td>
                             </tr>
                         </table>
+                       
                     </div>
                 </div>
-            </div>
-            <div class="button-container">
-                <button onclick="submitForm()">Submit</button>
-                <button onclick="clearForm()">Clear</button>
-            </div>
+                <div class="button-container">
+                    <button type="submit" name="appointmentSubmit">Submit</button>
+                    <input type="hidden" name="clear" value="true">
+                    <button type="submit" name="appointmentClear">Clear</button>
+                </div>
+            </form>
         </div>
     </div>
 </body>
