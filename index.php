@@ -11,7 +11,6 @@
     <link rel="stylesheet" href="css/style_general.css">
     <link rel="stylesheet" href="css/style_home.css">
     <link rel="shortcut icon" href="img/gen/web-logo.png" type="image/png">
-    
 </head>
 <body>
     <?php 
