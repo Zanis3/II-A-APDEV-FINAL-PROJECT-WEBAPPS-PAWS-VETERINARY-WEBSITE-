@@ -11,6 +11,7 @@
     <link rel="stylesheet" href="css/style_general.css">
     <link rel="stylesheet" href="css/style_services.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+    <link rel="shortcut icon" href="img/gen/web-logo.png" type="image/png">
 </head>
 <body>
     <?php include_once 'template/header.php';?>
@@ -87,7 +88,18 @@
             <h2 class="text-title">Book an Appointment</h2>
             <p class="text-sub">Fill up the form below to schedule a visit</p>
             <form action="<?php echo htmlspecialchars($_SERVER['PHP_SELF']);?>" method="post">
-                <input type="text" name="txtPetName" id="">
+                <label for="txtPetName">Pet Name</label>
+                <input type="text" name="txtPetName" id="txtPetName">
+
+                <label for="txtDateOfAppointment">Preferred Date</label>
+                <input type="date" name="txtDateOfAppointment" id="txtDateOfAppointment" min="<?php echo date('Y-m-d');?>" max ="<?php echo date('Y-m-d', strtotime('+2 weeks'))?>" value="<?php echo $_POST['txtDateOfAppointment'];?>" placeholder="Select date.">
+
+
+                <label for="txtTimeOfAppointment">Time</label>
+                <input type="time" name="txtTimeOfAppointment" id="txtTimeOfAppointment" min="09:00" max="17:00" step="3600000" value="<?php echo $_POST['txtTimeOfAppointment'];?>" placeholder="Select time.">
+
+                <label for="txtPetName">Pet Name</label>
+                <select name="" id=""></select>
             </form>
         </div>
     </div>

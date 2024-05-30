@@ -159,7 +159,7 @@
                 <div class="warning" style="margin-bottom:5px;"><?php echo $dateError;?></div>
 
                 <label for="txtTimeOfAppointment">Preferred Time</label>
-                <input type="time" name="txtTimeOfAppointment" id="txtTimeOfAppointment" min="09:00" max="17:00" value="<?php echo $_POST['txtTimeOfAppointment'];?>" placeholder="Select time.">
+                <input type="time" name="txtTimeOfAppointment" id="txtTimeOfAppointment" min="09:00" max="17:00" step="3600000" value="<?php echo $_POST['txtTimeOfAppointment'];?>" placeholder="Select time.">
                 <div class="warning" style="margin-bottom:5px;"><?php echo $timeError;?></div>
 
                 <label for="radio-group">Pet Type</label>
