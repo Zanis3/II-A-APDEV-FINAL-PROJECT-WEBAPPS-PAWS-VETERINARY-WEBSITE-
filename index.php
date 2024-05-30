@@ -1,6 +1,5 @@
 <?php
-    session_start();
-    ini_set('display_errors', 0);
+    require 'template/config.php';
 ?>
 
 <!DOCTYPE html>
@@ -17,15 +16,27 @@
         include_once 'template/header.php';
 
         $nameError = '';
+        $dateError = '';
+        $timeError = '';
         $radioError = '';
 
         if($_SERVER['REQUEST_METHOD'] === 'POST'){
             if(isset($_POST['btnAppointmentHome'])){
                 $petName = $_POST['txtPetName'];
+                $indexTime = $_POST['txtTimeOfAppointment'];
+                $indexDate = $_POST['txtDateOfAppointment'];
 
-                if(empty($petName) || !isset($_POST['rdoPetType'])){
+                if(empty($petName) || !isset($_POST['rdoPetType']) || empty($indexDate) || empty($indexTime)){
                     if(empty($petName)){
                         $nameError = "Please input your pet's name and try again.";
+                    }
+
+                    if(empty($indexDate)){
+                        $dateError = "Please input the date of your appointment and try again.";
+                    }
+
+                    if(empty($indexTime)){
+                        $timeError = "Please input the time of your appointment and try again.";
                     }
 
                     if(!isset($_POST['rdoPetType'])){
@@ -35,6 +46,8 @@
                 else{
                     $_SESSION['petName'] = $petName;
                     $_SESSION['petType'] = $_POST['rdoPetType'];
+                    $_SESSION['date'] = $indexDate;
+                    $_SESSION['time'] = $indexTime;
                     header('Location: appointments.php');
                 }
             }
@@ -138,23 +151,25 @@
             <p class="text-sub">Schedule a visit for your pet!</p>
             <form action="<?php echo htmlspecialchars($_SERVER['PHP_SELF'])?>" method="post">
                 <label for="txtPetName">Pet Name</label>
-                <input type="text" name="txtPetName" id="txtPetName" placeholder="Enter pet's name here." style="<?php if(!empty($nameError)){echo 'margin-bottom:auto;';}?>">
+                <input type="text" name="txtPetName" id="txtPetName" placeholder="Enter pet's name here." style="<?php if(!empty($nameError)){echo 'margin-bottom:auto;';}?>" value="<?php echo $_POST['txtPetName'];?>">
                 <div class="warning" style="margin-bottom:5px;"><?php echo $nameError;?></div>
 
                 <label for="txtDateOfAppointment">Preferred Date</label>
-                <input type="date" name="txtDateOfAppointment" id="txtDateOfAppointment" min="<?php echo date('Y-m-d');?>" max ="<?php echo date('Y-m-d', strtotime('+2 weeks'))?>" placeholder="Select date.">
+                <input type="date" name="txtDateOfAppointment" id="txtDateOfAppointment" min="<?php echo date('Y-m-d');?>" max ="<?php echo date('Y-m-d', strtotime('+2 weeks'))?>" value="<?php echo $_POST['txtDateOfAppointment'];?>" placeholder="Select date.">
+                <div class="warning" style="margin-bottom:5px;"><?php echo $dateError;?></div>
+
+                <label for="txtTimeOfAppointment">Preferred Time</label>
+                <input type="time" name="txtTimeOfAppointment" id="txtTimeOfAppointment" min="09:00" max="17:00" value="<?php echo $_POST['txtTimeOfAppointment'];?>" placeholder="Select time.">
+                <div class="warning" style="margin-bottom:5px;"><?php echo $timeError;?></div>
 
                 <label for="radio-group">Pet Type</label>
                 <div class="radio-group" id="radio-group">
 
-                    <input type="radio" name="rdoPetType" id="pet-dog" value="Dog" class="radio-options">
+                    <input type="radio" name="rdoPetType" id="pet-dog" value="Dog" class="radio-options" value="<?php if($_POST['rdoPetType'] == 'Dog'){echo 'checked';}?>">
                     <label for="pet-dog" class="radio-labels">Dog</label>
                     
-                    <input type="radio" name="rdoPetType" id="pet-cat" value="Cat" class="radio-options">
+                    <input type="radio" name="rdoPetType" id="pet-cat" value="Cat" class="radio-options" value="<?php if($_POST['rdoPetType'] == 'Cat'){echo 'checked';}?>">
                     <label for="pet-cat" class="radio-labels">Cat</label>
-                    
-                    <input type="radio" name="rdoPetType" id="pet-bird" value="Bird" class="radio-options">
-                    <label for="pet-bird" class="radio-labels">Bird</label>
 
                 </div>
 

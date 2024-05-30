@@ -1,6 +1,5 @@
 <?php
-    session_start();
-    ini_set('display_errors', 0);
+    require 'template/config.php';
 
     $showRegisterUI = isset($_GET['showRegisterUI']) && $_GET['showRegisterUI'] === 'true';
 ?>

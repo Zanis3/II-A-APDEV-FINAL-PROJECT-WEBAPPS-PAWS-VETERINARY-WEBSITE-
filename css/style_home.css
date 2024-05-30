@@ -301,7 +301,7 @@
 
 
 .container.appointment{
-    height:500px;
+    height:550px;
     background:var(--lighter-green);
     justify-content: space-around;
 }
@@ -327,7 +327,7 @@ form{
     flex-direction: column;
 }
 
-#txtPetName, #txtDateOfAppointment{
+#txtPetName, #txtDateOfAppointment, #txtTimeOfAppointment{
     border:none;
     background:white;
     width:500px;
