@@ -1,4 +1,5 @@
 <?php
+    require 'template/config.php';
 ?>
 <head>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
@@ -6,18 +7,18 @@
     <link rel="stylesheet" href="css/style_login.css">
 </head>
 <body>
-    <center>
+    <div class="container register">
         <div class="floating">
-            <h1>REGISTER</h1>
+            <h2 class="text-title">REGISTER</h2>
             <hr class="line">
             <br>
             <table>
                 <tr>
-                    <td><label for="txtFirstName">Firstname: </label></td>
+                    <td><label for="txtFirstName">First Name: </label></td>
                     <td><input type="text" name="txtFirstName"></td>
                 </tr>
                 <tr>
-                    <td><label for="txtLastName">Lastname: </label></td>
+                    <td><label for="txtLastName">Last Name: </label></td>
                     <td><input type="text" name="txtLastName"></td>  
                 </tr>
                 <tr>
@@ -26,11 +27,16 @@
                 </tr>
                 <tr>
                     <td><label for="txtPassword">Password: </label></td>
-                    <td><input type="text" name="txtPassword"></td>
+                    <td><input type="password" name="txtPassword"></td>
+                </tr>
+                <tr>
+                    <td><label for="txtConfirmPassword">Confirm Password: </label></td>
+                    <td><input type="password" name="txtConfirmPassword"></td>
                 </tr>
             </table>
             <br>
             <button type="button" name="btnRegister" class="button">Register</button>
         </div>
-    </center>
+    </div>
+    
 </body>

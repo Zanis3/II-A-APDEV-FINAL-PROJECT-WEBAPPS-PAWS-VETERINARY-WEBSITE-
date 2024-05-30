@@ -13,10 +13,10 @@
 <body>
     <?php include_once 'template/header.php';?>
     <?php 
-        // Include either login-ui.php or register-ui.php based on condition
         if ($showRegisterUI) {
             include_once 'template/register-ui.php';
-        } else {
+        } 
+        else {
             include_once 'template/login-ui.php';
         }
     ?>

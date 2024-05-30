@@ -1,25 +1,22 @@
 <?php
-    // Start the session
-    session_start();
+    require 'template/config.php';
 
-    // Predefined admin credentials
     $adminUsername = "admin";
     $adminPassword = "password123";
 
-    $loginSuccess = false; // Initialize login success flag
+    $loginSuccess = false;
 
-    if ($_SERVER["REQUEST_METHOD"] == "POST") {
+    if ($_SERVER["REQUEST_METHOD"] === "POST") {
         $username = $_POST["txtUsername"];
         $password = $_POST["txtPassword"];
 
-        // Check if the entered credentials match admin's credentials
-        if ($username === $adminUsername && $password === $adminPassword) {
-            // Credentials are correct, set login success flag
+        if($username === $adminUsername && $password === $adminPassword){
             $loginSuccess = true;
-            $_SESSION["isAdmin"] = true; // You can use a session to identify admin login
+            $_SESSION["isAdmin"] = true;
             header("Location: dashboard/Dashboard.php");
             exit();
-        } elseif(empty($username) || empty($password)) {
+        } 
+        elseif(empty($username) || empty($password)) {
             echo "<script>alert('Please fill in all required fields.');</script>";
         }
     }
@@ -31,26 +28,26 @@
     <link rel="stylesheet" href="css/style_login.css">
 </head>
 <body>
-    <center>
+    <div class="container">
         <div class="floating">
-            <h1>LOGIN</h1>
+            <h2 class="text-title">LOGIN</h2>
             <hr class="line">
             <br>
-            <form method="post">
+            <form method="post" action="<?php echo htmlspecialchars($_SERVER['PHP_SELF']);?>">
                 <table>
                     <tr>
                         <td><label for="txtUsername">Username: </label></td>
-                        <td><input type="text" name="txtUsername"></td>
+                        <td><input type="text" name="txtUsername" id="txtUsername"></td>
                     </tr>
                     <tr>
                         <td><label for="txtPassword">Password: </label></td>
-                        <td><input type="password" name="txtPassword"></td>
+                        <td><input type="password" name="txtPassword" id="txtPassword"></td>
                     </tr>
                 </table>
                 <br>
-                <button type="submit" name="btnLogIn" class="button">LogIn</button>
+                <button type="submit" name="btnLogIn" class="button">Login</button>
             </form>
             <p>No Account? Please Register <a href="?showRegisterUI=true">here!</a></p>
         </div>
-    </center>
+    </div>
 </body>
