@@ -15,11 +15,11 @@
             <br>
             <form method="post" action="<?php echo htmlspecialchars($_SERVER['PHP_SELF']);?>">
                 <label for="txtUsername">Username: </label>
-                <input type="text" name="txtUsername" id="txtUsername" style="margin-bottom:10px;">
+                <input type="text" name="txtUsername" id="txtUsername" class="input-text" style="margin-bottom:10px;">
 
                 <label for="txtPassword">Password: </label>
                 <div class="password-container">
-                    <input type="password" name="txtPassword" id="txtPassword" class="txtPassword" style="margin-bottom:20px;">
+                    <input type="password" name="txtPassword" id="txtPassword" class="input-text txtPassword" style="margin-bottom:20px;">
                     <button type="button" class="btnShow" name="btnShow">Show</button>
                 </div>
 

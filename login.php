@@ -11,7 +11,6 @@
     <link rel="shortcut icon" href="img/gen/web-logo.png" type="image/png">
 </head>
 <body>
-    <?php include_once 'template/header.php';?>
     <?php 
         if ($showRegisterUI) {
             include_once 'template/register-ui.php';
@@ -20,5 +19,4 @@
             include_once 'template/login-ui.php';
         }
     ?>
-    <?php include_once 'template/footer.php';?>
 </body>

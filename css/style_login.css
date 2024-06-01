@@ -4,7 +4,7 @@
 @import url('style_general.css');
 
 .container{
-    height:81%;
+    height:100%;
     display:flex;
     align-items: center;
     justify-content: space-around;
@@ -85,7 +85,7 @@ label{
     width:100%;
 }
 
-#txtUsername, #txtPassword{
+.input-text{
     padding:10px;
     width:100%;
     border: 1px solid var(--light-green);
@@ -131,6 +131,10 @@ label{
     width:10%;
 }
 
+.input-text:focus {
+    outline: 2px solid var(--dark-green);
+}
+
 
 /*Register UI*/
 
@@ -140,5 +144,63 @@ label{
 }
 
 .container.register .floating{
-    height:50%;
+    height:80%;
+    width:40%;
+}
+
+#form-register{
+    width:90%; 
+    gap:25px;
+}
+
+.name-container, .name-item, .contact-container, .contact-item, .password-container-register, .password-item, .pass-sub{
+    display:flex;
+}
+
+.name-container, .contact-container, .password-container-register{
+    width:100%;
+    align-items:flex-start;
+    justify-content:space-between;
+}
+
+.name-item, .contact-item, .contact-container, .password-container-register, .pass-sub, .password-container-register{
+    flex-direction: column;
+}
+
+.contact-item, .password-item, .pass-sub{
+    width:100%;
+}
+
+.password-item{
+    align-items: center;
+}
+
+.password-item .btnShow{
+    padding-bottom:0;
+}
+
+.pass-sub .txtPassword{
+    width:100%;
+}
+
+.name-item .mi{
+    width:25%;
+}
+
+#txtMiddleInitial{
+    width:25%;
+}
+
+.contact-container{
+    justify-content: space-between;
+    gap:20px;
+}
+
+#clear{
+    background:var(--red);
+    transition:0.7s;
+}
+
+#clear:hover{
+    background:var(--light-red);
 }
