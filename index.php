@@ -1,5 +1,6 @@
 <?php
     require 'template/config.php';
+    $location = 'outer';
 ?>
 
 <!DOCTYPE html>

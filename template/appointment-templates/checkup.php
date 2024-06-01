@@ -1,4 +1,6 @@
 <?php
+    require '../config.php';
+    $location = 'dashboard';
 ?>
 <!DOCTYPE html>
 <html lang="en">
