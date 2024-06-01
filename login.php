@@ -1,6 +1,5 @@
 <?php
-    session_start();
-    ini_set('display_errors', 0);
+    require 'template/config.php';
 
     $showRegisterUI = isset($_GET['showRegisterUI']) && $_GET['showRegisterUI'] === 'true';
 ?>
@@ -12,14 +11,12 @@
     <link rel="shortcut icon" href="img/gen/web-logo.png" type="image/png">
 </head>
 <body>
-    <?php include_once 'template/header.php';?>
     <?php 
-        // Include either login-ui.php or register-ui.php based on condition
         if ($showRegisterUI) {
             include_once 'template/register-ui.php';
-        } else {
+        } 
+        else {
             include_once 'template/login-ui.php';
         }
     ?>
-    <?php include_once 'template/footer.php';?>
 </body>
