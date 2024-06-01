@@ -15,23 +15,28 @@
     <link rel="shortcut icon" href="img/gen/web-logo.png" type="image/png">
 </head>
 <body>
-    <?php include_once 'template/header.php';?>
+    <?php include_once '../template/header.php';?>
     <br>
     <br>
-    <center>
-        <h1 id="greeting"></h1>
-        <p><b> Please fill up the fields below. </b></p>
-        <br>
-        <br>
-        <br>
-        <?php
-            include_once('template/information.php');
-            include_once('template/appointment.php');
-            include_once('template/schedule.php');
-        ?>
-    </center>
-
-    <?php include_once 'template/footer.php';?>
-    <script src="script/appointment.js"></script>
+    <div class="center">
+        <div class="container">
+            <a href="template/appointment-templates/checkup.php" class="container-link"><b>Check Up</b><i class="fas fa-arrow-right"></i></a>
+        </div>
+        <div class="container">
+            <a href="template/grooming.php" class="container-link"><b>Grooming</b><i class="fas fa-arrow-right"></i></a>
+        </div>
+        <div class="container">
+            <a href="template/dental.php" class="container-link"><b>Dental</b><i class="fas fa-arrow-right"></i></a>
+        </div>
+        <div class="container">
+            <a href="template/consultation.php" class="container-link"><b>Consultation</b><i class="fas fa-arrow-right"></i></a>
+        </div>
+        <div class="container">
+            <a href="template/vaccination.php" class="container-link"><b>Vaccination</b><i class="fas fa-arrow-right"></i></a>
+        </div>
+    </div>
+    <br>
+    <br>
+    <?php include_once '../template/footer.php';?>
 </body>
 </html>
