@@ -13,10 +13,10 @@
 <body>
     <?php 
         if ($showRegisterUI) {
-            include_once 'template/register-ui.php';
+            include_once 'template/login-templates/register-ui.php';
         } 
         else {
-            include_once 'template/login-ui.php';
+            include_once 'template/login-templates/login-ui.php';
         }
     ?>
 </body>
