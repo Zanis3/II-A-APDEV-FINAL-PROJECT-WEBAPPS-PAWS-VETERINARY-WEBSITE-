@@ -1,6 +1,5 @@
 <?php
     require 'template/config.php';
-    $location = 'outer';
 ?>
 
 <!DOCTYPE html>
@@ -21,7 +20,7 @@
     <br>
     <div class="center">
         <div class="container">
-            <a href="template/appointment-templates/checkup.php" class="container-link"><b>Check Up</b><i class="fas fa-arrow-right"></i></a>
+            <a href="appointment-templates/checkup.php" class="container-link"><b>Check Up</b><i class="fas fa-arrow-right"></i></a>
         </div>
         <div class="container">
             <a href="template/appointment-templates/checkup.php" class="container-link"><b>Grooming</b><i class="fas fa-arrow-right"></i></a>
