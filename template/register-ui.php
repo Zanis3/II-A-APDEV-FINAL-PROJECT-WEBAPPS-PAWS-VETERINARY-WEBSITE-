@@ -35,8 +35,8 @@
                 </tr>
             </table>
             <br>
-            <button type="button" name="btnRegister" class="button">Register</button>
-            <p>Back to <a href="../II-A-APDEV-FINAL-PROJECT-WEBAPPS-PAWS-VETERINARY-WEBSITE-/login.php">Login</a></p>
+            <button type="button" name="btnRegister" class="btnRegister">Register</button>
+            <p class="text-sub" style="margin-top:20px;">Back to <a href="../II-A-APDEV-FINAL-PROJECT-WEBAPPS-PAWS-VETERINARY-WEBSITE-/login.php">Login</a></p>
         </div>
     </div>
     

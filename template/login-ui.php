@@ -1,25 +1,5 @@
 <?php
     require 'template/config.php';
-
-    $adminUsername = "admin";
-    $adminPassword = "password123";
-
-    $loginSuccess = false;
-
-    if ($_SERVER["REQUEST_METHOD"] === "POST") {
-        $username = $_POST["txtUsername"];
-        $password = $_POST["txtPassword"];
-
-        if($username === $adminUsername && $password === $adminPassword){
-            $loginSuccess = true;
-            $_SESSION["isAdmin"] = true;
-            header("Location: dashboard/Dashboard.php");
-            exit();
-        } 
-        elseif(empty($username) || empty($password)) {
-            echo "<script>alert('Please fill in all required fields.');</script>";
-        }
-    }
 ?>
 
 <head>
@@ -34,20 +14,35 @@
             <hr class="line">
             <br>
             <form method="post" action="<?php echo htmlspecialchars($_SERVER['PHP_SELF']);?>">
-                <table>
-                    <tr>
-                        <td><label for="txtUsername">Username: </label></td>
-                        <td><input type="text" name="txtUsername" id="txtUsername"></td>
-                    </tr>
-                    <tr>
-                        <td><label for="txtPassword">Password: </label></td>
-                        <td><input type="password" name="txtPassword" id="txtPassword"></td>
-                    </tr>
-                </table>
-                <br>
-                <button type="submit" name="btnLogIn" class="button">Login</button>
+                <label for="txtUsername">Username: </label>
+                <input type="text" name="txtUsername" id="txtUsername" style="margin-bottom:10px;">
+
+                <label for="txtPassword">Password: </label>
+                <div class="password-container">
+                    <input type="password" name="txtPassword" id="txtPassword" class="txtPassword" style="margin-bottom:20px;">
+                    <button type="button" class="btnShow" name="btnShow">Show</button>
+                </div>
+
+                <input type="submit" name="btnLogIn" class="btnLogin" value="Login">
             </form>
-            <p>No Account? Please Register <a href="?showRegisterUI=true">here!</a></p>
+            <br>
+            <p class="text-sub">No Account? Please Register <a href="?showRegisterUI=true">here!</a></p>
         </div>
     </div>
+
+    <script>
+        document.querySelectorAll('.btnShow').forEach(function(btnShow) {
+            btnShow.addEventListener('click', function(event){
+                var passwordField = document.getElementById('txtPassword');
+                if(passwordField.type === "password"){
+                    passwordField.type = "text";
+                    btnShow.textContent = "Hide";
+                } 
+                else{
+                    passwordField.type = "password";
+                    btnShow.textContent = "Show";
+                }
+            });
+        });
+    </script>
 </body>

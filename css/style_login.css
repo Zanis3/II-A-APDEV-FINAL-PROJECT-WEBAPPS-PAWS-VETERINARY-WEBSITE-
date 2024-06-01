@@ -24,10 +24,10 @@
 
 .text-sub{
     font-weight: bold;
-    font-size: 20px;
+    font-size: 18px;
     color:var(--dark-green);
     margin-top:0;
-    text-align:left;
+    text-align:center;
 }
 
 
@@ -52,7 +52,7 @@
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    height: 40%;
+    height: 50%;
     width: 30%;
     border-radius: 10px;
     background-color: var(--lighter-green);
@@ -67,7 +67,34 @@ form{
     display:flex;
     flex-direction: column;
     align-items: center;
+    width:80%;
+}
+
+label{
+    color:var(--dark-green);
+    font-weight: bold;
+    text-align:left;
+    width:100%;
+    margin-bottom:5px;
+}
+
+.password-container{
+    display:flex;
+    align-items:center;
     justify-content: center;
+    width:100%;
+}
+
+#txtUsername, #txtPassword{
+    padding:10px;
+    width:100%;
+    border: 1px solid var(--light-green);
+    color:var(--dark-green);
+    font-weight: bold;
+}
+
+.txtPassword{
+    width:90%;
 }
 
 .line {
@@ -76,7 +103,7 @@ form{
     height: 1px;
 }
 
-.button{
+.btnLogin, .btnRegister{
     background-color: var(--dark-green);
     color: white;
     border-style: none;
@@ -89,9 +116,19 @@ form{
     font-weight: bold;
 }
 
-.button:hover{
+.btnLogin:hover, .btnRegister:hover{
     background-color: var(--light-green);
     transition:0.7s;
+}
+
+.btnShow{
+    background:none;
+    border:none;
+    font-weight: bold;
+    color:var(--light-green);
+    cursor:pointer;
+    padding-bottom:20px;
+    width:10%;
 }
 
 
