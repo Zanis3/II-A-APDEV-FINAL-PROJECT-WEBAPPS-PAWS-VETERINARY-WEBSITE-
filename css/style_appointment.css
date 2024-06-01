@@ -1,176 +1,45 @@
-.dropdown-container {
-    width: 90%;
-    margin: 20px auto;
-    position: relative;
-}
-.dropdown-header {
-    background-color: #064E3B;
-    border: 1px solid #ccc;
-    border-radius: 10px;
-    padding: 10px;
-    cursor: pointer;
-    display: flex;
-    justify-content: space-between;
-    border: none;
-}
-.dropdown-content {
-    display: none;
-    position: relative;
-    top: 100%;
-    width: 99.80%;
-    background-color: #E2EBE7;
-    border: 1px solid #65A30D;
-    border-radius: 10px;
-    z-index: 1;
-    margin-top: 5px;
-    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.3); 
-}
-.dropdown-item {
-    padding: 40px;
-    cursor: pointer;
-    display: flex;
-    justify-content: space-between;
-}
 
-.form-group {
-    background-color: #ffffff;
-    width: 45%; /* Adjust width as needed */
-    border-radius: 10px;
-    padding-bottom: 10px;
-    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
-    transition: background-color 0.3s, box-shadow 0.3s;
-}
-
-.form-group input {
-    width: 300px; /* Adjust width of text boxes */
-}
-
-.button-container {
-    margin-top: 5px;
-    padding-bottom: 20px;
-}
-
-.button-container button {
-    margin-right: 10px;
-}
-
-.icon.right {
-    transform: rotate(90deg);
-}
-
-.button-container button {
-    margin-right: 10px;
-    background-color: #064E3B;
-    color: white;
-    border-style: none;
-    border-radius: 10px;
-    width: 100px;
-    height: 50px;
-    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
-    transition: background-color 0.3s, box-shadow 0.3s;
-}
-
-.button-container button:hover {
-    background-color: #045A46;
-    box-shadow: 0px 8px 16px rgba(0, 0, 0, 0.2);
-}
-
-.button-container button:active {
-    transform: translateY(2px);
-    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
-}
 
 .container {
-    width: 100%;
-}
-
-.inside_container {
-    flex: 1;
-    background-color: rgab(255, 255, 255, 0.1);
-    margin: 5px;
-}
-
-select {
-    width: 200px;
-}
-
-input {
-    width: 193px;
-}
-
-.others {
-    width: 300px;
-    height: 150px;
-}
-.table-calendar {
-    background-color: white;
+    width: 90%;
+    max-width: 1200px;
+    margin: 15px auto;
     padding: 15px;
-    margin-right: 1%;
-    width: 70%;
-    border-radius: 10px;
-    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+    background-color: #E2EBE7;
+    border: 1px solid #65A30D;
+    border-radius: 5px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    text-decoration: none;
     transition: background-color 0.3s, box-shadow 0.3s;
 }
-.calendar td {
-    border: 1px solid black;
-    padding: 5px;
-    width: 14%;
+
+.container-link {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    text-decoration: none;
+    color: #333;
+    font-size: 18px;
+}
+
+.container-link i {
+    font-size: 18px;
+    color: #333;
+}
+
+.container:hover {
+    background-color: #d8e3df; /* Slightly darker color */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Add shadow on hover */
+}
+
+.container:active {
+    background-color: #c5d0cc; /* Darker color when clicked */
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2); /* Slightly different shadow on click */
 }
 .center {
-    text-align: center;
-}
-.button {
-    background-color: #f0f0f0; 
-    border: none; 
-    padding: 5px;
-    width: 100%;
-    height: 100%;
-}
-.sched-container {
-    width: 30%;
-    border: none;
-}
-
-.legends{
-    background-color: white;
-    border-radius: 10px;
-    margin-bottom: 3%;
-    height: 180px;
-    padding: 2px;
-}
-.tbl-legends td{
-    text-align: center;
-    padding-left: 5px;
-    padding-right: 10px;
-}
-
-.output {
-    background-color: white;
-    border-radius: 10px;
-    margin-bottom: 3%;
-    height: 150px;
-    padding: 2px;
-}
-
-.notice {
-    padding: 2px;
-}
-.line {
-    width: 90%;
-    background-color: #65A30D;
-    height: 1px;
-}
-.sched-output {
-    width: 80%;
-    height: 20%;
-    text-align: center;
-    justify-content: center;
-    align-items: center;
-    background-color: #cccccc61;
-    border: none;
-    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
-    transition: background-color 0.3s, box-shadow 0.3s;
-}
-.timeButton {
-    width: 100%;
+    margin-top: 5%;
+    margin-bottom: 5%;
 }
