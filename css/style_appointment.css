@@ -37,9 +37,25 @@
 
 .container:active {
     background-color: #c5d0cc; /* Darker color when clicked */
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2); /* Slightly different shadow on click */
 }
 .center {
     margin-top: 5%;
     margin-bottom: 5%;
+}
+button {
+    margin-top: 2%;
+    margin-bottom: 3%;
+    height: 50px;
+    width: 100px;
+    border-radius: 5px;
+    border: 1px solid #65A30D;
+    background-color: #064E3B;
+    color: white;
+}
+button:hover {
+    background-color: #08634b;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+button:active {
+    background-color: rgb(6, 69, 52);
 }

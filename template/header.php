@@ -6,7 +6,7 @@
                 echo '<img src="img/gen/web-logo.png" class="web-logo">';
             }
             else{
-                echo '<img src="../../img/gen/web-logo.png" class="web-logo">';
+                echo '<img src="../img/gen/web-logo.png" class="web-logo">';
             }
         ?>
         

@@ -1,5 +1,6 @@
 <?php
     require 'template/config.php';
+    
 ?>
 
 <!DOCTYPE html>
@@ -23,16 +24,16 @@
             <a href="appointment-templates/checkup.php" class="container-link"><b>Check Up</b><i class="fas fa-arrow-right"></i></a>
         </div>
         <div class="container">
-            <a href="template/appointment-templates/checkup.php" class="container-link"><b>Grooming</b><i class="fas fa-arrow-right"></i></a>
+            <a href="appointment-templates/checkup.php" class="container-link"><b>Grooming</b><i class="fas fa-arrow-right"></i></a>
         </div>
         <div class="container">
-            <a href="template/appointment-templates/checkup.php" class="container-link"><b>Dental</b><i class="fas fa-arrow-right"></i></a>
+            <a href="appointment-templates/checkup.php" class="container-link"><b>Dental</b><i class="fas fa-arrow-right"></i></a>
         </div>
         <div class="container">
-            <a href="template/appointment-templates/checkup.php" class="container-link"><b>Consultation</b><i class="fas fa-arrow-right"></i></a>
+            <a href="appointment-templates/checkup.php" class="container-link"><b>Consultation</b><i class="fas fa-arrow-right"></i></a>
         </div>
         <div class="container">
-            <a href="template/appointment-templates/checkup.php" class="container-link"><b>Vaccination</b><i class="fas fa-arrow-right"></i></a>
+            <a href="appointment-templates/checkup.php" class="container-link"><b>Vaccination</b><i class="fas fa-arrow-right"></i></a>
         </div>
     </div>
     <br>
