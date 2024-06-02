@@ -19,7 +19,7 @@ img{
     pointer-events: none;
 }
 
-.warning{
+.warning, .warning-ins{
     color:red;
     font-weight: bold;
     margin-top:0;

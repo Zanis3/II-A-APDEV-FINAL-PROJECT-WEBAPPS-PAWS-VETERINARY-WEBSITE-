@@ -77,7 +77,6 @@ label{
     color:var(--dark-green);
     font-weight: bold;
     text-align:left;
-    width:100%;
 }
 
 .password-container{
@@ -140,6 +139,15 @@ label{
 
 /*Register UI*/
 
+
+span{
+    display:flex;
+    align-items: center;
+}
+
+span .warning{
+    margin:0;
+}
 
 .container.register{
     background-image: url("../img/login/dog-register.jpg");
