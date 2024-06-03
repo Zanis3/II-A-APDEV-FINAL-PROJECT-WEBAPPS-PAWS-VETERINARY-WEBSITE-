@@ -1,9 +1,18 @@
 <?php
-    $location = 'dashboard';
-    if (isset($_POST['back'])) {
-        header('Location: ../appointments.php');
-        exit();
-    }
+session_start();
+
+$location = 'dashboard';
+if (isset($_POST['back'])) {
+    header('Location: ../appointments.php');
+    exit();
+}
+
+if (isset($_GET['vet'])) {
+    $selectedVet = $_GET['vet'];
+    $_SESSION['selectedVet'] = $selectedVet; // Store the selected vet in the session
+    header("Location: schedule.php"); // Redirect to the schedule page
+    exit(); // Ensure no further code is executed after the redirect
+}
 ?>
 <head>
     <link rel="stylesheet" href="../css/style_general.css">
@@ -16,16 +25,16 @@
     <?php include_once '../template/header.php';?>
     <br>
     <center>
-        <h1>Veterenarians</h1>
-        <p><b> Please choose your preffered vet:</b></p>
+        <h1>Veterinarians</h1>
+        <p><b> Please choose your preferred vet:</b></p>
         <br>
     </center>
     <div class="center">
         <div class="container">
-            <a href="schedule.php" class="container-link"><b>Dr. John Doe</b><i class="fas fa-arrow-right"></i></a>
+            <a href="?vet=Dr. John Doe" class="container-link"><b>Dr. John Doe</b><i class="fas fa-arrow-right"></i></a>
         </div>
         <div class="container">
-            <a href="schedule.php" class="container-link"><b>Dr. Jane Smith</b><i class="fas fa-arrow-right"></i></a>
+            <a href="?vet=Dr. Jane Smith" class="container-link"><b>Dr. Jane Smith</b><i class="fas fa-arrow-right"></i></a>
         </div>
     </div>
     <br>

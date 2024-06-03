@@ -1,5 +1,36 @@
 <?php
+    session_start();
+    
     require 'template/config.php'; 
+
+    if(isset($_GET['service'])) {
+        $selectedService = $_GET['service'];
+        $_SESSION['selectedService'] = $selectedService; // Store the selected service in the session
+
+        // Redirect to the appropriate page based on the selected service
+        switch($selectedService) {
+            case 'Check Up':
+                header("Location: appointment-templates/checkup.php");
+                break;
+            case 'Grooming':
+                header("Location: appointment-templates/grooming.php");
+                break;
+            case 'Consultation':
+                header("Location: appointment-templates/consultation.php");
+                break;
+            case 'Dental':
+                header("Location: appointment-templates/dental.php");
+                break;
+            case 'Vaccination':
+                header("Location: appointment-templates/vaccination.php");
+                break;
+            default:
+                // Handle unknown service
+                header("Location: error.php");
+                break;
+        }
+        exit(); // Ensure no further code is executed after the redirect
+    }
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -43,19 +74,19 @@
     </center>
     <div class="center">
         <div class="container">
-            <a href="store_session.php?service=Check Up" class="container-link"><b>Check Up</b><i class="fas fa-arrow-right"></i></a>
+            <a href="?service=Check Up" class="container-link"><b>Check Up</b><i class="fas fa-arrow-right"></i></a>
         </div>
         <div class="container">
-            <a href="store_session.php?service=Grooming" class="container-link"><b>Grooming</b><i class="fas fa-arrow-right"></i></a>
+            <a href="?service=Grooming" class="container-link"><b>Grooming</b><i class="fas fa-arrow-right"></i></a>
         </div>
         <div class="container">
-            <a href="store_session.php?service=Dental" class="container-link"><b>Dental</b><i class="fas fa-arrow-right"></i></a>
+            <a href="?service=Dental" class="container-link"><b>Dental</b><i class="fas fa-arrow-right"></i></a>
         </div>
         <div class="container">
-            <a href="store_session.php?service=Consultation" class="container-link"><b>Consultation</b><i class="fas fa-arrow-right"></i></a>
+            <a href="?service=Consultation" class="container-link"><b>Consultation</b><i class="fas fa-arrow-right"></i></a>
         </div>
         <div class="container">
-            <a href="store_session.php?service=Vaccination" class="container-link"><b>Vaccination</b><i class="fas fa-arrow-right"></i></a>
+            <a href="?service=Vaccination" class="container-link"><b>Vaccination</b><i class="fas fa-arrow-right"></i></a>
         </div>
     </div>
     <?php include_once 'template/footer.php';?>

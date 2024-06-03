@@ -1,13 +1,17 @@
 <?php
-    $location = 'dashboard';
-    if (isset($_POST['back'])) {
-        header('Location: checkup.php');
-        exit();
+session_start(); // Start the session
+$location = 'dashboard';
+// Handle the form submission
+if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+    if (isset($_POST['selected_date']) && isset($_POST['selected_time'])) {
+        $_SESSION['selected_date'] = $_POST['selected_date'];
+        $_SESSION['selected_time'] = $_POST['selected_time'];
     }
-    if(isset($_POST['next'])) {
+    if (isset($_POST['next'])) {
         header('Location: information.php');
         exit();
     }
+}
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -38,9 +42,10 @@
             </center>
             <center>
                 <form method="post">
+                    <input type="hidden" name="selected_date" id="selected_date" value="">
+                    <input type="hidden" name="selected_time" id="selected_time" value="">
                     <table>
                         <tr>
-                            <td><button class="back" type="submit" name="back"><b>Back</b></button></td>
                             <td><button class="back" type="submit" name="next"><b>Next</b></button></td>
                         </tr>
                     </table>
@@ -49,5 +54,13 @@
         </main>
         <?php include_once '../template/footer.php';?>
     </div>
+
+    <script>
+        // JavaScript to populate hidden input fields with selected date and time
+        function setHiddenFields(date, time) {
+            document.getElementById('selected_date').value = date;
+            document.getElementById('selected_time').value = time;
+        }
+    </script>
 </body>
 </html>

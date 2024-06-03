@@ -49,10 +49,12 @@ function selectDate(date) {
         selectedDate = null;
         selectedDateDiv.innerHTML = '';
         timeSlotsDiv.innerHTML = '';
+        setHiddenFields('', ''); // Clear hidden fields
     } else {
         // Select the date
         selectedDate = date;
         selectedDateDiv.innerHTML = `Selected Date: ${date.toLocaleString('default', { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' })}`;
+        setHiddenFields(date.toISOString().split('T')[0], activeTimeSlot ? activeTimeSlot.innerHTML : ''); // Set hidden fields
         renderTimeSlots();
     }
     renderCalendar();
@@ -91,6 +93,7 @@ function selectTimeSlot(slotButton, slot) {
         slotButton.classList.remove('active');
         activeTimeSlot = null;
         selectedDateDiv.innerHTML = `Selected Date: ${selectedDate.toLocaleString('default', { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' })}`;
+        setHiddenFields(selectedDate ? selectedDate.toISOString().split('T')[0] : '', ''); // Clear time field in hidden fields
     } else {
         // Select a new time slot
         if (activeTimeSlot) {
@@ -99,6 +102,7 @@ function selectTimeSlot(slotButton, slot) {
         slotButton.classList.add('active');
         activeTimeSlot = slotButton;
         selectedDateDiv.innerHTML = `Selected Date: ${selectedDate.toLocaleString('default', { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' })} | ${slot}`;
+        setHiddenFields(selectedDate.toISOString().split('T')[0], slot); // Set hidden fields
     }
 }
 

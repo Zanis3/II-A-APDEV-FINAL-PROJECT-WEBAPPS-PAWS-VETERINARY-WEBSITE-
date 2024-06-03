@@ -1,8 +1,17 @@
 <?php
+    session_start();
+
     $location = 'dashboard';
     if (isset($_POST['back'])) {
         header('Location: ../appointments.php');
         exit();
+    }
+
+    if (isset($_GET['vet'])) {
+        $selectedVet = $_GET['vet'];
+        $_SESSION['selectedVet'] = $selectedVet; // Store the selected vet in the session
+        header("Location: schedule.php"); // Redirect to the schedule page
+        exit(); // Ensure no further code is executed after the redirect
     }
 ?>
 <head>
@@ -21,10 +30,10 @@
     </center>
     <div class="center">
         <div class="container">
-            <a href="schedule.php" class="container-link"><b>Dr. Samantha White</b><i class="fas fa-arrow-right"></i></a>
+            <a href="?vet=Dr. Samantha White" class="container-link"><b>Dr. Samantha White</b><i class="fas fa-arrow-right"></i></a>
         </div>
         <div class="container">
-            <a href="schedule.php" class="container-link"><b>Dr. Kevin Nguyen</b><i class="fas fa-arrow-right"></i></a>
+            <a href="?vet=Dr. Kevin Nguyen" class="container-link"><b>Dr. Kevin Nguyen</b><i class="fas fa-arrow-right"></i></a>
         </div>
     </div>
     <br>

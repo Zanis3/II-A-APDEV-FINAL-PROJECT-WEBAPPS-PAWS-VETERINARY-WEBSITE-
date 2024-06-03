@@ -1,4 +1,6 @@
 <?php
+    session_start(); // Start the session
+
     $location = 'dashboard';
     if (isset($_POST['back'])) {
         header('Location: information.php');
@@ -36,19 +38,19 @@
                     <table>
                         <tr>
                             <td><label for="txtAppointment"><b>Appointment: </b></label></td>
-                            <td><input type="text" name="txtAppointment" disabled></td>
+                            <td><input type="text" name="txtAppointment" value="<?php echo $_SESSION['selectedService'] ?? ''; ?>" disabled></td>
                         </tr>
                         <tr>
                             <td><label for="txtAssigned"><b>Vet: </b></label></td>
-                            <td><input type="text" name="txtAssigned" disabled></td>
+                            <td><input type="text" name="txtAssigned" value="<?php echo $_SESSION['selectedVet'] ?? ''; ?>" disabled></td>
                         </tr>
                         <tr>
                             <td><label for="txtDate"><b>Date: </b></label></td>
-                            <td><input type="text" name="txtDate" disabled></td>
+                            <td><input type="text" name="txtDate" value="<?php echo $_SESSION['selected_date'] ?? ''; ?>" disabled></td>
                         </tr>
                         <tr>
                             <td><label for="txtTime"><b>Time: </b></label></td>
-                            <td><input type="text" name="txtTime" disabled></td>
+                            <td><input type="text" name="txtTime" value="<?php echo $_SESSION['selected_time'] ?? ''; ?>" disabled></td>
                         </tr>
                         <tr>
                             <td><br></td>
@@ -58,23 +60,23 @@
                         </tr>
                         <tr>
                             <td><label for="txtFName"><b>First Name: </b></label></td>
-                            <td><input type="text" name="txtFName" disabled></td>
+                            <td><input type="text" name="txtFName" value="<?php echo $_SESSION['txtFName'] ?? ''; ?>" disabled></td>
                         </tr>
                         <tr>
-                            <td><label fpr="txtLName"><b>Last Name: </b></label></td>
-                            <td><input type="text" name="txtLName" disabled></td>
+                            <td><label for="txtLName"><b>Last Name: </b></label></td>
+                            <td><input type="text" name="txtLName" value="<?php echo $_SESSION['txtLName'] ?? ''; ?>" disabled></td>
                         </tr>
                         <tr>
                             <td><label for="txtContact"><b>Contact Number: </b></label></td>
-                            <td><input type="text" name="txtContact" disabled></td>
+                            <td><input type="text" name="txtContact" value="<?php echo $_SESSION['txtContact'] ?? ''; ?>" disabled></td>
                         </tr>
                         <tr>
                             <td><label for="txtEmail"><b>Email: </b></label></td>
-                            <td><input type="text" name="txtEmail" disabled></td>
+                            <td><input type="text" name="txtEmail" value="<?php echo $_SESSION['txtEmail'] ?? ''; ?>" disabled></td>
                         </tr>
                         <tr>
                             <td><label for="txtAddress"><b>Address: </b></label></td>
-                            <td><input type="text" name="txtAddress" disabled></td>
+                            <td><input type="text" name="txtAddress" value="<?php echo $_SESSION['txtAddress'] ?? ''; ?>" disabled></td>
                         </tr>
                     </table>
                 </div>
@@ -82,23 +84,23 @@
                     <table>
                         <tr>
                             <td><label for="txtPName"><b>Pet Name: </b></label></td>
-                            <td><input type="text" name="txtPName" disabled></td>
+                            <td><input type="text" name="txtPName" value="<?php echo $_SESSION['txtPName'] ?? ''; ?>" disabled></td>
                         </tr>
                         <tr>
                             <td><label for="txtPAge"><b>Pet Age: </b></label></td>
-                            <td><input type="text" name="txtPAge" disabled></td>
+                            <td><input type="text" name="txtPAge" value="<?php echo $_SESSION['txtPAge'] ?? ''; ?>" disabled></td>
                         </tr>
                         <tr>
                             <td><label for="txtPGender"><b>Pet Gender: </b></label></td>
-                            <td><input type="text" name="txtGender" disabled></td>
+                            <td><input type="text" name="txtGender" value="<?php echo $_SESSION['txtPGender'] ?? ''; ?>" disabled></td>
                         </tr>
                         <tr>
                             <td><label for="txtPType"><b>Pet Type: </b></label></td>
-                            <td><input type="text" name="txtPType" disabled></td>
+                            <td><input type="text" name="txtPType" value="<?php echo $_SESSION['txtPType'] ?? ''; ?>" disabled></td>
                         </tr>
                         <tr>
                             <td><label for="txtPBreed"><b>Pet Breed: </b></label></td>
-                            <td><input type="text" name="txtPBreed" disabled></td>
+                            <td><input type="text" name="txtPBreed" value="<?php echo $_SESSION['txtPBreed'] ?? ''; ?>" disabled></td>
                         </tr>
                     </table>
                     <div class="reminder">
