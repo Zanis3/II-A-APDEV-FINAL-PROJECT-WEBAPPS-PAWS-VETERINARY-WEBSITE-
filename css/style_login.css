@@ -16,7 +16,7 @@
 }
 
 .text-title{
-    font-size: 40px;
+    font-size: 36px;
     color:var(--dark-green);
     text-align:left;
     margin-bottom:0;
@@ -151,11 +151,67 @@ span .warning{
 
 .container.register{
     background-image: url("../img/login/dog-register.jpg");
+    flex-direction: column;
+}
+
+.information-screen{
+    top: -300px;
+    position:absolute;
+    width:500px;
+    height:250px;
+    background:var(--lighter-green);
+    border-radius:5px;
+    border:5px solid var(--dark-green);
+    animation: slideDown 1s forwards;
+    z-index:4;
+}
+
+.information-header{
+    display:flex;
+    align-items:center;
+    width:100%;
+    height:30px;
+    background:var(--light-green);
+    gap:10px;
+}
+
+.information-desc, .information-header{
+    font-weight: bold;
+    text-align:center;
+    width:100%;
+}
+
+@keyframes slideDown {
+    0% {
+        top: -300px;
+    }
+    100% {
+        top: 20px;
+    }
+}
+
+.black-background{
+    top:0;
+    left:0;
+    width:100%;
+    height:100%;
+    z-index:3;
+    background:black;
+    opacity:0.5;
+    position:absolute;
+}
+
+.title-field{
+    width:100%;
+    display:flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
 }
 
 .container.register .floating{
-    height:80%;
-    width:40%;
+    height:90%;
+    width:50%;
 }
 
 #form-register{
