@@ -4,6 +4,10 @@
         header('Location: schedule.php');
         exit();
     }
+    if (isset($_POST['next'])) {
+        header('Location: result.php');
+        exit();
+    }
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -22,32 +26,69 @@
     <br>
     <center>
         <h1>Information</h1>
-        <p>Please fill up all fields</p>
+        <p><b>Please fill up all fields</b></p>
         <br>
     </center>
     <center>
-        <div class="information">
             <form method="post">
-                <table>
-                    <tr>
-                        <td><label for="txtLName">Last Name: </label></td>
-                        <td><input type=text name="txtLName"></td>
-                        <td></td>
-                        <td><label for="txtFName">First Name: </label></td>
-                        <td><input type="text" name="txtFName"></td>
-                    </tr>
-                    <tr>
-                        
-                    </tr>
-                </table>
-                <table>
-                    <tr>
-                        <td><button class="back" type="submit" name="back"><b>Back</b></button></td>
-                        <td><button class="back" type="submit" name="next"><b>Next</b></button></td>
-                    </tr>
-                </table>
-            </form>
-        </div>
+                <div class="info-container">
+                    <div class="box">
+                        <h3>Owner Information</h3>
+                        <hr class="line">
+                        <br>
+                        <table>
+                            <tr>
+                                <td><label for="txtLName"> Last Name: </label></td>
+                                <td><input type="text" name="txtLName"></td>
+                                <td><label for="txtFName"> First Name: </td>
+                                <td><input type="text" name="txtFName"></td>
+                            </tr>
+                            <tr>
+                                <td><label for="txtContact">Contact Number: </label></td>
+                                <td colspan="3"><input type="text" name="txtContact" size="59"></td>
+                            </tr>
+                            <tr>
+                                <td><label for="txtEmail">Email: </label></td>
+                                <td colspan="3"><input type="text" name="txtEmail" size="59"></td>
+                            </tr>
+                            <tr>
+                                <td><label for="txtAddress">Address: </label></td>
+                                <td colspan="3"><input type="text" name="txtAddress" size="59"></td>
+                            </tr>
+                        </table>
+                    </div>
+                    <div class="box">
+                        <h3>Pet Information</h3>
+                        <hr class="line">
+                        <br>
+                        <table>
+                            <tr>
+                                <td><label for="txtPName">Pet Name:</label></td>
+                                <td><input type="text" name="txtPName"></td>
+                            </tr>
+                            <tr>
+                                <td><label for="txtPAge">Age: </label></td>
+                                <td><input type="text" name="txtPAge"></td>
+                            </tr>
+                            <tr>
+                                <td><label for="txtPGender">Gender: </label></td>
+                                <td><input type="text" name="txtPGender"></td>
+                            </tr>
+                            <tr>
+                                <td><label for="txtPType">Type (Cat/Dog): </label></td>
+                                <td><input type="text" name="txtPType"></td>
+                            </tr>
+                            <tr>
+                                <td><label for="txtPBreed">Breed: </label></td>
+                                <td><input type="text" name="txtPBreed"></td>
+                            </tr>
+                        </table>
+                        <br>
+                    </div>
+                </div>
+                <button type="submit" name="back"><b>Go Back</b></button>
+                <button type="submit" name="next"><b>Next</b></button>
+            </form> 
     </center>
     <br>
     <?php include_once '../template/footer.php';?>
