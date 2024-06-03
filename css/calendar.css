@@ -1,0 +1,150 @@
+body, html {
+    height: 100%;
+    width: 100%;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    background-color: white;
+}
+
+.content {
+    display: flex;
+    flex-direction: column;
+    min-height: 99.7vh;
+    width: 100%;
+    max-width: 1480px; /* Set the maximum width for the container */
+    margin: 0 auto;
+    padding: 0;
+    background-color: white;
+}
+
+header, footer {
+    flex-shrink: 0;
+    width: 100%;
+}
+
+.main-content {
+    flex-grow: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.year-display {
+    font-weight: bold;
+    font-size: 1.5em;
+    margin-bottom: 15px;
+}
+
+.calendar-container {
+    display: flex;
+    align-items: center;
+}
+
+.calendar {
+    background-color: #E2EBE7;
+    display: flex;
+    justify-content: space-between;
+    border: 1px solid #65A30D;
+    margin-left: 5px;
+    margin-right: 5px;
+    margin-bottom: 20px;
+}
+
+.calendar .date-container {
+    width: 100px; /* Fixed width */
+    height: 100px; /* Fixed height */
+    padding: 5px;
+    text-align: center;
+    border: 1px solid #65A30D;
+    cursor: pointer;
+    position: relative;
+    transition: background-color 0.3s, transform 0.3s, box-shadow 0.3s;
+}
+
+.calendar .date-container:hover {
+    background-color: #d1e0d8; /* Slightly darker shade */
+    transform: translateY(-1px); /* Slightly lift */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Add shadow */
+}
+
+.calendar .date-container.selected {
+    background-color: #65A30D;
+    color: white;
+}
+
+.calendar .date-container .date-content {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+.calendar .date-container .day {
+    font-size: 1em;
+}
+
+.calendar .date-container .date {
+    font-size: 1.5em;
+    font-weight: bold;
+}
+
+.calendar .date-container .month {
+    font-size: 1em;
+}
+
+button {
+    background-color: #064E3B;
+    color: white;
+    border: none;
+    padding: 10px;
+    cursor: pointer;
+}
+
+button:disabled {
+    background-color: #ccc;
+    cursor: not-allowed;
+}
+
+#selected-date {
+    margin-top: 5px;
+    margin-bottom: 10px;
+    font-size: 1em;
+}
+
+.time-slots-container {
+    display: flex;
+    justify-content: center;
+    width: 100%;
+}
+
+.time-slots {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-gap: 10px;
+    margin-top: 10px;
+    margin-bottom: 20px;
+}
+
+.time-slot {
+    width: 200px;
+    padding: 10px;
+    background-color: #E2EBE7;
+    color: black;
+    border: 1px solid #65A30D;
+    justify-content: center;
+    text-align: center;
+    cursor: pointer;
+    transition: background-color 0.3s, transform 0.3s, box-shadow 0.3s;
+}
+
+.time-slot:hover {
+    background-color: #d1e0d8; /* Slightly darker shade */
+    transform: translateY(-5px); /* Slightly lift */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Add shadow */
+}
+.time-slot.active {
+    background-color: #064E3B; /* Active color */
+    color: white; /* Text color for active state */
+}
