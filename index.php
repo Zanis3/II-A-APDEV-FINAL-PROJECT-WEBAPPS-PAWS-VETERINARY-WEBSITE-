@@ -57,34 +57,97 @@
     <!--HERO CONTAINER-->
     <div class="hero-container">
         <div class="hero-text">
-            <h1 id="hero-title">Welcome to Paws Veterinary Clinic</h1>
-            <p id="hero-sub">Providing quality care for your pets.</p>
+            <p id="hero-sub">Opening Hours:</p>
+            <h1 id="hero-title">Mon - Sat : 9 am - 5 am </h1>
+            <hr class="line">
+            <p id="hero-moto">GIVING QUALITY CARE FOR YOUR PETS!</p>
         </div>
         <div class="hero-img">
-            <img src="img/login/dog-login.jpg" alt="">
+            <img src="img/login/dog-login.jpg">
         </div>
     </div>
 
     <!--SERVICES CONTAINER-->
+    <br>
+    <br>
+    <center>
+         <h2>Welcome to Paws Vet Clinic</h2>
+    </center>
     <div class="container">
-        <div class="text-container">
-            <h2 class="text-title">Our Services</h2>
-            <p class="text-sub">Browse our range of veterinary services</p>
-        </div>
-        <div class="services-items">
-            <div class="services-item">
-                <div class="serv-item-header one"></div>
-                <div class="serv-item-desc">
-                    <p class="serv-title">Vaccination Services</p>
-                    <p class="serv-desc">Protect your pet from...</p>
-                </div>
+        <div class="icon-container left">
+            <div class="icon">
+                <table>
+                    <tr>
+                        <td style="padding-right: 10px;"><i class="fas fa-heart"></i></td>
+                        <td style="text-align: left; color: #064E3B;"><b>CARE</b></td>
+                    </tr>
+                    <tr>
+                        <td></td>
+                        <td style="text-align:left;">
+                            <p>
+                                Premium pet care: Trust us for expert veterinary 
+                                services and compassionate treatment for your furry companions
+                            </p>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td><br></td>
+                    </tr>
+                    <tr>
+                        <td style="padding-right: 10px;"><i class="fas fa-notes-medical"></i></td>
+                        <td style="text-align: left; color: #064E3B;"><b>INFORMING</b></td>
+                    </tr>
+                    <tr>
+                        <td></td>
+                        <td style="text-align:left;">
+                            <p>
+                                Stay informed with vet-approved resources 
+                                covering pet health, nutrition, and care 
+                                essentials on our comprehensive platform
+                            </p>
+                        </td>
+                    </tr>
+                </table>
             </div>
-            <div class="services-item">
-                <div class="serv-item-header two"></div>
-                <div class="serv-item-desc">
-                    <p class="serv-title">Surgical Procedures</p>
-                    <p class="serv-desc">Providing surgical sol...</p>
-                </div>
+        </div>
+        <div class="center-img">
+            <img src="img/home/dog.png" alt="Dog Image">
+        </div>
+        <div class="icon-container right">
+            <div class="icon">
+                <table>
+                    <tr>
+                        <td style="text-align: right; color: #064E3B;"><b>HEALTH</b></td>
+                        <td style="padding-left: 10px;"><i class="fas fa-plus"></i></td>
+                    </tr>
+                    <tr>
+                        <td style="text-align: right;">
+                            <p>
+                                Optimize your pet's health with our expert 
+                                guidance on nutrition, wellness, and 
+                                preventive care strategies for long-term well-being
+                            </p>
+                        </td>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <td><br></td>
+                    </tr>
+                    <tr>
+                        <td style="text-align: right; color: #064E3B;"><b>COMFORTABILITY</b></td>
+                        <td><i class="fas fa-paw"></i></td>
+                    </tr>
+                    <tr>
+                        <td style="text-align: right;">
+                            <p>
+                                Ensure your pet's comfort with our personalized 
+                                care approach, providing tailored solutions 
+                                for their happiness and well-being.
+                            </p>
+                        </td>
+                        <td></td>
+                    </tr>
+                </table>
             </div>
         </div>
     </div>
