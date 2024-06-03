@@ -1,6 +1,5 @@
 <?php
     require 'template/config.php';
-    
 ?>
 
 <!DOCTYPE html>
@@ -17,27 +16,49 @@
 </head>
 <body>
     <?php include_once 'template/header.php';?>
-    <br>
-    <br>
+    <script>
+        function greetings() {
+            var today = new Date();
+            var curHr = today.getHours();
+            var greeting = "";
+
+            if (curHr < 12) {
+                greeting = "Good Morning!";
+            } else if (curHr < 18) {
+                greeting = "Good Afternoon!";
+            } else {
+                greeting = "Good Evening!";
+            }
+
+            document.getElementById('greeting').innerHTML = greeting;
+        }
+
+        // Call the greetings function after the DOM content is fully loaded
+        document.addEventListener('DOMContentLoaded', (event) => {
+            greetings();
+        });
+    </script>
+    <center>
+        <h1 id="greeting"></h1>
+        <p><b>Please select services.</b></p>
+    </center>
     <div class="center">
         <div class="container">
             <a href="appointment-templates/checkup.php" class="container-link"><b>Check Up</b><i class="fas fa-arrow-right"></i></a>
         </div>
         <div class="container">
-            <a href="appointment-templates/checkup.php" class="container-link"><b>Grooming</b><i class="fas fa-arrow-right"></i></a>
+            <a href="appointment-templates/grooming.php" class="container-link"><b>Grooming</b><i class="fas fa-arrow-right"></i></a>
         </div>
         <div class="container">
-            <a href="appointment-templates/checkup.php" class="container-link"><b>Dental</b><i class="fas fa-arrow-right"></i></a>
+            <a href="appointment-templates/dental.php" class="container-link"><b>Dental</b><i class="fas fa-arrow-right"></i></a>
         </div>
         <div class="container">
-            <a href="appointment-templates/checkup.php" class="container-link"><b>Consultation</b><i class="fas fa-arrow-right"></i></a>
+            <a href="appointment-templates/consultation.php" class="container-link"><b>Consultation</b><i class="fas fa-arrow-right"></i></a>
         </div>
         <div class="container">
-            <a href="appointment-templates/checkup.php" class="container-link"><b>Vaccination</b><i class="fas fa-arrow-right"></i></a>
+            <a href="appointment-templates/vaccination.php" class="container-link"><b>Vaccination</b><i class="fas fa-arrow-right"></i></a>
         </div>
     </div>
-    <br>
-    <br>
     <?php include_once 'template/footer.php';?>
 </body>
 </html>

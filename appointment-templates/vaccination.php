@@ -1,11 +1,11 @@
 <?php
     $location = 'dashboard';
+    if (isset($_POST['back'])) {
+        header('Location: ../appointments.php');
+        exit();
+    }
 ?>
-<!DOCTYPE html>
-<html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="../css/style_general.css">
     <link rel="stylesheet" href="../css/style_appointment.css">
     <link rel="shortcut icon" href="img/gen/web-logo.png" type="image/png">
@@ -21,15 +21,17 @@
     </center>
     <div class="center">
         <div class="container">
-            <a href="#" class="container-link"><b>Dr. John Doe</b><i class="fas fa-arrow-right"></i></a>
+            <a href="schedule.php" class="container-link"><b>Dr. Samantha White</b><i class="fas fa-arrow-right"></i></a>
         </div>
         <div class="container">
-            <a href="#" class="container-link"><b>Dr. Jane Smith</b><i class="fas fa-arrow-right"></i></a>
+            <a href="schedule.php" class="container-link"><b>Dr. Kevin Nguyen</b><i class="fas fa-arrow-right"></i></a>
         </div>
     </div>
+    <br>
     <center>
-        <button type="buttom" name="back"><b>Go Back</b></a></button>
+        <form method="post">
+            <button type="submit" name="back"><b>Go Back</b></button>
+        </form>
     </center>
     <?php include_once '../template/footer.php';?>
 </body>
-</html>
