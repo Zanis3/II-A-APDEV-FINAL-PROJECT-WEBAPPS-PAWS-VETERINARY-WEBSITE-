@@ -55,7 +55,7 @@
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    height: 45%;
+    height: 55%;
     width: 30%;
     border-radius: 10px;
     background-color: var(--lighter-green);
@@ -77,6 +77,10 @@ label{
     color:var(--dark-green);
     font-weight: bold;
     text-align:left;
+}
+
+.login-label{
+    width:100%;
 }
 
 .password-container{
@@ -130,6 +134,10 @@ label{
     cursor:pointer;
     padding-bottom:20px;
     width:10%;
+}
+
+.btnShow.login{
+    padding-bottom:0;
 }
 
 .input-text:focus {
