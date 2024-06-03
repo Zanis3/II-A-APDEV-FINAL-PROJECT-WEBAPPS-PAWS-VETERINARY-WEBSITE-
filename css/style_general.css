@@ -89,6 +89,19 @@ img{
     justify-content: center;
 }
 
+.logged-in-user{
+    border:none;
+    color:var(--dark-green);
+    width:48px;
+    height:48px;
+    background:none;
+    cursor:pointer;
+}
+
+.logged-in-user:hover{
+    color:var(--light-green);
+    transition:0.7s;
+}
 
 /*FOOTER CSS*/
 

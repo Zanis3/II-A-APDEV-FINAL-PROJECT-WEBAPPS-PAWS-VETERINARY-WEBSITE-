@@ -47,9 +47,11 @@
             #LOGIN VALIDATION
             if($loginValidation){
                 if($account['usertype'] == 'user'){
+                    $_SESSION['login'] = true;
+                    $_SESSION['username'] = $username;
                     header('Location: ../index.php');
                 }
-                elseif($account['usertype'] == 'user'){
+                elseif($account['usertype'] == 'doctor'){
                     header('Location: ../dashboard/dashboard_doc.php');
                 }
                 else{
