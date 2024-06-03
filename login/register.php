@@ -30,7 +30,7 @@
         $usernameLength = strlen($userName);
         $passwordLength = strlen($password);
 
-        $check = 0;
+        $registerValidation = true;
 
         if(isset($_POST['btnRegister'])){
             
@@ -43,9 +43,8 @@
                 $usernameError = emptyError($userName);
                 $passwordError = emptyError($password);
                 $confirmPasswordError = emptyError($confirmPassword);
-            }
-            else{
-                $check += 1;
+
+                $registerValidation = false;
             }
 
             #CHINECHECK KUNG MAY SPECIAL CHARACTERS SA NAME
@@ -57,9 +56,8 @@
                 if (!preg_match("/^[a-zA-Z-' ]*$/", $firstName)) {
                     $firstNameError = 'Only letters and white space allowed.';
                 }
-            }
-            else{
-                $check += 1;
+
+                $registerValidation = false;
             }
 
             #CHINECHECK KUNG MAY USERNAME AND EMAIL SA DATABASE NA UNG TINYPE NG USER
@@ -71,16 +69,12 @@
 
             if($userInfo['userEmail'] == $email && !empty($email)){
                 $emailError = 'Email already found in the database. Please login or register a new email.';
-            }
-            else{
-                $check += 1;
+                $registerValidation = false;
             }
 
             if($loginInfo['username'] == $userName && !empty($userName)){
                 $usernameError = 'Username already found in the database. Please login or register a new email.';
-            }
-            else{
-                $check += 1;
+                $registerValidation = false;
             }
 
             $registerUserInfo->close();
@@ -92,40 +86,42 @@
                     $usernameError = 'Username should be six characters or more.';
                 }
 
-                if($passwordLength < 8 && !empty($password)){
+                if($passwordLength < 8 && !empty($passwordError)){
                     $passwordError = 'Password should be eight characters or more.';
                 }
-            }
-            else{
-                $check += 1;
+                $registerValidation = false;
             }
 
             #CHINECHECK ANG FORMAT NG EMAIL AT CONTACT NUMBERR
             if(!preg_match('/^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/', $email) && !empty($email)){
                 $emailError = "Invalid Email";
-            }
-            else{
-                $check += 1;
+                $registerValidation = false;
             }
 
             if(!preg_match('/^(\+639\d{2}|09\d{2})[- ]?\d{3}[- ]?\d{4}$/', $contactNumber) && !empty($contactNumber)){
                 $contactNoError = "Invalid Number";
-            }
-            else{
-                $check += 1;
+                $registerValidation = false;
             }
 
             #CHINECHECK KUNG PAREHAS BA ANG SINULAT NI USER SA PASSWORD AT CONFIRM PASSWORD
             if($confirmPassword != $password && empty($confirmPasswordError)){
                 $confirmPasswordError = 'Password does not match.';
-            }
-            else{
-                $check += 1;
+                $registerValidation = false;
             }
 
             #REGISTRATION NA
-            if($check == 8){
+            if($registerValidation){
                 $hashedPass = password_hash($password, PASSWORD_DEFAULT);
+                $userType = 'admin';
+
+                $registerAccount = $connection->prepare('INSERT INTO tbl_logininfo (username, userpassword, usertype) VALUES (?, ?, ?)');
+                $registerAccount->bind_param('sss', $userName, $password, $userType);
+                $registerAccount->execute();
+                $registerAccount->close();
+
+                $registerAdditionalInfo = $connection->prepare('INSERT INTO tbl_userinfo (userLastName, userFirstName, userMiddleInitial, userContactNumber, userEmail) VALUES (?, ?, ?, ?, ?)');
+                $registerAdditionalInfo->execute();
+                $registerAdditionalInfo->close();
             }
         }
     }
@@ -238,7 +234,6 @@
                 <!--BUTTON CONTAINERS-->
                 <div class="button-containers">
                     <input type="submit" name="btnRegister" class="btnLogin" value="Register">
-                    <input type="reset" name="btnClear" class="btnLogin" id="clear" value="Clear" onclick="clearForm()">
                 </div>
             </form>
 
@@ -268,20 +263,5 @@
             let value = e.target.value;
             e.target.value = value.replace(/[^0-9+\- ]/g, '');
         });
-
-        //CLEAR BUTTON
-        function clearForm() {
-            document.getElementById('form-register').reset();
-
-            const warnings = document.querySelectorAll('.warning');
-            warnings.forEach(warning => {
-                warning.textContent = '*';
-            });
-
-            const inputFields = document.querySelectorAll('.input-text');
-            inputFields.forEach(field => {
-                field.value = '';
-            });
-        }
     </script>
 </body>
