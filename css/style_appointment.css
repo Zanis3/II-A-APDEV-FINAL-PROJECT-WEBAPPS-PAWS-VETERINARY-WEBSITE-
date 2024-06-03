@@ -101,3 +101,53 @@ button:active {
     margin-top: 5%;
     height: 110px;
 }
+.two-tone-container {
+    width: 50%;
+    border: 1px solid #65A30D; /* Optional: for visual separation */
+    background: linear-gradient(to bottom, #E2EBE7 64.6%, #064E3B 36.5%);
+    box-sizing: border-box;
+    border-radius: 10px;
+}
+.upper-part {
+    background-color: #E2EBE7;
+    padding: 10px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-radius: 10px;
+}
+.upper-part .left-content {
+    text-align: left;
+}
+.upper-part .right-content {
+    text-align: right;
+}
+.lower-part {
+    background-color: #064E3B;
+    color: white;
+    padding: 10px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-radius: 10px;
+}
+.lower-part .left-content {
+    text-align: left;
+}
+.lower-part .right-content {
+    text-align: right;
+}
+.icon-container {
+    background-color: white;
+    border: 2px solid #65A30D;
+    border-radius: 50%;
+    padding: 30px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-right: 10px;
+}
+.icon-container i {
+    font-size: 90px;
+    color: #65A30D;
+}

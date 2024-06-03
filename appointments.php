@@ -1,7 +1,6 @@
 <?php
-    require 'template/config.php';
+    require 'template/config.php'; 
 ?>
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -44,19 +43,19 @@
     </center>
     <div class="center">
         <div class="container">
-            <a href="appointment-templates/checkup.php" class="container-link"><b>Check Up</b><i class="fas fa-arrow-right"></i></a>
+            <a href="store_session.php?service=Check Up" class="container-link"><b>Check Up</b><i class="fas fa-arrow-right"></i></a>
         </div>
         <div class="container">
-            <a href="appointment-templates/grooming.php" class="container-link"><b>Grooming</b><i class="fas fa-arrow-right"></i></a>
+            <a href="store_session.php?service=Grooming" class="container-link"><b>Grooming</b><i class="fas fa-arrow-right"></i></a>
         </div>
         <div class="container">
-            <a href="appointment-templates/dental.php" class="container-link"><b>Dental</b><i class="fas fa-arrow-right"></i></a>
+            <a href="store_session.php?service=Dental" class="container-link"><b>Dental</b><i class="fas fa-arrow-right"></i></a>
         </div>
         <div class="container">
-            <a href="appointment-templates/consultation.php" class="container-link"><b>Consultation</b><i class="fas fa-arrow-right"></i></a>
+            <a href="store_session.php?service=Consultation" class="container-link"><b>Consultation</b><i class="fas fa-arrow-right"></i></a>
         </div>
         <div class="container">
-            <a href="appointment-templates/vaccination.php" class="container-link"><b>Vaccination</b><i class="fas fa-arrow-right"></i></a>
+            <a href="store_session.php?service=Vaccination" class="container-link"><b>Vaccination</b><i class="fas fa-arrow-right"></i></a>
         </div>
     </div>
     <?php include_once 'template/footer.php';?>

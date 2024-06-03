@@ -5,7 +5,7 @@
         exit();
     }
     if (isset($_POST['next'])) {
-        header('Location: receipt.php');
+        header('Location: summary.php');
         exit();
     }
 ?>
@@ -30,25 +30,25 @@
     </center>
     <br>
     <center>
-        <form>
+        <form method="post">
             <div class="result">
                 <div class="result-box">
                     <table>
                         <tr>
                             <td><label for="txtAppointment"><b>Appointment: </b></label></td>
-                            <td><input type="text" name="txtAppointment"></td>
+                            <td><input type="text" name="txtAppointment" disabled></td>
                         </tr>
                         <tr>
                             <td><label for="txtAssigned"><b>Vet: </b></label></td>
-                            <td><input type="text" name="txtAssigned"></td>
+                            <td><input type="text" name="txtAssigned" disabled></td>
                         </tr>
                         <tr>
                             <td><label for="txtDate"><b>Date: </b></label></td>
-                            <td><input type="text" name="txtDate"></td>
+                            <td><input type="text" name="txtDate" disabled></td>
                         </tr>
                         <tr>
                             <td><label for="txtTime"><b>Time: </b></label></td>
-                            <td><input type="text" name="txtTime"></td>
+                            <td><input type="text" name="txtTime" disabled></td>
                         </tr>
                         <tr>
                             <td><br></td>
@@ -58,23 +58,23 @@
                         </tr>
                         <tr>
                             <td><label for="txtFName"><b>First Name: </b></label></td>
-                            <td><input type="text" name="txtFName"></td>
+                            <td><input type="text" name="txtFName" disabled></td>
                         </tr>
                         <tr>
                             <td><label fpr="txtLName"><b>Last Name: </b></label></td>
-                            <td><input type="text" name="txtLName"></td>
+                            <td><input type="text" name="txtLName" disabled></td>
                         </tr>
                         <tr>
                             <td><label for="txtContact"><b>Contact Number: </b></label></td>
-                            <td><input type="text" name="txtContact"></td>
+                            <td><input type="text" name="txtContact" disabled></td>
                         </tr>
                         <tr>
                             <td><label for="txtEmail"><b>Email: </b></label></td>
-                            <td><input type="text" name="txtEmail"></td>
+                            <td><input type="text" name="txtEmail" disabled></td>
                         </tr>
                         <tr>
                             <td><label for="txtAddress"><b>Address: </b></label></td>
-                            <td><input type="text" name="txtAddress"></td>
+                            <td><input type="text" name="txtAddress" disabled></td>
                         </tr>
                     </table>
                 </div>
@@ -82,23 +82,23 @@
                     <table>
                         <tr>
                             <td><label for="txtPName"><b>Pet Name: </b></label></td>
-                            <td><input type="text" name="txtPName"></td>
+                            <td><input type="text" name="txtPName" disabled></td>
                         </tr>
                         <tr>
                             <td><label for="txtPAge"><b>Pet Age: </b></label></td>
-                            <td><input type="text" name="txtPAge"></td>
+                            <td><input type="text" name="txtPAge" disabled></td>
                         </tr>
                         <tr>
                             <td><label for="txtPGender"><b>Pet Gender: </b></label></td>
-                            <td><input type="text" name="txtGender"></td>
+                            <td><input type="text" name="txtGender" disabled></td>
                         </tr>
                         <tr>
                             <td><label for="txtPType"><b>Pet Type: </b></label></td>
-                            <td><input type="text" name="txtPType"></td>
+                            <td><input type="text" name="txtPType" disabled></td>
                         </tr>
                         <tr>
                             <td><label for="txtPBreed"><b>Pet Breed: </b></label></td>
-                            <td><input type="text" name="txtPBreed"></td>
+                            <td><input type="text" name="txtPBreed" disabled></td>
                         </tr>
                     </table>
                     <div class="reminder">
