@@ -9,6 +9,8 @@
     $passwordError = '';
     $confirmPasswordError = '';
 
+    $registerSuccess = false;
+
     function emptyError($value){
         if(empty($value)){
             return 'Empty Field';
@@ -27,10 +29,10 @@
         $password = $_POST['txtPassword'];
         $confirmPassword = $_POST['txtConfirmPassword'];
 
-        $usernameLength = strlen($userName);
+        $userNameLength = strlen($userName);
         $passwordLength = strlen($password);
 
-        $check = 0;
+        $registerValidation = true;
 
         if(isset($_POST['btnRegister'])){
             
@@ -43,9 +45,8 @@
                 $usernameError = emptyError($userName);
                 $passwordError = emptyError($password);
                 $confirmPasswordError = emptyError($confirmPassword);
-            }
-            else{
-                $check += 1;
+
+                $registerValidation = false;
             }
 
             #CHINECHECK KUNG MAY SPECIAL CHARACTERS SA NAME
@@ -57,9 +58,8 @@
                 if (!preg_match("/^[a-zA-Z-' ]*$/", $firstName)) {
                     $firstNameError = 'Only letters and white space allowed.';
                 }
-            }
-            else{
-                $check += 1;
+
+                $registerValidation = false;
             }
 
             #CHINECHECK KUNG MAY USERNAME AND EMAIL SA DATABASE NA UNG TINYPE NG USER
@@ -71,16 +71,12 @@
 
             if($userInfo['userEmail'] == $email && !empty($email)){
                 $emailError = 'Email already found in the database. Please login or register a new email.';
-            }
-            else{
-                $check += 1;
+                $registerValidation = false;
             }
 
             if($loginInfo['username'] == $userName && !empty($userName)){
                 $usernameError = 'Username already found in the database. Please login or register a new email.';
-            }
-            else{
-                $check += 1;
+                $registerValidation = false;
             }
 
             $registerUserInfo->close();
@@ -88,44 +84,55 @@
 
             #CHINECHECK YUNG LENGTH NG USERNAME AT PASSWORD
             if($userNameLength < 6 || $passwordLength < 8){
-                if($userNameLength < 6 && empty($usernameError)){
+                if($userNameLength < 6 && !empty($usernameError)){
                     $usernameError = 'Username should be six characters or more.';
                 }
 
-                if($passwordLength < 8 && !empty($password)){
+                if($passwordLength < 8 && !empty($passwordError)){
                     $passwordError = 'Password should be eight characters or more.';
                 }
-            }
-            else{
-                $check += 1;
+                $registerValidation = false;
             }
 
             #CHINECHECK ANG FORMAT NG EMAIL AT CONTACT NUMBERR
             if(!preg_match('/^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/', $email) && !empty($email)){
                 $emailError = "Invalid Email";
-            }
-            else{
-                $check += 1;
+                $registerValidation = false;
             }
 
             if(!preg_match('/^(\+639\d{2}|09\d{2})[- ]?\d{3}[- ]?\d{4}$/', $contactNumber) && !empty($contactNumber)){
                 $contactNoError = "Invalid Number";
-            }
-            else{
-                $check += 1;
+                $registerValidation = false;
             }
 
             #CHINECHECK KUNG PAREHAS BA ANG SINULAT NI USER SA PASSWORD AT CONFIRM PASSWORD
             if($confirmPassword != $password && empty($confirmPasswordError)){
                 $confirmPasswordError = 'Password does not match.';
-            }
-            else{
-                $check += 1;
+                $registerValidation = false;
             }
 
             #REGISTRATION NA
-            if($check == 8){
+            if($registerValidation){
                 $hashedPass = password_hash($password, PASSWORD_DEFAULT);
+                $userType = 'user';
+
+                $registerAccount = $connection->prepare('INSERT INTO tbl_logininfo (username, userpassword, usertype) VALUES (?, ?, ?)');
+                $registerAccount->bind_param('sss', $userName, $hashedPass, $userType);
+                $registerAccount->execute();
+                if ($registerAccount->errno) {
+                    echo "Error executing SQL query: " . $registerAccount->error;
+                }
+                $registerAccount->close();
+
+                $findRegisteredID = $connection->execute_query('SELECT * FROM tbl_logininfo WHERE username = ? LIMIT 1', [$userName]);
+                $foundID = $findRegisteredID->fetch_assoc();
+
+                $registerAdditionalInfo = $connection->prepare('INSERT INTO tbl_userinfo (userID, userLastName, userFirstName, userMiddleInitial, userContactNumber, userEmail) VALUES (?, ?, ?, ?, ?, ?)');
+                $registerAdditionalInfo->bind_param('isssss', $foundID['userID'], $lastName, $firstName, $middleInitial, $contactNumber, $email);
+                $registerAdditionalInfo->execute();
+                $registerAdditionalInfo->close();
+
+                $registerSuccess = true;
             }
         }
     }
@@ -139,12 +146,29 @@
 
 <body>
     <div class="container register">
+
+        <!--SCREEN THAT APPEARS WHEN REGISTRATION IS SUCCESSFUL-->
+        <div class="information-screen" style="display:<?php if($registerSuccess){echo 'block';}else{echo 'none';}?>">
+            <div class="information-header">
+                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-check-circle-fill" viewBox="0 0 16 16">
+                <path d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0m-3.97-3.03a.75.75 0 0 0-1.08.022L7.477 9.417 5.384 7.323a.75.75 0 0 0-1.06 1.06L6.97 11.03a.75.75 0 0 0 1.079-.02l3.992-4.99a.75.75 0 0 0-.01-1.05z"/>
+                </svg>
+                SUCCESS
+            </div>
+            <p class="information-desc">Your registration has been successful. Please return to the <a href="login.php">login screen.</a></p>
+        </div>
+
+        <div class="black-background" style="display:<?php if($registerSuccess){echo 'block';}else{echo 'none';}?>"></div>
+
+        <!--REGISTER FIELD-->
         <div class="floating">
 
-            <h2 class="text-title">REGISTER</h2>
-            <hr class="line">
-            <p class="warning-ins">* - required</p>
-
+            <div class="title-field">
+                <h2 class="text-title">ACCOUNT REGISTRATION</h2>
+                <hr class="line">
+                <p class="warning-ins">* - required</p>
+            </div>
+            
             <form action="<?php echo htmlspecialchars($_SERVER['PHP_SELF']);?>" method="post" id="form-register">
 
                 <div class="name-container">
@@ -238,12 +262,11 @@
                 <!--BUTTON CONTAINERS-->
                 <div class="button-containers">
                     <input type="submit" name="btnRegister" class="btnLogin" value="Register">
-                    <input type="reset" name="btnClear" class="btnLogin" id="clear" value="Clear" onclick="clearForm()">
                 </div>
             </form>
 
             <!--BACK TO LOGIN-->
-            <p class="text-sub" style="margin-top:20px;">Back to <a href="login.php">Login</a></p>
+            <p class="text-sub">Back to <a href="login.php">Login</a></p>
         </div>
     </div>
     
@@ -268,20 +291,5 @@
             let value = e.target.value;
             e.target.value = value.replace(/[^0-9+\- ]/g, '');
         });
-
-        //CLEAR BUTTON
-        function clearForm() {
-            document.getElementById('form-register').reset();
-
-            const warnings = document.querySelectorAll('.warning');
-            warnings.forEach(warning => {
-                warning.textContent = '*';
-            });
-
-            const inputFields = document.querySelectorAll('.input-text');
-            inputFields.forEach(field => {
-                field.value = '';
-            });
-        }
     </script>
 </body>

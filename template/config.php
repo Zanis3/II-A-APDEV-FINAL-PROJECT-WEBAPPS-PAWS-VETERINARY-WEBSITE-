@@ -8,5 +8,9 @@
     define("DBPASSWORD", "");
     define("DBNAME", "pawsvet_db");
 
-    //$connection = new mysqli(DBHOST, DBUSER, DBPASSWORD, DBNAME);
+    $connection = new mysqli(DBHOST, DBUSER, DBPASSWORD, DBNAME);
+
+    if ($connection->connect_error) {
+        die("Connection failed: " . $connection->connect_error);
+      }
 ?>
