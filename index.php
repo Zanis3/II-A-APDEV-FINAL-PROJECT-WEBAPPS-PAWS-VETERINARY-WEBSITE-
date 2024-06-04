@@ -1,5 +1,10 @@
 <?php
     require 'template/config.php';
+
+    if(isset($_POST['book'])){
+        header('Location: appointments.php');
+        exit();
+    }
 ?>
 
 <!DOCTYPE html>
@@ -71,7 +76,7 @@
     <br>
     <br>
     <center>
-         <h2>Welcome to Paws Vet Clinic</h2>
+         <h2 style="color: #064E3B;">Welcome to Paws Vet Clinic</h2>
          <p><b>Caring for your pet's health is our foremost priority.</b></p>
     </center>
     <div class="container">
@@ -157,7 +162,7 @@
     <!--ARTICLE CONTAINER-->
     <div class="article-container">
         <center>
-            <h2>Facts</h2>
+            <h2 style="color: #064E3B;">Facts</h2>
             <p><b>Check out how you can take care of your fur babies!</b></p>
         </center>
         <div class="scrollable-container">
@@ -253,7 +258,7 @@
         <br>
         <br>
         <center>
-            <h2>Meet Our Team!</h2>
+            <h2 style="color: #064E3B;">Meet Our Team!</h2>
             <p><b>Meet the skilled professionals dedicated to your pet's well-being.</b></p>
         </center>
         <div class="grid-container">
@@ -335,7 +340,7 @@
         <br>
         <br>
         <center>
-            <h2>Client Feedback</h2>
+            <h2 style="color: #064E3B;">Client Feedback</h2>
             <p><b>Your feedback makes us strive for excellence!</b></p>
         </center>
         <div class="feedback-slide" style="display: block;">
@@ -406,7 +411,7 @@
     <!--EMBED MAP-->
     <div class="map-container">
         <center>
-            <h2>Our Location</h2>
+            <h2 style="color: #064E3B;">Our Location</h2>
             <p><b>Visit our clinic and see our loving family!</b></p>
         </center>
         <br>
@@ -422,7 +427,9 @@
             <p style="margin-top: 0; margin-bottom: 0; margin-left: 20%;"><b>Book an appointment now!</b></p>
         </div>
         <div class="content right">
-            <button type="button" class="book"><p><b>Book Appointment</b></p></button>
+            <form method="post">
+                <button type="submit" class="book" name="book"><p><b>Book Appointment</b></p></button>
+            </form>
         </div>
     </div>
     <?php include_once 'template/footer.php';?>
