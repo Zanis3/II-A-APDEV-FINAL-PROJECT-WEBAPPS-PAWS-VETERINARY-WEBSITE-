@@ -1,20 +1,16 @@
 <?php
-    if(isset($_POST['btnViewAppointments'])){
-        if($location == 'folder'){
-            header('Location: ../user/user-profile.php');
-        }
-        else{
-            header('Location: user/user-profile.php');
+    function locationValidation($value){
+        if($value == 'folder'){
+            return '../';
         }
     }
 
+    if(isset($_POST['btnViewAppointments'])){
+        header('Location: '. locationValidation($location) .'user/user-profile.php');
+    }
+
     if(isset($_POST['btnAccountSettings'])){
-        if($location == 'folder'){
-            header('Location: ../user/user-settings.php');
-        }
-        else{
-            header('Location: user/user-settings.php');
-        }
+        header('Location: '. locationValidation($location) .'user/user-settings.php');
     }
 
     if(isset($_POST['btnLogout'])){
@@ -22,41 +18,22 @@
         setcookie('username', $_SESSION['username'], time() - (86400 * 15), '/');
         session_destroy();
         $isLoggedIn = false;
-        header('Location: index.php');
+        header('Location: '. locationValidation($location) .'index.php');
     }
 ?>
 
 <div class="header">
-    <?php if($location == 'folder'):?>
-        <a href="../../II-A-APDEV-FINAL-PROJECT-WEBAPPS-PAWS-VETERINARY-WEBSITE-/index.php" id="header-link">
-    <?php else:?>
-        <a href="../II-A-APDEV-FINAL-PROJECT-WEBAPPS-PAWS-VETERINARY-WEBSITE-/index.php" id="header-link">
-    <?php endif;?>
+    <a href="<?php echo locationValidation($location)?>../II-A-APDEV-FINAL-PROJECT-WEBAPPS-PAWS-VETERINARY-WEBSITE-/index.php" id="header-link">
         <div class="website-logo">
-            <?php
-                if($location == 'folder'){
-                    echo '<img src="../img/gen/web-logo.png" class="web-logo">';
-                }
-                else{
-                    echo '<img src="img/gen/web-logo.png" class="web-logo">';
-                }
-            ?>
-            
+            <img src="<?php echo locationValidation($location);?>img/gen/web-logo.png" class="web-logo">
             <h1>Paws Veterinary</h1>
         </div>
     </a>
     <div class="navbar">
-        <?php if($location == 'folder'):?>
-            <a href="../index.php"><b> Home </b></a>
-            <a href="../services.php"><b> Services </b></a>
-            <a href="../appointments.php"><b> Set Appointment </b></a>
-            <a href="../about.php"><b> About Us </b></a>
-        <?php else:?>
-            <a href="index.php"><b> Home </b></a>
-            <a href="services.php"><b> Services </b></a>
-            <a href="appointments.php"><b> Set Appointment </b></a>
-            <a href="about.php"><b> About Us </b></a>
-        <?php endif;?>
+            <a href="<?php echo locationValidation($location);?>index.php"><b> Home </b></a>
+            <a href="<?php echo locationValidation($location);?>services.php"><b> Services </b></a>
+            <a href="<?php echo locationValidation($location);?>appointments.php"><b> Set Appointment </b></a>
+            <a href="<?php echo locationValidation($location);?>about.php"><b> About Us </b></a>
 
         <?php if($isLoggedIn): ?>
             <button id = "logged-in-user"><i class="fas fa-2x fa-user-circle"></i></button>
@@ -68,7 +45,7 @@
                 </form>
             </div>
         <?php else: ?>
-            <a href="login/login.php" id="nav-unique"><b> Login </b></a>
+            <a href="<?php echo locationValidation($location);?>login/login.php" id="nav-unique"><b> Login </b></a>
         <?php endif; ?>
     </div>
 
