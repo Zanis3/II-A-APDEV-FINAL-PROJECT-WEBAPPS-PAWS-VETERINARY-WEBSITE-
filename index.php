@@ -58,12 +58,12 @@
     <div class="hero-container">
         <div class="hero-text">
             <p id="hero-sub">Opening Hours:</p>
-            <h1 id="hero-title">Mon - Sat : 9 am - 5 am </h1>
+            <h1 id="hero-title">Mon - Sat : 9 am - 5 pm </h1>
             <hr class="line">
             <p id="hero-moto">GIVING QUALITY CARE FOR YOUR PETS!</p>
         </div>
         <div class="hero-img">
-            <img src="img/login/dog-login.jpg">
+            <img src="img/login/dog.png">
         </div>
     </div>
 
@@ -72,6 +72,7 @@
     <br>
     <center>
          <h2>Welcome to Paws Vet Clinic</h2>
+         <p><b>Caring for your pet's health is our foremost priority.</b></p>
     </center>
     <div class="container">
         <div class="icon-container left">
@@ -111,7 +112,7 @@
             </div>
         </div>
         <div class="center-img">
-            <img src="img/home/dog.png" alt="Dog Image">
+            <img style="width: 600px; height: 600px;" src="img/home/center-dog.png" alt="Dog Image">
         </div>
         <div class="icon-container right">
             <div class="icon">
@@ -135,7 +136,7 @@
                     </tr>
                     <tr>
                         <td style="text-align: right; color: #064E3B;"><b>COMFORTABILITY</b></td>
-                        <td><i class="fas fa-paw"></i></td>
+                        <td style="padding-left: 10px;"><i class="fas fa-paw"></i></td>
                     </tr>
                     <tr>
                         <td style="text-align: right;">
@@ -151,30 +152,40 @@
             </div>
         </div>
     </div>
-
+    <br>
+    <br>
     <!--ARTICLE CONTAINER-->
-    <div class="container sec">
-        <div class="text-container">
-            <h2 class="text-title">Healthy Pets for a Happy Life</h2>
-            <p class="text-sub">Read informative articles on pet care</p>
-        </div>
-        <div class="article-items">
-            <div class="arc-item">
-                <div class="arc-image one"></div>
-                <div class="arc-desc">
-                    <p class="arc-title">Benefits of Regular Check-ups</p>
-                    <p class="arc-descr">Regular vet check-ups can help detect health issues early on.</p>
-                </div>
+    <div class="article-container">
+        <center>
+            <h2>Articles</h2>
+            <p><b>Read Informative articles on pet care!</b></p>
+        </center>
+        <div class="scrollable-container">
+            <div class="arrow-container left-arrow" onclick="prevArticle()">
+                <i class="fas fa-chevron-left arrow"></i>
             </div>
-            <div class="arc-item">
-                <div class="arc-image two"></div>
-                <div class="arc-desc">
-                    <p class="arc-title">Pet Nutrition Tips</p>
-                    <p class="arc-descr">Learn about the importance of a balanced diet for your pet's health.</p>
-                </div>
+            <div class="scrollable-div">
+                <div class="article empty-article"></div>
+                <div class="article"></div>
+                <div class="article">Article 2</div>
+                <div class="article">Article 3</div>
+                <div class="article">Article 4</div>
+                <div class="article">Article 5</div>
+                <div class="article empty-article"></div>
+            </div>
+            <div class="arrow-container right-arrow" onclick="nextArticle()">
+                <i class="fas fa-chevron-right arrow"></i>
+            </div>
+            <div class="indicator-dots">
+                <span class="dot active"></span>
+                <span class="dot"></span>
+                <span class="dot"></span>
+                <span class="dot"></span>
+                <span class="dot"></span>
             </div>
         </div>
-    </div>
+    </div> 
+    <script src="script/home.js"></script>
 
     <!--TEAM CONTAINER-->
     <div class="container">
