@@ -22,7 +22,7 @@
             <img src="img/about-us-placeholder.jpg" alt="About Us Image">
         </div>
         <div class="about-info">
-            <p>Welcome to our veterinary clinic! We are dedicated to providing the best care for your pets. Our team of experienced veterinarians and staff are here to ensure your pets are healthy and happy. We offer a wide range of services including routine check-ups, vaccinations, surgeries, and emergency care. Your pet's well-being is our top priority.</p>
+            <p>Welcome to PAWS veterinary clinic! We are dedicated to providing the best care for your pets. Our team of experienced veterinarians and staff are here to ensure your pets are healthy and happy. We offer a wide range of services including routine check-ups, vaccinations, surgeries, and emergency care. Your pet's well-being is our top priority.</p>
         </div>
     </div>
 
