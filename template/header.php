@@ -40,7 +40,7 @@
         <?php if($isLoggedIn): ?>
             <button id = "logged-in-user"><i class="fas fa-2x fa-user-circle"></i></button>
             <div id="profile-dropdown">
-                <form action="<?php echo htmlspecialchars($_SERVER['PHP_SELF'])?>" method="post">
+                <form action="<?php echo htmlspecialchars($_SERVER['PHP_SELF'])?>" method="post" class="header-form">
                     <input type="submit" name="btnViewAppointments" value="View Appointments" class="profile-nav">
                     <input type="submit" name="btnAccountSettings" value="Account Settings" class="profile-nav">
                     <input type="submit" name="btnLogout" value="Logout" class="profile-nav log-out">
