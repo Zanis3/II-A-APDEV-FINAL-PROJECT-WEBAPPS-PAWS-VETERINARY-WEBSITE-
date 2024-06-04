@@ -157,8 +157,8 @@
     <!--ARTICLE CONTAINER-->
     <div class="article-container">
         <center>
-            <h2>Articles</h2>
-            <p><b>Read Informative articles on pet care!</b></p>
+            <h2>Facts</h2>
+            <p><b>Check out how you can take care of your fur babies!</b></p>
         </center>
         <div class="scrollable-container">
             <div class="arrow-container left-arrow" onclick="prevArticle()">
@@ -166,11 +166,72 @@
             </div>
             <div class="scrollable-div">
                 <div class="article empty-article"></div>
-                <div class="article"></div>
-                <div class="article">Article 2</div>
-                <div class="article">Article 3</div>
-                <div class="article">Article 4</div>
-                <div class="article">Article 5</div>
+                <div class="article">
+                    <div class="facts">
+                        <i style="font-size: 30px; margin-top: 2%; color: #65A30D" class="fas fa-heart"></i>
+                        <h3>Pet Care</h3>
+                        <hr class="line">
+                        <p>
+                            Just like humans, pets need a balanced diet to stay healthy. 
+                            Consult with a veterinarian to determine the best food 
+                            for your pet's age, size, and health needs. 
+                            Avoid feeding them human food that may be harmful to their health.
+                        </p>
+                    </div>
+                </div>
+                <div class="article">
+                    <div class="facts">
+                        <i style="font-size: 30px; margin-top: 2%; color: #65A30D" class="fas fa-dumbbell"></i>
+                        <h3>Regular Exercise</h3>
+                        <hr class="line">
+                        <p>
+                            All pets need regular physical activity to maintain a healthy 
+                            weight and mental stimulation. Take dogs for walks, 
+                            play games with cats, or provide toys and activities 
+                            appropriate for your pet's species.
+                        </p>
+                    </div>
+                </div>
+                <div class="article">
+                    <div class="facts">
+                        <i style="font-size: 30px; margin-top: 2%; color: #65A30D" class="fas fa-stethoscope"></i>
+                        <h3>Veterinary Care</h3>
+                        <hr class="line">
+                        <p>
+                            Regular check-ups with a veterinarian are crucial for 
+                            your pet's well-being. Vaccinations, parasite control, 
+                            dental care, and early detection of health issues are 
+                            all part of maintaining your pet's health.
+                        </p>
+                    </div>
+                </div>
+                <div class="article">
+                    <div class="facts">
+                        <i style="font-size: 30px; margin-top: 2%; color: #65A30D" class="fas fa-soap"></i></i>
+                        <h3>Grooming</h3>
+                        <hr class="line">
+                        <p>
+                            Regular grooming is important for many pets. Brushing 
+                            their fur, trimming nails, cleaning ears, and brushing 
+                            teeth are all tasks that help prevent health issues 
+                            and keep your pet comfortable and clean.
+                        </p>
+                    </div>
+                </div>
+                <div class="article">
+                    <div class="facts">
+                        <i style="font-size: 30px; margin-top: 2%; color: #65A30D" class="fas fa-bone"></i></i>
+                        <h3>Emotional Well-being</h3>
+                        <hr class="line">
+                        <p>
+                            Pets also need love, attention, and mental stimulation. 
+                            Spend quality time with your pet, provide enrichment 
+                            activities, and create a safe and comfortable environment 
+                            for them to thrive in. Recognize signs of stress or 
+                            illness and address them promptly.
+                        </p>
+                    </div>
+                </div>
                 <div class="article empty-article"></div>
             </div>
             <div class="arrow-container right-arrow" onclick="nextArticle()">
@@ -188,78 +249,182 @@
     <script src="script/home.js"></script>
 
     <!--TEAM CONTAINER-->
-    <div class="container">
-        <div class="text-container">
-            <h2 class="text-title">Our Team</h2>
-            <p class="text-sub">Meet our experienced veterinarians</p>
-        </div>
-        <div class="doctor-items">
-            <div class="doctor-item">
-                <div class="doc-image one"></div>
-                <div class="doc-text">
-                    <div class="doc-name">
-                        <p class="vet-name">Dr. Emily Johnson</p>
-                        <p class="vet-title">Veterinarian</p>
-                    </div>
-                    <p class="doc-desc">10+ Years of Experience</p>
+    <div class="doc-container">
+        <br>
+        <br>
+        <center>
+            <h2>Meet Our Team!</h2>
+            <p><b>Meet the skilled professionals dedicated to your pet's well-being.</b></p>
+        </center>
+        <div class="grid-container">
+            <div class="grid-item">
+                <img src="img/home/Dr.Doe.png" alt="Image 1">
+                <div class="info-container">
+                    <h5>Dr. Doe</h5>
+                    <p>Veterinarian</p>
                 </div>
             </div>
-            <div class="doctor-item">
-                <div class="doc-image two"></div>
-                <div class="doc-text">
-                    <div class="doc-name">
-                        <p class="vet-name">Dr. Michael Brown</p>
-                        <p class="vet-title">Surgeon</p>
-                    </div>
-                    <p class="doc-desc">Specializes in complex surgeries</p>
+            <div class="grid-item">
+                <img src="img/home/Dr.Smith.png" alt="Image 2">
+                <div class="info-container">
+                    <h5>Dr. Smith</h5>
+                    <p>Veterinarian</p>
+                </div>
+            </div>
+            <div class="grid-item">
+                <img src="img/home/Dr.White.png" alt="Image 7">
+                <div class="info-container">
+                    <h5>Dr. White</h5>
+                    <p>Veterinarian</p>
+                </div>
+            </div>
+            <div class="grid-item">
+                <img src="img/home/Dr.Nguyen.png" alt="Image 8">
+                <div class="info-container">
+                    <h5>Dr. Nguyen</h5>
+                    <p>Veterinarian</p>
+                </div>
+            </div>
+            <div class="grid-item">
+                <img src="img/home/Dr.Johnson.png" alt="Image 3">
+                <div class="info-container">
+                    <h5>Dr. Johnson</h5>
+                    <p>Surgeon</p>
+                </div>
+            </div>
+            <div class="grid-item">
+                <img src="img/home/Dr.Patel.png" alt="Image 4">
+                <div class="info-container">
+                    <h5>Dr. Patel</h5>
+                    <p>Surgeon</p>
+                </div>
+            </div>
+            <div class="grid-item">
+                <img src="img/home/Dr.Chen.png" alt="Image 5">
+                <div class="info-container">
+                    <h5>Dr. Chen</h5>
+                    <p>Dentist</p>
+                </div>
+            </div>
+            <div class="grid-item">
+                <img src="img/home/Dr.Rodriguez.png" alt="Image 6">
+                <div class="info-container">
+                    <h5>Dr. Rodriguez</h5>
+                    <p>Dentist</p>
+                </div>
+            </div>
+            <div class="grid-item">
+                <img src="img/home/Ms.Smith.png" alt="Image 9">
+                <div class="info-container">
+                    <h5>Ms. Smith</h5>
+                    <p>GPV</p>
+                </div>
+            </div>
+            <div class="grid-item">
+                <img src="img/home/Mr.Lee.png" alt="Image 10">
+                <div class="info-container">
+                    <h5>Mr. Lee</h5>
+                    <p>GPV</p>
                 </div>
             </div>
         </div>
     </div>
 
-    <!--APPOINTMENT CONTAINER-->
-    <div class="container appointment">
-        <div class="appointment-image"></div>
-        <div class="text-container">
-            <h2 class="text-title">Book an Appointment</h2>
-            <p class="text-sub">Schedule a visit for your pet!</p>
-            <form action="<?php echo htmlspecialchars($_SERVER['PHP_SELF'])?>" method="post">
-                <label for="txtPetName">Pet Name</label>
-                <input type="text" name="txtPetName" id="txtPetName" placeholder="Enter pet's name here." style="<?php if(!empty($nameError)){echo 'margin-bottom:auto;';}?>" value="<?php echo $_POST['txtPetName'];?>">
-                <div class="warning" style="margin-bottom:5px;"><?php echo $nameError;?></div>
-
-                <label for="txtDateOfAppointment">Preferred Date</label>
-                <input type="date" name="txtDateOfAppointment" id="txtDateOfAppointment" min="<?php echo date('Y-m-d');?>" max ="<?php echo date('Y-m-d', strtotime('+2 weeks'))?>" value="<?php echo $_POST['txtDateOfAppointment'];?>" placeholder="Select date.">
-                <div class="warning" style="margin-bottom:5px;"><?php echo $dateError;?></div>
-
-                <label for="txtTimeOfAppointment">Preferred Time</label>
-                <input type="time" name="txtTimeOfAppointment" id="txtTimeOfAppointment" min="09:00" max="17:00" step="3600000" value="<?php echo $_POST['txtTimeOfAppointment'];?>" placeholder="Select time.">
-                <div class="warning" style="margin-bottom:5px;"><?php echo $timeError;?></div>
-
-                <label for="radio-group">Pet Type</label>
-                <div class="radio-group" id="radio-group">
-
-                    <input type="radio" name="rdoPetType" id="pet-dog" value="Dog" class="radio-options" value="<?php if($_POST['rdoPetType'] == 'Dog'){echo 'checked';}?>">
-                    <label for="pet-dog" class="radio-labels">Dog</label>
-                    
-                    <input type="radio" name="rdoPetType" id="pet-cat" value="Cat" class="radio-options" value="<?php if($_POST['rdoPetType'] == 'Cat'){echo 'checked';}?>">
-                    <label for="pet-cat" class="radio-labels">Cat</label>
-
+    <!--FEEDBACK CONTAINER-->
+    <div class="review-container">
+        <br>
+        <br>
+        <center>
+            <h2>Client Feedback</h2>
+            <p><b>Your feedback makes us strive for excellence!</b></p>
+        </center>
+        <div class="feedback-slide" style="display: block;">
+            <center>
+                <div class="circle">
+                    <i class="fas fa-user"></i>
                 </div>
-
-                <div class="warning"><?php echo $radioError;?></div>
-
-                <input type="submit" name="btnAppointmentHome" class="btnAppointmentHome" value="Schedule Now">
-
-            </form>
-        </div>        
+            </center>
+            <hr class="line" style="width: 120px;">
+            <h3 style="margin-bottom: 0;">Jestin Clark V. Sacayle</h3>
+            <h4 style="margin-top: 0; color:#65A30D">Fur Parent</h4>
+            <p>....</p>
+        </div>
+        <div class="feedback-slide" style="display: none;">
+            <center>
+                <div class="circle">
+                    <i class="fas fa-user"></i>
+                </div>
+            </center>
+            <hr class="line" style="width: 120px;">
+            <h3 style="margin-bottom: 0;">Euvert Zion Pagad</h3>
+            <h4 style="margin-top: 0; color:#65A30D">Fur Parent</h4>
+            <p>....</p>
+        </div>
+        <div class="feedback-slide" style="display: none;">
+            <center>
+                <div class="circle">
+                    <i class="fas fa-user"></i>
+                </div>
+            </center>
+            <hr class="line" style="width: 120px;">
+            <h3 style="margin-bottom: 0;">Keannu Manabilang</h3>
+            <h4 style="margin-top: 0; color:#65A30D">Fur Parent</h4>
+            <p>....</p>
+        </div>
+        <div class="feedback-slide" style="display: none;">
+            <center>
+                <div class="circle">
+                    <i class="fas fa-user"></i>
+                </div>
+            </center>
+            <hr class="line" style="width: 120px;">
+            <h3 style="margin-bottom: 0;">Ijay Jaculbe</h3>
+            <h4 style="margin-top: 0; color:#65A30D">Fur Parent</h4>
+            <p>....</p>
+        </div>
+        <div class="feedback-slide" style="display: none;">
+            <center>
+                <div class="circle">
+                    <i class="fas fa-user"></i>
+                </div>
+            </center>
+            <hr class="line" style="width: 120px;">
+            <h3 style="margin-bottom: 0;">Alvin Villanueva</h3>
+            <h4 style="margin-top: 0; color:#65A30D">Fur Parent</h4>
+            <p>....</p>
+        </div>
+        <div class="dot-indicators">
+            <span class="dot active"></span>
+            <span class="dot"></span>
+            <span class="dot"></span>
+            <span class="dot"></span>
+            <span class="dot"></span>
+        </div>
     </div>
+    <script src="script/feedback.js"></script>
 
     <!--EMBED MAP-->
-    <div class="container">
+    <div class="map-container">
+        <center>
+            <h2>Our Location</h2>
+            <p><b>Visit our clinic and see our loving family!</b></p>
+        </center>
+        <br>
+        <br>
+        
         <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d36721.64408200152!2d120.93125248967084!3d14.662342305804902!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3397b5b2dae3a04f%3A0x5edf44f955d70f0f!2sFur-Paws%20Veterinary%20Clinic!5e0!3m2!1sen!2sph!4v1716812315376!5m2!1sen!2sph" width="1350" height="400" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
     </div>
-
+    
+    <!--BOOKING CONTAINER-->
+    <div class="booking-container">
+        <div class="content left">
+            <h2 style="margin-top: 0; margin-bottom: 0; margin-left: 20%; color: #E2EBE7">Need Assitance?</h2>
+            <p style="margin-top: 0; margin-bottom: 0; margin-left: 20%;"><b>Book an appointment now!</b></p>
+        </div>
+        <div class="content right">
+            <button type="button" class="book"><p><b>Book Appointment</b></p></button>
+        </div>
+    </div>
     <?php include_once 'template/footer.php';?>
     
 </body>

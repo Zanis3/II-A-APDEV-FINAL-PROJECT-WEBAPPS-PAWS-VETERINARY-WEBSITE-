@@ -323,157 +323,160 @@
     background-color: #717171;
 }
 
+.facts {
+    text-align: center;
+}
 
 /*TEAM CSS*/
 
+.doc-container {
+    padding: 20px;
+    height: 700px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+    position: relative;
+}
 
-.doc-image{
-    width:100px;
+.grid-container {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    grid-template-rows: repeat(2, auto);
+    gap: 20px;
+    padding: 20px;
+    margin-top: 2%;
+}
+
+.grid-item {
+    height: 220px;
+    width: 150px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    background: #E2EBE7;
+    border: 1px solid #65A30D;
+    border-radius: 8px;
+    overflow: hidden;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.grid-item:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+}
+
+.grid-item img {
+    width: 100%;
+    height: auto;
+}
+
+.info-container {
     height:100px;
+    padding: 2px;
 }
 
-.doctor-items{
+.info-container h5 {
+    margin: 5px 0;
+    font-size: 1.1em;
+}
+
+.info-container p {
+    margin: 2px 0;
+    color: #555;
+}
+
+/*FEEDBACK CSS*/
+
+
+.review-container {
+    padding: 20px;
+    height: 650px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+    position: relative;
+    background: var(--lighter-green);
+}
+
+.feedback-slide {
+    background-color: #064E3B;
+    border-color: #65A30D;
+    color: white;
+    border-radius: 10px;
+    width: 50%;
+    height: 40%;
+    padding: 20px;
+    margin-top: 2%;
+    margin-bottom: 3%;
+    text-align: center;
+}
+
+.circle {
+    border: 1px solid white;
+    border-radius: 50%;
+    height: 40px;
+    width: 40px;
+    font-size: 30px;
+    margin-top: 1%;
+    margin-bottom: 2%;
+}
+
+/*MAP CONTAINER*/
+.map-container {
+    padding: 20px;
+    height: 600px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+    position: relative;
+}
+
+/*BOOKING CONTAINER*/
+.booking-container {
+    background-color: #65A30D;
+    padding: 20px;
+    height: 100px;
     display: flex;
     align-items: center;
-    justify-content: center;
-    gap:20px;
+    justify-content: space-between; /* Adjust the space between the two divs */
 }
 
-.doctor-item{
-    width:240px;
-    height:290px;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
+.content {
+    padding: 10px;
+    margin: 5px;
+    flex: 1;
+    color: white;
 }
 
-.doc-image.one{
-    background-image: url("../img/home/doc-one.png");
-    background-size:cover;
-    background-position: center;
-    background-repeat: no-repeat;
+/* Additional CSS to position the divs */
+.left {
+    order: 1; /* Display the left div first */
 }
 
-.doc-image.two{
-    background-image: url("../img/home/doc-two.png");
-    background-size:cover;
-    background-position: center;
-    background-repeat: no-repeat;
+.right {
+    order: 2;
+    text-align: right; /* Display the right div second */
 }
-
-.doc-text{
-    display:flex;
-    align-items: center;
-    justify-content: center;
-    flex-direction: column;
+.book {
+    height: 53px;
+    width: 200px;
+    border-radius: 10px;
+    border: none;
+    background-color: #064E3B;
+    color: white;
+    margin-right: 20%;
+    font-size: 0.9em;
 }
-
-.doc-name{
-    display:flex;
-    align-items: center;
-    justify-content: center;
-    flex-direction: column;
+.book:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+    background-color:#176c55;
 }
-
-.vet-name{
-    font-weight: bold;
-    margin-bottom:0;
-    font-size: 20px;
-}
-
-.vet-title{
-    margin-top:0;
-    font-size: 16px;
-    color:grey;
-}
-
-.doc-desc{
-    font-weight: bold;
-    color:var(--dark-green);
-    font-size: 26px;
-    text-align:center;
-    margin-top:5px;
-}
-
-
-/*APPOINTMENT CSS*/
-
-
-.container.appointment{
-    height:550px;
-    background:var(--lighter-green);
-    justify-content: space-around;
-}
-
-.appointment-image{
-    width:500px;
-    height:380px;
-    background:var(--lighter-green);
-    background-image: url("../img/home/appointment-image.png");
-    background-size:cover;
-    background-position: center;
-    background-repeat: no-repeat;
-}
-
-label{
-    color:var(--dark-green);
-    font-weight: bold;
-}
-
-form{
-    display: flex;
-    justify-content: center;
-    flex-direction: column;
-}
-
-#txtPetName, #txtDateOfAppointment, #txtTimeOfAppointment{
-    border:none;
-    background:white;
-    width:500px;
-    height:36px;
-    padding: 8px 12px;
-    outline:var(--dark-green);
-    margin-bottom:20px;
-}
-
-.radio-group{
-    display:flex;
-    gap:10px;
-    margin-top:5px;
-}
-
-.radio-options{
-    display:none;
-}
-
-.radio-labels{
-    padding:5px 15px;
-    background:var(--light-green);
-    color:white;
-    cursor:pointer;
-    font-size:14px;
-    border-radius:5px;
-}
-
-.radio-options:checked + .radio-labels {
-    background: var(--dark-green);
-}
-
-.btnAppointmentHome{
-    color:white;
-    background:var(--light-green);
-    width:35%;
-    padding:10px 10px;
-    border:none;
-    font-size: 18px;
-    font-weight: bold;
-    margin-top:15px;
-    cursor:pointer;
-    border-radius:5px;
-}
-
-.btnAppointmentHome:hover , .radio-labels:hover{
-    background:var(--dark-green);
-    transition:0.7s;
+.book:active {
+    background-color: #064E3B;
+    transform: translateY(1px);
 }
