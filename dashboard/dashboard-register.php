@@ -2,6 +2,7 @@
     require '../template/config.php';
 
     $usernameError = '';
+    $emailError = '';
     $passwordError = '';
     $confirmPasswordError = '';
 
@@ -15,6 +16,7 @@
 
     if($_SERVER['REQUEST_METHOD'] === "POST"){
         $username = $_POST['txtUsername'];
+        $email = $_POST['txtEmail'];
         $password = $_POST['txtPassword'];
         $confirmPassword = $_POST['txtConfirmPassword'];
 
@@ -23,21 +25,33 @@
         $passwordLength = strlen($password);
 
         if(isset($_POST['btnRegister'])){
-            if(empty($username) || empty($password) || empty($confirmPassword)){
+            if(empty($username) || empty($email) || empty($password) || empty($confirmPassword)){
                 $usernameError = emptyError($username);
+                $emailError = emptyError($email);
                 $passwordError = emptyError($password);
                 $confirmPasswordError = emptyError($confirmPassword);
 
                 $registerValidation = false;
             }
 
-            $findAccount = $connection->execute_query('SELECT * FROM tbl_logininfo WHERE username = ? LIMIT 1', [$username]);
-            $account = $findAccount->fetch_assoc();
+            $findUsername = $connection->execute_query('SELECT * FROM tbl_logininfo WHERE username = ? LIMIT 1', [$username]);
+            $userNameQuery = $findUsername->fetch_assoc();
 
-            if($account && empty($usernameError)){
+            $findEmail = $connection->execute_query('SELECT * FROM tbl_logininfo WHERE userEmail = ? LIMIT 1', [$email]);
+            $emailQuery = $findEmail->fetch_assoc();
+
+            if($userNameQuery && empty($usernameError)){
                 $usernameError = 'Username already in database. Please try again.';
                 $registerValidation = false;
             }
+
+            if($emailQuery && empty($emailError)){
+                $emailError = 'Email already in database. Please try again.';
+                $registerValidation = false;
+            }
+
+            $findUsername->close();
+            $findEmail->close();
 
             if($passwordLength < 8){
                 $passwordError = 'Password should be eight characters or more.';
@@ -53,15 +67,13 @@
                 $hashedPass = password_hash($password, PASSWORD_DEFAULT);
                 $userType = 'admin';
 
-                $registerAdmin = $connection->prepare('INSERT INTO tbl_logininfo (username, userpassword, usertype) VALUES (?, ?, ?)');
-                $registerAdmin->bind_param('sss', $username, $hashedPass, $userType);
+                $registerAdmin = $connection->prepare('INSERT INTO tbl_logininfo (username, userEmail, userpassword, usertype) VALUES (?, ?, ?, ?)');
+                $registerAdmin->bind_param('ssss', $username, $email, $hashedPass, $userType);
                 $registerAdmin->execute();
                 $registerAdmin->close();
 
                 $registerSuccess = true;
             }
-
-            $findAccount->close();
         } 
     }
 ?>
@@ -100,6 +112,13 @@
                     <input type="text" name="txtUsername" class="input-types" placeholder="Username" value="<?php echo htmlspecialchars($_POST['txtUsername']);?>">
                 </div>
                 <p class="warning"><?php echo $usernameError;?></p>
+
+                <!--EMAIL-->
+                <div class="form-item">
+                    <label for="txtEmail">Email:</label>
+                    <input type="text" name="txtEmail" class="input-types" placeholder="Email" value="<?php echo htmlspecialchars($_POST['txtEmail']);?>">
+                </div>
+                <p class="warning"><?php echo $emailError;?></p>
                 
                 <!--PASSWORD-->
                 <div class="form-item pass">

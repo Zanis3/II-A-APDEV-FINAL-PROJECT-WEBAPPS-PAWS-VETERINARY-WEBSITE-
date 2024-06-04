@@ -68,24 +68,24 @@
             }
 
             #CHINECHECK KUNG MAY USERNAME AND EMAIL SA DATABASE NA UNG TINYPE NG USER
-            $registerUserInfo = $connection->execute_query('SELECT * FROM tbl_userinfo WHERE userEmail = ? LIMIT 1', [$email]);
-            $userInfo = $registerUserInfo->fetch_assoc();
+            $query1 = $connection->execute_query('SELECT * FROM tbl_logininfo WHERE userEmail = ? LIMIT 1', [$email]);
+            $emailQuery = $query1->fetch_assoc();
 
-            $registerLoginInfo = $connection->execute_query('SELECT * FROM tbl_logininfo WHERE username = ? LIMIT 1', [$userName]);
-            $loginInfo = $registerLoginInfo->fetch_assoc();
+            $query2 = $connection->execute_query('SELECT * FROM tbl_logininfo WHERE username = ? LIMIT 1', [$userName]);
+            $userNameQuery = $query2->fetch_assoc();
 
-            if($userInfo['userEmail'] == $email && !empty($email)){
+            if($emailQuery['userEmail'] == $email && !empty($email)){
                 $emailError = 'Email already found in the database. Please login or register a new email.';
                 $registerValidation = false;
             }
 
-            if($loginInfo['username'] == $userName && !empty($userName)){
+            if($userNameQuery['username'] == $userName && !empty($userName)){
                 $usernameError = 'Username already found in the database. Please login or register a new email.';
                 $registerValidation = false;
             }
 
-            $registerUserInfo->close();
-            $registerLoginInfo->close();
+            $query1->close();
+            $query2->close();
 
             #CHINECHECK YUNG LENGTH NG USERNAME AT PASSWORD
             if($userNameLength < 6 || $passwordLength < 8){
@@ -121,8 +121,8 @@
                 $hashedPass = password_hash($password, PASSWORD_DEFAULT);
                 $userType = 'user';
 
-                $registerAccount = $connection->prepare('INSERT INTO tbl_logininfo (username, userpassword, usertype) VALUES (?, ?, ?)');
-                $registerAccount->bind_param('sss', $userName, $hashedPass, $userType);
+                $registerAccount = $connection->prepare('INSERT INTO tbl_logininfo (username, userEmail, userpassword, usertype) VALUES (?, ?, ?, ?)');
+                $registerAccount->bind_param('ssss', $userName, $email, $hashedPass, $userType);
                 $registerAccount->execute();
                 if ($registerAccount->errno) {
                     echo "Error executing SQL query: " . $registerAccount->error;
@@ -132,8 +132,8 @@
                 $findRegisteredID = $connection->execute_query('SELECT * FROM tbl_logininfo WHERE username = ? LIMIT 1', [$userName]);
                 $foundID = $findRegisteredID->fetch_assoc();
 
-                $registerAdditionalInfo = $connection->prepare('INSERT INTO tbl_userinfo (userID, userLastName, userFirstName, userMiddleInitial, userContactNumber, userEmail) VALUES (?, ?, ?, ?, ?, ?)');
-                $registerAdditionalInfo->bind_param('isssss', $foundID['userID'], $lastName, $firstName, $middleInitial, $contactNumber, $email);
+                $registerAdditionalInfo = $connection->prepare('INSERT INTO tbl_userinfo (userID, userLastName, userFirstName, userMiddleInitial, userContactNumber) VALUES (?, ?, ?, ?, ?)');
+                $registerAdditionalInfo->bind_param('issss', $foundID['userID'], $lastName, $firstName, $middleInitial, $contactNumber);
                 $registerAdditionalInfo->execute();
                 $registerAdditionalInfo->close();
 

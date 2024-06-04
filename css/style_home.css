@@ -315,6 +315,7 @@
     color: #555;
 }
 
+
 /*FEEDBACK CSS*/
 
 
@@ -353,6 +354,8 @@
 }
 
 /*MAP CONTAINER*/
+
+
 .map-container {
     padding: 20px;
     height: 600px;
@@ -363,14 +366,17 @@
     position: relative;
 }
 
+
 /*BOOKING CONTAINER*/
+
+
 .booking-container {
     background-color: #65A30D;
     padding: 20px;
     height: 100px;
     display: flex;
     align-items: center;
-    justify-content: space-between; /* Adjust the space between the two divs */
+    justify-content: space-between;
 }
 
 .content {
@@ -380,15 +386,15 @@
     color: white;
 }
 
-/* Additional CSS to position the divs */
 .left {
-    order: 1; /* Display the left div first */
+    order: 1;
 }
 
 .right {
     order: 2;
-    text-align: right; /* Display the right div second */
+    text-align: right;
 }
+
 .book {
     height: 53px;
     width: 200px;
@@ -398,12 +404,15 @@
     color: white;
     margin-right: 20%;
     font-size: 0.9em;
+    cursor:pointer;
 }
+
 .book:hover {
     transform: translateY(-3px);
     box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
     background-color:#176c55;
 }
+
 .book:active {
     background-color: #064E3B;
     transform: translateY(1px);

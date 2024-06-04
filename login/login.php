@@ -89,13 +89,12 @@
         <div class="floating">
             <h2 class="text-title">LOGIN</h2>
             <hr class="line">
-            <br>
             <form method="post" action="<?php echo htmlspecialchars($_SERVER['PHP_SELF']);?>">
                 
                 <!--USERNAME CONTAINER-->
                 <label for="txtUsername" class="login-label">Username: </label>
                 <input type="text" name="txtUsername" id="txtUsername" class="input-text" placeholder="Username" value="<?php echo $_POST['txtUsername'];?>">
-                <p class="warning" style="width:100%; margin-top:0; margin-bottom:10px;"><?php echo htmlspecialchars($userNameError); ?></p>
+                <p class="warning" style="width:100%; margin-top:0;"><?php echo htmlspecialchars($userNameError); ?></p>
 
                 <!--PASSWORD CONTAINER-->
                 <label for="txtPassword" class="login-label">Password: </label>
@@ -103,17 +102,16 @@
                     <input type="password" name="txtPassword" id="txtPassword" class="input-text txtPassword" placeholder="Password" value="<?php echo $_POST['txtPassword'];?>">
                     <button type="button" class="btnShow login" name="btnShow">Show</button>
                 </div>
-                <p class="warning" style="width:100%; margin-top:0; margin-bottom:20px;"><?php echo htmlspecialchars($passwordError); ?></p>
+                <p class="warning" style="width:100%; margin-top:0;"><?php echo htmlspecialchars($passwordError); ?></p>
 
                 <!--REMEMBER CONTAINER-->
-                <div class="remember-me-container" style="margin-bottom:20px;">
+                <div class="remember-me-container">
                     <input type="checkbox" name="chkRemember" id="chkRemember" value="Remember">
                     <label for="chkRemember">Remember me</label>
                 </div>
 
                 <input type="submit" name="btnLogIn" class="btnLogin" value="Login">
             </form>
-            <br>
             <p class="text-sub">No Account? Please Register <a href="register.php">here!</a></p>
         </div>
     </div>

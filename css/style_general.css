@@ -89,7 +89,7 @@ img{
     justify-content: center;
 }
 
-.logged-in-user{
+#logged-in-user{
     border:none;
     color:var(--dark-green);
     width:48px;
@@ -98,7 +98,7 @@ img{
     cursor:pointer;
 }
 
-.logged-in-user:hover{
+#logged-in-user:hover{
     color:var(--light-green);
     transition:0.7s;
 }
@@ -117,4 +117,72 @@ img{
 
 .footer p{
     color:var(--dark-green);
+}
+
+
+/*USER LOGIN BUTTON CSS*/
+
+
+#profile-dropdown{
+    display:none;
+    width:10%;
+    height:125px;
+    top:0;
+    right:25px;
+    position:absolute;
+    background:var(--lighter-green);
+    border-radius: 0px 0px 5px 5px;
+    overflow:hidden;
+}
+
+@keyframes slideDown {
+    0% {
+        top: 0px;
+    }
+    100% {
+        top: 80px;
+    }
+}
+
+@keyframes slideUp {
+    0% {
+        top: 80px;
+    }
+    100% {
+        top: 0px;
+    }
+}
+
+form{
+    display:flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    gap:10px;
+    height:100%;
+    width:100%;
+}
+
+.profile-nav{
+    cursor:pointer;
+    border:none;
+    background:none;
+    color: var(--dark-green);
+    font-weight: bold;
+    font-size: 18px;
+    width:100%;
+    text-align:right;
+}
+
+.profile-nav:hover{
+    transition:0.7s;
+    color: var(--light-green);
+}
+
+.log-out{
+    color: var(--red);
+}
+
+.log-out:hover{
+    color:var(--light-red);
 }
