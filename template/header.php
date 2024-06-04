@@ -1,3 +1,21 @@
+<?php
+    if(isset($_POST['btnViewAppointments'])){
+        header('Location: user/user-profile.php');
+    }
+
+    if(isset($_POST['btnAccountSettings'])){
+        header('Location: user/user-settings.php');
+    }
+
+    if(isset($_POST['btnLogout'])){
+        setcookie('isLoggedIn', $_SESSION['login'], time() - (86400 * 15), '/');
+        setcookie('username', $_SESSION['username'], time() - (86400 * 15), '/');
+        session_destroy();
+        $isLoggedIn = false;
+        header('Location: index.php');
+    }
+?>
+
 <div class="header">
     <a href="../II-A-APDEV-FINAL-PROJECT-WEBAPPS-PAWS-VETERINARY-WEBSITE-/index.php" id="header-link">
         <div class="website-logo">
@@ -18,20 +36,50 @@
         <a href="services.php"><b> Services </b></a>
         <a href="appointments.php"><b> Set Appointment </b></a>
         <a href="about.php"><b> About Us </b></a>
-        <?php
-            $isLoggedIn = $_SESSION['login'];
 
-            if($isLoggedIn){
-                echo '<button class = "logged-in-user">
-                    <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" fill="currentColor" class="bi bi-person-circle" viewBox="0 0 16 16">
-                    <path d="M11 6a3 3 0 1 1-6 0 3 3 0 0 1 6 0"/>
-                    <path fill-rule="evenodd" d="M0 8a8 8 0 1 1 16 0A8 8 0 0 1 0 8m8-7a7 7 0 0 0-5.468 11.37C3.242 11.226 4.805 10 8 10s4.757 1.225 5.468 2.37A7 7 0 0 0 8 1"/>
-                    </svg>
-                </button>';
-            }
-            else{
-                echo '<a href="login/login.php" id="nav-unique"><b> Login </b></a>';
-            }
-        ?>
+        <?php if($isLoggedIn): ?>
+            <button id = "logged-in-user"><i class="fas fa-2x fa-user-circle"></i></button>
+            <div id="profile-dropdown">
+                <form action="<?php echo htmlspecialchars($_SERVER['PHP_SELF'])?>" method="post" class="header-form">
+                    <input type="submit" name="btnViewAppointments" value="View Appointments" class="profile-nav">
+                    <input type="submit" name="btnAccountSettings" value="Account Settings" class="profile-nav">
+                    <input type="submit" name="btnLogout" value="Logout" class="profile-nav log-out">
+                </form>
+            </div>
+        <?php else: ?>
+            <a href="login/login.php" id="nav-unique"><b> Login </b></a>
+        <?php endif; ?>
     </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            var userButton = document.getElementById('logged-in-user');
+            var dropdown = document.getElementById('profile-dropdown');
+            var isDropdownVisible = false;
+            
+            userButton.addEventListener('click', function(event) {
+                if(!isDropdownVisible) {
+                    dropdown.style.animation = 'slideDown 1s forwards';
+                    dropdown.style.display = 'flex';
+                    userButton.style.color = 'var(--light-green)';
+                    isDropdownVisible = true;
+                } else {
+                    dropdown.style.animation = 'slideUp 1s forwards';
+                    dropdown.style.display = 'none';
+                    userButton.style.color = 'var(--dark-green)';
+                    isDropdownVisible = false;
+                }
+                
+                event.stopPropagation();
+            });
+
+            window.addEventListener('click', function(event) {
+                if(isDropdownVisible && !event.target.matches('#logged-in-user')) {
+                    dropdown.style.animation = 'slideUp 1s forwards';
+                    dropdown.style.display = 'none';
+                    isDropdownVisible = false;
+                }
+            });
+        });
+    </script>
 </div>

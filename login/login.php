@@ -10,9 +10,15 @@
         }
     }
 
+    #REDIRECT SA HOME PAGE PAG LOGGED IN NA
+    if($isLoggedIn){
+        header('Location: ../index.php');
+    }
+
     if($_SERVER['REQUEST_METHOD'] === "POST"){
         $username = $_POST['txtUsername'];
         $password = $_POST['txtPassword'];
+        $remember = $_POST['chkRemember'];
 
         $loginValidation = true;
 
@@ -46,9 +52,17 @@
 
             #LOGIN VALIDATION
             if($loginValidation){
+                $_SESSION['login'] = true;
+                $_SESSION['username'] = $username;
+
+                #REMEMBER ACCOUNT KAHIT I EXIT ANG BROWSER (15 DAYS)
+                if($remember == 'Remember' && $account['usertype'] == 'user'){
+                    setcookie('isLoggedIn', $_SESSION['login'], time() + (86400 * 15), '/');
+                    setcookie('username', $_SESSION['username'], time() + (86400 * 15), '/');
+                }
+
+                #REDIRECT ACCOUNT TO THEIR ROLE
                 if($account['usertype'] == 'user'){
-                    $_SESSION['login'] = true;
-                    $_SESSION['username'] = $username;
                     header('Location: ../index.php');
                 }
                 elseif($account['usertype'] == 'doctor'){
@@ -77,16 +91,25 @@
             <hr class="line">
             <br>
             <form method="post" action="<?php echo htmlspecialchars($_SERVER['PHP_SELF']);?>">
+                
+                <!--USERNAME CONTAINER-->
                 <label for="txtUsername" class="login-label">Username: </label>
                 <input type="text" name="txtUsername" id="txtUsername" class="input-text" placeholder="Username" value="<?php echo $_POST['txtUsername'];?>">
                 <p class="warning" style="width:100%; margin-top:0; margin-bottom:10px;"><?php echo htmlspecialchars($userNameError); ?></p>
 
+                <!--PASSWORD CONTAINER-->
                 <label for="txtPassword" class="login-label">Password: </label>
                 <div class="password-container">
                     <input type="password" name="txtPassword" id="txtPassword" class="input-text txtPassword" placeholder="Password" value="<?php echo $_POST['txtPassword'];?>">
                     <button type="button" class="btnShow login" name="btnShow">Show</button>
                 </div>
                 <p class="warning" style="width:100%; margin-top:0; margin-bottom:20px;"><?php echo htmlspecialchars($passwordError); ?></p>
+
+                <!--REMEMBER CONTAINER-->
+                <div class="remember-me-container" style="margin-bottom:20px;">
+                    <input type="checkbox" name="chkRemember" id="chkRemember" value="Remember">
+                    <label for="chkRemember">Remember me</label>
+                </div>
 
                 <input type="submit" name="btnLogIn" class="btnLogin" value="Login">
             </form>
