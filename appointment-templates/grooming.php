@@ -1,7 +1,7 @@
 <?php
-    session_start();
+    require '../template/config.php';
 
-    $location = 'dashboard';
+    $location = 'folder';
     if (isset($_POST['back'])) {
         header('Location: ../appointments.php');
         exit();
@@ -9,9 +9,9 @@
 
     if (isset($_GET['vet'])) {
         $selectedVet = $_GET['vet'];
-        $_SESSION['selectedVet'] = $selectedVet; // Store the selected vet in the session
-        header("Location: schedule.php"); // Redirect to the schedule page
-        exit(); // Ensure no further code is executed after the redirect
+        $_SESSION['selectedVet'] = $selectedVet;
+        header("Location: schedule.php");
+        exit();
     }
 ?>
 <head>

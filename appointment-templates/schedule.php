@@ -1,17 +1,17 @@
 <?php
-session_start(); // Start the session
-$location = 'dashboard';
-// Handle the form submission
-if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-    if (isset($_POST['selected_date']) && isset($_POST['selected_time'])) {
-        $_SESSION['selected_date'] = $_POST['selected_date'];
-        $_SESSION['selected_time'] = $_POST['selected_time'];
+    require '../template/config.php';
+    $location = 'folder';
+
+    if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+        if (isset($_POST['selected_date']) && isset($_POST['selected_time'])) {
+            $_SESSION['selected_date'] = $_POST['selected_date'];
+            $_SESSION['selected_time'] = $_POST['selected_time'];
+        }
+        if (isset($_POST['next'])) {
+            header('Location: information.php');
+            exit();
+        }
     }
-    if (isset($_POST['next'])) {
-        header('Location: information.php');
-        exit();
-    }
-}
 ?>
 <!DOCTYPE html>
 <html lang="en">

@@ -1,10 +1,20 @@
 <?php
     if(isset($_POST['btnViewAppointments'])){
-        header('Location: user/user-profile.php');
+        if($location == 'folder'){
+            header('Location: ../user/user-profile.php');
+        }
+        else{
+            header('Location: user/user-profile.php');
+        }
     }
 
     if(isset($_POST['btnAccountSettings'])){
-        header('Location: user/user-settings.php');
+        if($location == 'folder'){
+            header('Location: ../user/user-settings.php');
+        }
+        else{
+            header('Location: user/user-settings.php');
+        }
     }
 
     if(isset($_POST['btnLogout'])){
@@ -17,11 +27,15 @@
 ?>
 
 <div class="header">
-    <a href="../II-A-APDEV-FINAL-PROJECT-WEBAPPS-PAWS-VETERINARY-WEBSITE-/index.php" id="header-link">
+    <?php if($location == 'folder'):?>
+        <a href="../../II-A-APDEV-FINAL-PROJECT-WEBAPPS-PAWS-VETERINARY-WEBSITE-/index.php" id="header-link">
+    <?php else:?>
+        <a href="../II-A-APDEV-FINAL-PROJECT-WEBAPPS-PAWS-VETERINARY-WEBSITE-/index.php" id="header-link">
+    <?php endif;?>
         <div class="website-logo">
             <?php
-                if($location == 'dashboard'){
-                    echo '<img src="../../img/gen/web-logo.png" class="web-logo">';
+                if($location == 'folder'){
+                    echo '<img src="../img/gen/web-logo.png" class="web-logo">';
                 }
                 else{
                     echo '<img src="img/gen/web-logo.png" class="web-logo">';
@@ -32,10 +46,17 @@
         </div>
     </a>
     <div class="navbar">
-        <a href="index.php"><b> Home </b></a>
-        <a href="services.php"><b> Services </b></a>
-        <a href="appointments.php"><b> Set Appointment </b></a>
-        <a href="about.php"><b> About Us </b></a>
+        <?php if($location == 'folder'):?>
+            <a href="../index.php"><b> Home </b></a>
+            <a href="../services.php"><b> Services </b></a>
+            <a href="../appointments.php"><b> Set Appointment </b></a>
+            <a href="../about.php"><b> About Us </b></a>
+        <?php else:?>
+            <a href="index.php"><b> Home </b></a>
+            <a href="services.php"><b> Services </b></a>
+            <a href="appointments.php"><b> Set Appointment </b></a>
+            <a href="about.php"><b> About Us </b></a>
+        <?php endif;?>
 
         <?php if($isLoggedIn): ?>
             <button id = "logged-in-user"><i class="fas fa-2x fa-user-circle"></i></button>

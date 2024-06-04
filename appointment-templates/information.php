@@ -1,10 +1,8 @@
 <?php
-    session_start(); // Start the session
-
-    // Handle the form submission
-    $location = 'dashboard';
+    require '../template/config.php';
+    
+    $location = 'folder';
     if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-        // Store form data in session variables
         $_SESSION['txtLName'] = $_POST['txtLName'] ?? '';
         $_SESSION['txtFName'] = $_POST['txtFName'] ?? '';
         $_SESSION['txtContact'] = $_POST['txtContact'] ?? '';

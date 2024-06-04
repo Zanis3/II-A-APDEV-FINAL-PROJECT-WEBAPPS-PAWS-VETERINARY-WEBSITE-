@@ -1,7 +1,7 @@
 <?php
-    session_start(); // Start the session
+    require '../template/config.php';
 
-    $location = 'dashboard';
+    $location = 'folder';
     if (isset($_POST['back'])) {
         header('Location: information.php');
         exit();

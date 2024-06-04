@@ -1,5 +1,7 @@
 <?php
-    $location = 'dashboard';
+    require '../template/config.php';
+
+    $location = 'folder';
     if (isset($_POST['back'])) {
         header('Location: ../index.php');
         exit();
@@ -15,7 +17,7 @@
     <link rel="stylesheet" href="../css/style_appointment.css">
     <link rel="stylesheet" href="../css/calendar.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
-    <link rel="shortcut icon" href="img/gen/web-logo.png" type="image/png">
+    <link rel="shortcut icon" href="../img/gen/web-logo.png" type="image/png">
     
 </head>
 <body>
