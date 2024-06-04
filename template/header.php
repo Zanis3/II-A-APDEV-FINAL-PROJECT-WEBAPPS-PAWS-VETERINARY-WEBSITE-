@@ -1,34 +1,41 @@
 <?php
+    #FUNCTION PARA MAIDENTIFY KUNG SAAN UNG DIRECTORY NG BAWAT PHP FILE
     function locationValidation($value){
         if($value == 'folder'){
             return '../';
         }
     }
 
-    if(isset($_POST['btnViewAppointments'])){
-        header('Location: '. locationValidation($location) .'user/user-profile.php');
-    }
-
-    if(isset($_POST['btnAccountSettings'])){
-        header('Location: '. locationValidation($location) .'user/user-settings.php');
-    }
-
-    if(isset($_POST['btnLogout'])){
-        setcookie('isLoggedIn', $_SESSION['login'], time() - (86400 * 15), '/');
-        setcookie('username', $_SESSION['username'], time() - (86400 * 15), '/');
-        session_destroy();
-        $isLoggedIn = false;
-        header('Location: '. locationValidation($location) .'index.php');
+    #HEADER KUNG SAAN MAPUPUNTA BAWAT INPUT TYPE SUBMIT SA DROPDOWN PAG NAKA LOGIN SI USER
+    if($_SERVER['REQUEST_METHOD'] === "POST"){
+        if(isset($_POST['btnViewAppointments'])){
+            header('Location: '. locationValidation($location) .'user/user-profile.php');
+        }
+    
+        if(isset($_POST['btnAccountSettings'])){
+            header('Location: '. locationValidation($location) .'user/user-settings.php');
+        }
+    
+        if(isset($_POST['btnLogout'])){
+            setcookie('isLoggedIn', $_SESSION['login'], time() - (86400 * 15), '/');
+            setcookie('username', $_SESSION['username'], time() - (86400 * 15), '/');
+            session_destroy();
+            $isLoggedIn = false;
+            header('Location: '. locationValidation($location) .'index.php');
+        }
     }
 ?>
 
 <div class="header">
+    <!--HEADER LOGO AND TITLE-->
     <a href="<?php echo locationValidation($location)?>../II-A-APDEV-FINAL-PROJECT-WEBAPPS-PAWS-VETERINARY-WEBSITE-/index.php" id="header-link">
         <div class="website-logo">
             <img src="<?php echo locationValidation($location);?>img/gen/web-logo.png" class="web-logo">
             <h1>Paws Veterinary</h1>
         </div>
     </a>
+
+    <!--NAVBAR-->
     <div class="navbar">
             <a href="<?php echo locationValidation($location);?>index.php"><b> Home </b></a>
             <a href="<?php echo locationValidation($location);?>services.php"><b> Services </b></a>
@@ -50,6 +57,7 @@
     </div>
 
     <script>
+        //SCRIPT PARA MA DROPDOWN UNG SA USER DROPDOWN
         document.addEventListener('DOMContentLoaded', function() {
             var userButton = document.getElementById('logged-in-user');
             var dropdown = document.getElementById('profile-dropdown');
