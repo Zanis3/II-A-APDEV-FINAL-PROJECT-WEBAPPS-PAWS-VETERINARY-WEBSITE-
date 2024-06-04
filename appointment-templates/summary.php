@@ -28,16 +28,29 @@
     </center>
     <center>
         <div class="information">
-            <br>
             <form method="post">
                 <!-- New two-tone container -->
                 <div class="two-tone-container">
                     <div class="upper-part">
                         <div class="left-content">
-                            <h2 style="margin-left: 10px;">Appointment</h2>
-                            <p style="margin-left: 70px;"><b>Owner: </b></p>
-                            <p style="margin-left: 70px;"><b>Pet Name:</b></p>
-                            <p style="margin-left: 70px;"><b>Schedule: </b></p>
+                            <h2 style="margin-left: 10px; margin-top: 0; margin-bottom: 0;">Appointment ID: </h2>
+                            <table style="margin-left: 70px;">
+                                <tr style="padding: 0;">
+                                    <td><p><b>Pet Name: </b></p></td>
+                                    <td></td>
+                                    <td><p><b>Pet Age:</b></p></td>
+                                    <td></td>
+                                    <td><p><b>Gender: </b></p></td>
+                                    <td></td>
+                                </tr>
+                                <tr>
+                                    <td><p><b>Pet Type: </b></p></td>
+                                    <td></td>
+                                    <td><p><b>Pet Breed:</b></p></td>
+                                    <td></td>
+                                    <td><p><b>Schedule: </b></p></td>
+                                </tr>
+                            </table>
                         </div>
                         <div class="right-content">
                             <div class="icon-container">
@@ -47,11 +60,36 @@
                     </div>
                     <div class="lower-part">
                         <div class="left-content">
-                            <p style="margin-left: 10px;"><b>Service: </b></p>
+                            <table>
+                                <tr>
+                                    <td><p><b>First Name: </b></p></td>
+                                    <td></td>
+                                    <td><p><b>Last Name: </b></p></td>
+                                    <td></td>
+                                    <td><p><b>Contact Number: </b></p></td>
+                                    <td></td>
+                                </tr>
+                                <tr>
+                                    <td><p><b>Email: </b></p></td>
+                                    <td></td>
+                                    <td><p><b>Address:</b></p></td>
+                                    <td></td>
+                                </tr>
+                            </table>
                         </div>
                         <div class="right-content">
-                            <p style="margin-right: 10px;"><b>Assigned: </b></p>
-                            <p style="margin-right: 10px;"><b>Paws Vet Clinic</b></p>
+                            <table style="margin-right: 10px;">
+                                <tr>
+                                    <td><p><b>Type: </b></p></td>
+                                    <td></td>
+                                    <td><p><b>Assigned: </b></p></td>
+                                    <td></td>
+                                </tr>
+                                <tr>
+                                    <td colspan="2"></td>
+                                    <td colspan="2"><p><b>Paws Vet Clinic</b></p></td>
+                                </tr>
+                            </table >
                         </div>
                     </div>
                 </div>

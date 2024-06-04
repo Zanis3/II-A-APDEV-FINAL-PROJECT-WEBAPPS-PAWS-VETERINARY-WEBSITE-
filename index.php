@@ -352,7 +352,14 @@
             <hr class="line" style="width: 120px;">
             <h3 style="margin-bottom: 0;">Jestin Clark V. Sacayle</h3>
             <h4 style="margin-top: 0; color:#65A30D">Fur Parent</h4>
-            <p>....</p>
+            <p style="margin-right: 5%; margin-left: 5%;">
+                Paws Vet Clinic is a cut above the rest. 
+                Their team's dedication to both pets and 
+                their owners is truly remarkable. The care 
+                and attention they provided to my pet were 
+                beyond compare. I'm grateful to have such a 
+                reliable and compassionate clinic in our community.
+            </p>
         </div>
         <div class="feedback-slide" style="display: none;">
             <center>
@@ -363,7 +370,11 @@
             <hr class="line" style="width: 120px;">
             <h3 style="margin-bottom: 0;">Euvert Zion Pagad</h3>
             <h4 style="margin-top: 0; color:#65A30D">Fur Parent</h4>
-            <p>....</p>
+            <p style="margin-right: 5%; margin-left: 5%;">
+                Paws Vet Clinic exceeded my expectations. 
+                The staff was warm, knowledgeable, 
+                and truly cared for my pet. Highly recommend!
+            </p>
         </div>
         <div class="feedback-slide" style="display: none;">
             <center>
@@ -374,7 +385,12 @@
             <hr class="line" style="width: 120px;">
             <h3 style="margin-bottom: 0;">Keannu Manabilang</h3>
             <h4 style="margin-top: 0; color:#65A30D">Fur Parent</h4>
-            <p>....</p>
+            <p style="margin-right: 5%; margin-left: 5%;">
+                Paws Vet Clinic provided top-notch care for my pet. 
+                The staff was friendly and knowledgeable, 
+                and I left feeling reassured about my pet's 
+                health. Highly recommend their services!"
+            </p>
         </div>
         <div class="feedback-slide" style="display: none;">
             <center>
@@ -385,7 +401,12 @@
             <hr class="line" style="width: 120px;">
             <h3 style="margin-bottom: 0;">Ijay Jaculbe</h3>
             <h4 style="margin-top: 0; color:#65A30D">Fur Parent</h4>
-            <p>....</p>
+            <p style="margin-right: 5%; margin-left: 5%;">
+                My experience at Paws Vet Clinic was exceptional. 
+                The staff was attentive, the facilities were clean, 
+                and the veterinarians were knowledgeable and 
+                compassionate. I trust them completely with my pet's care.
+            </p>
         </div>
         <div class="feedback-slide" style="display: none;">
             <center>
@@ -396,7 +417,13 @@
             <hr class="line" style="width: 120px;">
             <h3 style="margin-bottom: 0;">Alvin Villanueva</h3>
             <h4 style="margin-top: 0; color:#65A30D">Fur Parent</h4>
-            <p>....</p>
+            <p style="margin-right: 5%; margin-left: 5%;">
+                Paws Vet Clinic sets the standard for exceptional 
+                pet care. From the warm welcome at the door to 
+                the expert attention from the veterinarians, 
+                every aspect of my visit was outstanding. 
+                I wouldn't trust anyone else with my furry family member.
+            </p>
         </div>
         <div class="dot-indicators">
             <span class="dot active"></span>

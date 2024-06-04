@@ -102,9 +102,9 @@ button:active {
     height: 110px;
 }
 .two-tone-container {
-    width: 50%;
-    border: 1px solid #65A30D; /* Optional: for visual separation */
-    background: linear-gradient(to bottom, #E2EBE7 64.6%, #064E3B 36.5%);
+    width: 60%;
+    border: 1px solid #65A30D;
+    background: linear-gradient(to bottom, #E2EBE7 56.3%, #064E3B 34.7%);
     box-sizing: border-box;
     border-radius: 10px;
 }
