@@ -77,11 +77,10 @@
 <body>
     <div class="container">
 
+        <!--INFORMATION SCREEN-->
         <div class="information-screen" style="display:<?php if($registerSuccess){echo 'block';}else{echo 'none';}?>">
             <div class="information-header">
-                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-check-circle-fill" viewBox="0 0 16 16">
-                <path d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0m-3.97-3.03a.75.75 0 0 0-1.08.022L7.477 9.417 5.384 7.323a.75.75 0 0 0-1.06 1.06L6.97 11.03a.75.75 0 0 0 1.079-.02l3.992-4.99a.75.75 0 0 0-.01-1.05z"/>
-                </svg>
+                <i class="fas fa-check-circle"></i>
                 SUCCESS
             </div>
             <p class="information-desc">Your registration has been successful. Please return to the <a href="../login/login.php">login screen.</a></p>
@@ -94,25 +93,29 @@
                 <h2 class="text-title">REGISTER ADMIN</h2>
             </div>
             <form action="<?php echo htmlspecialchars($_SERVER['PHP_SELF'])?>" method="post">
+                
+                <!--USERNAME-->
                 <div class="form-item">
                     <label for="txtUsername">Username:</label>
-                    <input type="text" name="txtUsername" class="input-types" placeholder="Username">
+                    <input type="text" name="txtUsername" class="input-types" placeholder="Username" value="<?php echo htmlspecialchars($_POST['txtUsername']);?>">
                 </div>
                 <p class="warning"><?php echo $usernameError;?></p>
                 
+                <!--PASSWORD-->
                 <div class="form-item pass">
                     <span>
                         <label for="txtPassword">Password:</label>
-                        <input type="password" name="txtPassword" class="input-types txtPassword" placeholder="Password">
+                        <input type="password" name="txtPassword" class="input-types txtPassword" placeholder="Password" value="<?php echo htmlspecialchars($_POST['txtPassword']);?>">
                     </span>
                     <button type="button" class="btnShow">Show</button>
                 </div>
                 <p class="warning"><?php echo $passwordError;?></p>
 
+                <!--CONFIRM PASSWORD-->
                 <div class="form-item pass">
                     <span>
                         <label for="txtConfirmPassword">Confirm Password:</label>
-                        <input type="password" name="txtConfirmPassword" class="input-types txtPassword" placeholder="Confirm Password">
+                        <input type="password" name="txtConfirmPassword" class="input-types txtPassword" placeholder="Confirm Password" value="<?php echo htmlspecialchars($_POST['txtConfirmPassword']);?>">
                     </span>
                     <button type="button" class="btnShow">Show</button>
                 </div>
