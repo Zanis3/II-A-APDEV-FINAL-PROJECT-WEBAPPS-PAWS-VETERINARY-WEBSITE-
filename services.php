@@ -1,5 +1,9 @@
 <?php
     require 'template/config.php';
+    if(isset($_POST['set'])){
+        header('Location: appointments.php');
+        exit();
+    }
 ?>
 
 <!DOCTYPE html>
@@ -16,94 +20,190 @@
 <body>
     <?php include_once 'template/header.php';?>
 
-    <div class="container title">
+    <div class="main-container">
         <div class="text-container">
-            <h2 class="text-title">Our Veterinary Services</h2>
+            <h1 class="text-title">Our Veterinary Services</h1>
             <p class="text-sub">Explore a range of services for your beloved pets</p>
         </div>
     </div>
-
     <div class="container">
         <div class="text-container">
-            <h2 class="text-title">Medical Services</h2>
+            <h1 style="color: #064E3B;">Medical Services</h1>
+            <hr class="line">
         </div>
-        <div class="container-content">
-            <div class="item">
-                <div class="item-image one"></div>
-                <p class="item-desc">Check-ups</p>
+        <div class="grid-container">
+            <div class="grid-item" id="service1">
+                <div class="image-container">
+                    <img src="img/services/checkup.png" alt="CheckUp">
+                </div>
+                <div class="description-container">
+                    <hr class="line">
+                    <h3>Check-Up</h3>
+                </div>
             </div>
-            <div class="item">
-                <div class="item-image two"></div>
-                <p class="item-desc">Vaccinations</p>
-            </div>
-            <div class="item">
-                <div class="item-image three"></div>
-                <p class="item-desc">Surgery</p>
+            <div class="grid-item" id="service2">
+                <div class="image-container">
+                    <img src="img/services/consultation.png" alt="Consultation">
+                </div>
+                <div class="description-container">
+                    <hr class="line">
+                    <h3>Consultation</h3>
+                </div>
             </div>
         </div>
     </div>
 
+    <div class="floating-ui" id="floatingUI1">
+        <h2 style="color: #064E3B">Check Up Details</h2>
+        <hr class="line">
+        <br>
+        <p style="margin-left: 5%; margin-right: 5%;">
+            Expert check-ups for your pet's health 
+            and happiness. Trust us for thorough 
+            care tailored to their needs
+        </p>
+        <p><b>Duration:</b> 30 mins - 1 hr </p>
+        <form method="post">
+            <button type="submit" class="set" name="set"><b>Set Appointment</b></button>
+        </form>
+    </div>
+    <div class="floating-ui" id="floatingUI2">
+        <h2 style="color: #064E3B">Consultation Details</h2>
+        <hr class="line">
+        <br>
+        <p style="margin-left: 5%; margin-right: 5%;">
+            Personalized consultations provide 
+            tailored guidance for your pet's well-being. 
+            Our experts offer trusted advice 
+            and peace of mind for every pet owner
+        </p>
+        <p><b>Duration:</b> 30 mins - 1 hr </p>
+        <form method="post">
+            <button type="submit" class="set" name="set"><b>Set Appointment</b></button>
+        </form>
+    </div>
+    <br>
     <div class="container">
         <div class="text-container">
-            <h2 class="text-title">Specialty Care</h2>
+            <h1 style="color: #064E3B;">Specialty Service</h1>
+            <hr class="line">
         </div>
-        <div class="container-content">
-            <div class="item">
-                <div class="item-image four"></div>
-                <p class="item-desc">Emergency Care</p>
+        <div class="grid-container">
+            <div class="grid-item" id="service3">
+                <div class="image-container">
+                    <img src="img/services/surgery.png" alt="Surgery">
+                </div>
+                <div class="description-container">
+                    <hr class="line">
+                    <h3>Surgery</h3>
+                </div>
             </div>
-            <div class="item">
-                <div class="item-image five"></div>
-                <p class="item-desc">Neurology</p>
-            </div>
-            <div class="item">
-                <div class="item-image six"></div>
-                <p class="item-desc">Pharmacy</p>
+            <div class="grid-item" id="service4">
+                <div class="image-container">
+                    <img src="img/services/dental.png" alt="Dental">
+                </div>
+                <div class="description-container">
+                    <hr class="line">
+                    <h3>Dental</h3>
+                </div>
             </div>
         </div>
     </div>
 
+    <div class="floating-ui" id="floatingUI3">
+        <h2 style="color: #064E3B">Surgery Details</h2>
+        <hr class="line">
+        <br>
+        <p style="margin-left: 5%; margin-right: 5%;">
+            Surgical excellence for your pet's health. 
+            From routine procedures to advanced 
+            surgeries, trust our skilled team for 
+            compassionate care and successful outcomes.
+        </p>
+        <p><b>Duration:</b> 30 mins - 1 hr+ </p>
+        <form method="post">
+            <button type="submit" class="set" name="set"><b>Set Appointment</b></button>
+        </form>
+    </div>
+    <div class="floating-ui" id="floatingUI4">
+        <h2 style="color: #064E3B">Dental Details</h2>
+        <hr class="line">
+        <br>
+        <p style="margin-left: 5%; margin-right: 5%;">
+            Revitalize Your Pet's Smile: Our dental 
+            care offers cleanings, extractions, 
+            and expert oral health services for 
+            their comfort and well-being.
+        </p>
+        <p><b>Duration:</b> 30 mins - 1 hr+ </p>
+        <form method="post">
+            <button type="submit" class="set" name="set"><b>Set Appointment</b></button>
+        </form>
+    </div>
+
+    <br>
     <div class="container">
         <div class="text-container">
-            <h2 class="text-title">Grooming & Wellness</h2>
+            <h1 style="color: #064E3B;">Wellness Service</h1>
+            <hr class="line">
         </div>
-        <div class="container-content">
-            <div class="item">
-                <div class="item-image seven"></div>
-                <p class="item-desc">Grooming</p>
+        <div class="grid-container">
+            <div class="grid-item" id="service5">
+                <div class="image-container">
+                    <img src="img/services/Grooming.png" alt="Grooming">
+                </div>
+                <div class="description-container">
+                    <hr class="line">
+                    <h3>Grooming</h3>
+                </div>
             </div>
-            <div class="item">
-                <div class="item-image eight"></div>
-                <p class="item-desc">Bathing</p>
-            </div>
-            <div class="item">
-                <div class="item-image nine"></div>
-                <p class="item-desc">Pet Training</p>
+            <div class="grid-item" id="service6">
+                <div class="image-container">
+                    <img src="img/services/vaccination.png" alt="Vaccination">
+                </div>
+                <div class="description-container">
+                    <hr class="line">
+                    <h3>Vaccination</h3>
+                </div>
             </div>
         </div>
     </div>
 
-    <div class="container">
-        <div class="text-container">
-            <h2 class="text-title">Book an Appointment</h2>
-            <p class="text-sub">Fill up the form below to schedule a visit</p>
-            <form action="<?php echo htmlspecialchars($_SERVER['PHP_SELF']);?>" method="post">
-                <label for="txtPetName">Pet Name</label>
-                <input type="text" name="txtPetName" id="txtPetName">
-
-                <label for="txtDateOfAppointment">Preferred Date</label>
-                <input type="date" name="txtDateOfAppointment" id="txtDateOfAppointment" min="<?php echo date('Y-m-d');?>" max ="<?php echo date('Y-m-d', strtotime('+2 weeks'))?>" value="<?php echo $_POST['txtDateOfAppointment'];?>" placeholder="Select date.">
-
-
-                <label for="txtTimeOfAppointment">Time</label>
-                <input type="time" name="txtTimeOfAppointment" id="txtTimeOfAppointment" min="09:00" max="17:00" step="3600000" value="<?php echo $_POST['txtTimeOfAppointment'];?>" placeholder="Select time.">
-
-                <label for="txtPetName">Pet Name</label>
-                <select name="" id=""></select>
-            </form>
-        </div>
+    <div class="floating-ui" id="floatingUI5">
+        <h2 style="color: #064E3B">Grooming Details</h2>
+        <hr class="line">
+        <br>
+        <p style="margin-left: 5%; margin-right: 5%;">
+            Transform Your Pet's Look: Our grooming 
+            services include bathing, haircuts, nail 
+            trims, and more, to keep your pet 
+            looking and feeling their best.
+        </p>
+        <p><b>Duration:</b> 30 mins - 1 hr+ </p>
+        <form method="post">
+            <button type="submit" class="set" name="set"><b>Set Appointment</b></button>
+        </form>
+    </div>
+    <div class="floating-ui" id="floatingUI6">
+        <h2 style="color: #064E3B">Grooming Details</h2>
+        <hr class="line">
+        <br>
+        <p style="margin-left: 5%; margin-right: 5%;">
+            Protect Your Pet: Our vaccination 
+            services provide essential immunizations 
+            to safeguard your furry friend 
+            against common diseases, ensuring a 
+            happy and healthy life.
+        </p>
+        <p><b>Duration:</b> 30 mins - 1 hr </p>
+        <form method="post">
+            <button type="submit" class="set" name="set"><b>Set Appointment</b></button>
+        </form>
     </div>
 
+    <script src="script/floating.js"></script>
+    <br>
+    <br>
     <?php include_once 'template/footer.php';?>
 </body>
 </html>
