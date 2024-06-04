@@ -271,7 +271,7 @@
             </form>
 
             <!--BACK TO LOGIN-->
-            <p class="text-sub">Back to <a href="login.php">Login</a></p>
+            <p class="text-sub"><a href="login.php">Back to Login</a></p>
         </div>
     </div>
     
