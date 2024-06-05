@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jun 05, 2024 at 09:52 PM
+-- Generation Time: Jun 06, 2024 at 12:14 AM
 -- Server version: 10.4.32-MariaDB
 -- PHP Version: 8.2.12
 
@@ -29,7 +29,7 @@ SET time_zone = "+00:00";
 
 CREATE TABLE `tbl_appointment` (
   `appointmentID` int(11) NOT NULL,
-  `contactID` int(11) NOT NULL,
+  `userID` int(11) NOT NULL,
   `petID` int(11) NOT NULL,
   `doctorID` int(11) NOT NULL,
   `scheduleID` int(11) NOT NULL,
@@ -123,10 +123,31 @@ CREATE TABLE `tbl_petinfo` (
   `petID` int(11) NOT NULL,
   `contactID` int(11) NOT NULL,
   `petName` varchar(50) NOT NULL,
+  `petAge` varchar(50) NOT NULL,
   `petGender` enum('male','female') NOT NULL,
   `petType` enum('dog','cat') NOT NULL,
   `petBreed` varchar(100) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `tbl_userinfo`
+--
+
+CREATE TABLE `tbl_userinfo` (
+  `userID` int(11) NOT NULL,
+  `contactID` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dumping data for table `tbl_userinfo`
+--
+
+INSERT INTO `tbl_userinfo` (`userID`, `contactID`) VALUES
+(1, 1),
+(2, 2),
+(3, 4);
 
 --
 -- Indexes for dumped tables
@@ -137,10 +158,10 @@ CREATE TABLE `tbl_petinfo` (
 --
 ALTER TABLE `tbl_appointment`
   ADD PRIMARY KEY (`appointmentID`),
-  ADD KEY `tbl_appointment link tbl_contactinfo` (`contactID`),
   ADD KEY `tbl_appointment link tbl_doctorinfo` (`doctorID`),
   ADD KEY `tbl_appointment link tbl_petinfo` (`petID`),
-  ADD KEY `tbl_appointment link tbl_doctorschedule` (`scheduleID`);
+  ADD KEY `tbl_appointment link tbl_doctorschedule` (`scheduleID`),
+  ADD KEY `tbl_appointment link tbl_userinfo` (`userID`);
 
 --
 -- Indexes for table `tbl_contactinfo`
@@ -178,6 +199,13 @@ ALTER TABLE `tbl_logininfo`
 ALTER TABLE `tbl_petinfo`
   ADD PRIMARY KEY (`petID`),
   ADD KEY `tbl_petinfo link tbl_contactinfo` (`contactID`);
+
+--
+-- Indexes for table `tbl_userinfo`
+--
+ALTER TABLE `tbl_userinfo`
+  ADD PRIMARY KEY (`userID`),
+  ADD KEY `tbl_userinfo link tbl_contactinfo` (`contactID`);
 
 --
 -- AUTO_INCREMENT for dumped tables
@@ -220,6 +248,12 @@ ALTER TABLE `tbl_petinfo`
   MODIFY `petID` int(11) NOT NULL AUTO_INCREMENT;
 
 --
+-- AUTO_INCREMENT for table `tbl_userinfo`
+--
+ALTER TABLE `tbl_userinfo`
+  MODIFY `userID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+
+--
 -- Constraints for dumped tables
 --
 
@@ -227,10 +261,11 @@ ALTER TABLE `tbl_petinfo`
 -- Constraints for table `tbl_appointment`
 --
 ALTER TABLE `tbl_appointment`
-  ADD CONSTRAINT `tbl_appointment link tbl_contactinfo` FOREIGN KEY (`contactID`) REFERENCES `tbl_contactinfo` (`contactID`) ON DELETE CASCADE ON UPDATE CASCADE,
+  ADD CONSTRAINT `tbl_appointment link tbl_contactinfo` FOREIGN KEY (`userID`) REFERENCES `tbl_contactinfo` (`contactID`) ON DELETE CASCADE ON UPDATE CASCADE,
   ADD CONSTRAINT `tbl_appointment link tbl_doctorinfo` FOREIGN KEY (`doctorID`) REFERENCES `tbl_doctorinfo` (`doctorID`) ON DELETE CASCADE ON UPDATE CASCADE,
   ADD CONSTRAINT `tbl_appointment link tbl_doctorschedule` FOREIGN KEY (`scheduleID`) REFERENCES `tbl_doctorschedule` (`scheduleID`) ON DELETE CASCADE ON UPDATE CASCADE,
-  ADD CONSTRAINT `tbl_appointment link tbl_petinfo` FOREIGN KEY (`petID`) REFERENCES `tbl_petinfo` (`petID`) ON DELETE CASCADE ON UPDATE CASCADE;
+  ADD CONSTRAINT `tbl_appointment link tbl_petinfo` FOREIGN KEY (`petID`) REFERENCES `tbl_petinfo` (`petID`) ON DELETE CASCADE ON UPDATE CASCADE,
+  ADD CONSTRAINT `tbl_appointment link tbl_userinfo` FOREIGN KEY (`userID`) REFERENCES `tbl_userinfo` (`userID`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
 -- Constraints for table `tbl_contactinfo`
@@ -255,6 +290,12 @@ ALTER TABLE `tbl_doctorschedule`
 --
 ALTER TABLE `tbl_petinfo`
   ADD CONSTRAINT `tbl_petinfo link tbl_contactinfo` FOREIGN KEY (`contactID`) REFERENCES `tbl_contactinfo` (`contactID`) ON DELETE CASCADE ON UPDATE CASCADE;
+
+--
+-- Constraints for table `tbl_userinfo`
+--
+ALTER TABLE `tbl_userinfo`
+  ADD CONSTRAINT `tbl_userinfo link tbl_contactinfo` FOREIGN KEY (`contactID`) REFERENCES `tbl_contactinfo` (`contactID`) ON DELETE CASCADE ON UPDATE CASCADE;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

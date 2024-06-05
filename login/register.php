@@ -142,17 +142,19 @@
                 $registerAccount->execute();
                 $registerAccount->close();
 
-                $findRegisteredID = $connection->prepare('SELECT * FROM tbl_logininfo WHERE username = ? LIMIT 1');
-                $findRegisteredID->bind_param('s', $userName);
-                $findRegisteredID->execute();
-                $foundRegisteredID = $findRegisteredID->get_result();
-                $foundID = $foundRegisteredID->fetch_assoc();
-                $findRegisteredID->close();
+                $loginID = $connection->insert_id;
 
                 $registerAdditionalInfo = $connection->prepare('INSERT INTO tbl_contactinfo (loginID, contactLastName, contactFirstName, contactMiddleInitial, contactNumber, contactAddress, contactType) VALUES (?, ?, ?, ?, ?, ?, ?)');
-                $registerAdditionalInfo->bind_param('issssss', $foundID['loginID'], $lastName, $firstName, $middleInitial, $contactNumber, $address, $userType);
+                $registerAdditionalInfo->bind_param('issssss', $loginID, $lastName, $firstName, $middleInitial, $contactNumber, $address, $userType);
                 $registerAdditionalInfo->execute();
                 $registerAdditionalInfo->close();
+
+                $contactID = $connection->insert_id;
+
+                $registerUser = $connection->prepare('INSERT INTO tbl_userinfo (contactID) VALUES (?)');
+                $registerUser->bind_param('i', $contactID);
+                $registerUser->execute();
+                $registerUser->close();
 
                 $registerSuccess = true;
             }
