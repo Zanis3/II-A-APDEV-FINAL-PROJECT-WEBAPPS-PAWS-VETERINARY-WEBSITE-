@@ -1,5 +1,3 @@
-
-
 .container {
     width: 90%;
     max-width: 1200px;
@@ -72,19 +70,23 @@ button {
     background-color: #064E3B;
     color: white;
 }
+
 button:hover {
     background-color: #08634b;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 }
+
 button:active {
     background-color: rgb(6, 69, 52);
 }
+
 .info-container {
     display: flex;
     justify-content: center;
     margin-bottom: 25px;
     width: 80%;
 }
+
 .info-container .box {
     width: 50%; /* Adjust the width as needed */
     padding: 20px;
@@ -95,11 +97,13 @@ button:active {
     border: 1px solid #65A30D;
     background-color: #E2EBE7;
 }
+
 .line {
     height: 0.9%;
     width: 50%;
     background-color: #65A30D;
 }
+
 .result {
     background-color: #E2EBE7;
     border: 1px solid #65A30D;
@@ -109,11 +113,13 @@ button:active {
     border-radius: 10px;
     padding: 20px;
 }
+
 .result-box {
     width: 40%;
     margin-left: 20px;
     margin-right: 20px;
 }
+
 .reminder {
     background-color:#064E3B;
     color: white;
@@ -122,6 +128,7 @@ button:active {
     margin-top: 5%;
     height: 110px;
 }
+
 .two-tone-container {
     width: 60%;
     border: 1px solid #65A30D;
@@ -129,6 +136,7 @@ button:active {
     box-sizing: border-box;
     border-radius: 10px;
 }
+
 .upper-part {
     background-color: #E2EBE7;
     padding: 10px;
@@ -137,12 +145,15 @@ button:active {
     align-items: center;
     border-radius: 10px;
 }
+
 .upper-part .left-content {
     text-align: left;
 }
+
 .upper-part .right-content {
     text-align: right;
 }
+
 .lower-part {
     background-color: #064E3B;
     color: white;
@@ -152,12 +163,15 @@ button:active {
     align-items: center;
     border-radius: 10px;
 }
+
 .lower-part .left-content {
     text-align: left;
 }
+
 .lower-part .right-content {
     text-align: right;
 }
+
 .icon-container {
     background-color: white;
     border: 2px solid #65A30D;
@@ -168,6 +182,7 @@ button:active {
     align-items: center;
     margin-right: 10px;
 }
+
 .icon-container i {
     font-size: 90px;
     color: #65A30D;

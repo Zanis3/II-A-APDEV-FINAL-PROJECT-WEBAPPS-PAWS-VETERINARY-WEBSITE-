@@ -1,0 +1,28 @@
+/*DEFAULTS*/
+
+
+@import url('style_general.css');
+
+.warning{
+    width:90%;
+    margin-bottom:10px;
+}
+
+.doc-reg-form{
+    display:flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    height: 100%;
+    width: 100%;
+}
+
+.doc-reg-table{
+    height:50%;
+    width:70%;
+}
+
+.doc-reg-table td{
+    height:20px;
+    width:90px;
+}

@@ -11,6 +11,30 @@
             header("Location: ../../index.php");
         }
     }
+
+    $docSelected = false;
+    $repSelected = false;
+    $calSelected = false;
+
+    $docReg = false;
+
+    if($_SERVER['REQUEST_METHOD'] === "POST"){
+        if(isset($_POST['btnDoctors'])){
+            $docSelected = true;
+        }
+
+        if(isset($_POST['btnReports'])){
+            $repSelected = true;
+        }
+
+        if(isset($_POST['btnCalendar'])){
+            $calSelected = true;
+        }
+
+        if(isset($_POST['btnAddDoc'])){
+            $docReg = true;
+        }
+    }
 ?>
 
 <div class="right-nav">
@@ -28,16 +52,58 @@
     </div>
     <div class="navigation">
         <table>
-            <tr>
-                <td><a href="#doctor" onclick="showContent('doctor')"><b>Doctor</b></a></td>
-                <td>&nbsp;</td>
-                <td><a href="#reports" onclick="showContent('reports')"><b>Reports</b></a></td>
-                <td>&nbsp;</td>
-                <td><a href="#calendar" onclick="showContent('calendar')"><b>Calendar</b></a></td>
-            </tr>
+            <form action="<?php echo htmlspecialchars($_SERVER['PHP_SELF'])?>" method="post" class="navbar-form">
+                <tr>
+                    <td><input type="submit" class="nav-btns" name="btnDoctors" value="Doctors"></td>
+                    <td>&nbsp;</td>
+                    <td><input type="submit" class="nav-btns" name="btnReports" value="Reports"></td>
+                    <td>&nbsp;</td>
+                    <td><input type="submit" class="nav-btns" name="btnCalendar" value="Calendar"></td>
+                </tr>
+            </form>
         </table>
     </div>
     <div class="content" id="content">
-        <!-- Content for the selected page will be loaded here -->
+        <?php if($docSelected):?>
+            <table class="doctor-table">
+                <?php
+                    $findDoctorRole = $connection->prepare('SELECT * FROM tbl_doctorinfo');
+                    $findDoctorRole->execute();
+                    $foundDoctorRole = $findDoctorRole->get_result();
+                    $findDoctorRole->close();
+
+                    $findDoctorName = $connection->prepare('SELECT * FROM tbl_contactinfo WHERE contactType = ?');
+                    $userType = 'doctor';
+                    $findDoctorName->bind_param('s', $userType);
+                    $findDoctorName->execute();
+                    $foundDoctorName = $findDoctorName->get_result();
+                    $findDoctorName->close();
+
+                    if($foundDoctorRole->num_rows > 0){
+                        echo '<tr>
+                                <th>Name</th>
+                                <th>Specialization</th>
+                              </tr>';
+
+                        while(($row = $foundDoctorRole->fetch_assoc()) && ($row2 = $foundDoctorName->fetch_assoc())){
+                            echo '<tr>
+                            <td>'.$row2['contactLastName'].', '.$row2['contactFirstName'].'</td>
+                            <td>'.$row['doctorRole'].'</td>
+                            </tr>';
+                        }
+                    }
+                    else{
+                        echo '<tr><td style="border:none;display:flex;align-items:center;justify-content:center;">No doctors found.</td></tr>';
+                    }
+                ?>
+                <tr>
+                    <td style="border:none;display:flex;align-items:center;justify-content:center;">
+                        <form action="<?php echo htmlspecialchars($_SERVER['PHP_SELF'])?>">
+                            <input type="submit" class="nav-content-btn" name="btnAddDoc" value="Add a Doctor">
+                        </form>
+                    </td>
+                </tr>
+            </table>
+        <?php endif;?>
     </div>
 </div>

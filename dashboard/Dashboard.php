@@ -9,6 +9,24 @@
             header('Location: ../index.php');
         }
     }
+
+    $logoutIsClicked = false;
+
+    if($_SERVER['REQUEST_METHOD'] === "POST"){
+        if(isset($_POST['btnLogout'])){
+            $logoutIsClicked = true;
+        }
+
+        if(isset($_POST['btnConfirmLogout'])){
+            session_destroy();
+            $isLoggedIn = false;
+            header('Location: ../index.php');
+        }
+
+        if(isset($_POST['btnStayLoggedIn'])){
+            $logoutIsClicked = false;
+        }
+    }
 ?>
 <head>
     <title>Dashboard</title>
@@ -16,11 +34,38 @@
     <link rel="stylesheet" href="../css/style_general.css">
     <link rel="stylesheet" href="../css/style_appointment.css">
     <link rel="stylesheet" href="../css/dash_style.css">
+    <link rel="stylesheet" href="../css/dashboard_styles/style_docreg.css">
     <link rel="shortcut icon" href="../img/gen/web-logo.png" type="image/png">
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 </head>
 <body>
     <?php include_once 'dash-template/dashboard-header.php';?>
+
+    <!--LOGOUT CONFIRMATION-->
+    <div class="information-screen" style="display:<?php if($logoutIsClicked){echo 'block';}else{echo 'none';}?>">
+        <div class="information-header">
+            <i class="fas fa-sign-out-alt"></i>
+            CONFIRM LOGOUT
+        </div>
+        <p class="information-desc">Are you sure you want to logout?</a></p>
+        <form action="<?php echo htmlspecialchars($_SERVER['PHP_SELF']);?>" method="post" class="logout-confirm-btns">
+            <input type="submit" name="btnConfirmLogout" class="logout-btn yes" value="Yes"> 
+            <input type="submit" name="btnStayLoggedIn" class="logout-btn" value="No">
+        </form>
+    </div>
+
+    <div class="black-background" style="display:<?php if($logoutIsClicked){echo 'block';}else{echo 'none';}?>"></div>
+
+    <!--ADD DOCTORS-->
+    <div class="registration-screen">
+        <div class="registration-header">
+            REGISTER DOCTOR
+        </div>
+        <?php include_once 'dash-template/dashboard-docreg.php';?>
+    </div>
+
+    <div class="black-background"></div>
+
     <div class="left-content">
         <div class="top-container">
             <div class="admin-container">
@@ -39,7 +84,9 @@
                 </table>
             </div>
             <div class="logout-container">
-                <button type="submit" name="btnLogOut"><b>Log Out</b></button>
+                <form action="<?php echo htmlspecialchars($_SERVER['PHP_SELF']);?>" method="post">
+                    <input type="submit" name="btnLogout" value="Logout" class="logout-btn yes">
+                </form>
             </div>
         </div>
         <p style="margin-left: 50px;"><b>Choose the Category</b></p>

@@ -1,5 +1,4 @@
 <?php
-
     #START SESSION, DON'T DISPLAY ERROR, SET TIME ZONE TO MANILA
     session_start();
     ini_set('display_errors', 0);
