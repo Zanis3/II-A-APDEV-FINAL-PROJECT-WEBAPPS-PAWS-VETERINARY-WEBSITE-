@@ -57,14 +57,14 @@
     <div class="black-background" style="display:<?php if($logoutIsClicked){echo 'block';}else{echo 'none';}?>"></div>
 
     <!--ADD DOCTORS-->
-    <div class="registration-screen">
+    <div class="registration-screen" style="display:<?php if($docReg){echo 'block';}else{echo 'none';}?>">
         <div class="registration-header">
             REGISTER DOCTOR
         </div>
         <?php include_once 'dash-template/dashboard-docreg.php';?>
     </div>
 
-    <div class="black-background"></div>
+    <div class="black-background" style="display:<?php if($docReg){echo 'block';}else{echo 'none';}?>"></div>
 
     <div class="left-content">
         <div class="top-container">

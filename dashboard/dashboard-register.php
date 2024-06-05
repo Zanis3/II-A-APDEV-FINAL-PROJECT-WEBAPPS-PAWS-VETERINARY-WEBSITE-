@@ -14,7 +14,7 @@
         }
     }
 
-    #REDIRECT SA HOME PAGE PAG LOGGED IN NA
+    #REDIRECT SA HOME PAGE PAG LOGGED IN NA, ADMIN LANG PWEDE MAG REGISTER SA KAPWA
     if($isLoggedIn){
         if($role == 'user'){
             header('Location: ../index.php');
@@ -22,9 +22,9 @@
         elseif($role == 'doctor'){
             header('Location: dashboard-doc.php');
         }
-        else{
-            header('Location: Dashboard.php');
-        }
+    }
+    else{
+        header('Location: ../index.php');
     }
 
     if($_SERVER['REQUEST_METHOD'] === "POST"){

@@ -98,7 +98,7 @@
                 ?>
                 <tr>
                     <td style="border:none;display:flex;align-items:center;justify-content:center;">
-                        <form action="<?php echo htmlspecialchars($_SERVER['PHP_SELF'])?>">
+                        <form action="<?php echo htmlspecialchars($_SERVER['PHP_SELF'])?>" method="post">
                             <input type="submit" class="nav-content-btn" name="btnAddDoc" value="Add a Doctor">
                         </form>
                     </td>
