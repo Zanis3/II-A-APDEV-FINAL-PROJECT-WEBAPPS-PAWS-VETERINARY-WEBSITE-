@@ -1,4 +1,5 @@
 <?php
+
     #START SESSION, DON'T DISPLAY ERROR, SET TIME ZONE TO MANILA
     session_start();
     ini_set('display_errors', 0);
@@ -12,6 +13,19 @@
 
     if(isset($_COOKIE['isLoggedIn'])){
         $isLoggedIn = isset($_COOKIE['isLoggedIn']);
+    }
+
+    #IF TINATRY I ACCESS ANG SPECIFIC ADDRESS NA ITO, BABALIK SA MENU NILA
+    if (basename("template/config.php") == basename($_SERVER["SCRIPT_FILENAME"])){
+        if($role == 'admin'){
+            header("Location: ../dashboard/Dashboard.php");
+        }
+        elseif($role == 'doctor'){
+            header("Location: ../dashboard/dashboard-doc.php");
+        }
+        else{
+            header("Location: ../index.php");
+        }
     }
 
     #DATABASE CONNECTION

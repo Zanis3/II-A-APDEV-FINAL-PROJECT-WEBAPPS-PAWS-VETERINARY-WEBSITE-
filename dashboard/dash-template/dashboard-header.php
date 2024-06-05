@@ -1,3 +1,18 @@
+<?php
+    #IF TINATRY I ACCESS ANG SPECIFIC ADDRESS NA ITO, BABALIK SA MENU NILA
+    if (basename("dashboard/dash-template/dashboard-header.php") == basename($_SERVER["SCRIPT_FILENAME"])){
+        if($role == 'admin'){
+            header("Location: ../Dashboard.php");
+        }
+        elseif($role == 'doctor'){
+            header("Location: ../dashboard-doc.php");
+        }
+        else{
+            header("Location: ../../index.php");
+        }
+    }
+?>
+
 <div class="right-nav">
     <div class="header">
         <table>

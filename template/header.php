@@ -1,4 +1,18 @@
 <?php
+
+    #IF TINATRY I ACCESS ANG SPECIFIC ADDRESS NA ITO, BABALIK SA MENU NILA
+    if (basename("template/header.php") == basename($_SERVER["SCRIPT_FILENAME"])){
+        if($role == 'admin'){
+            header("Location: ../dashboard/Dashboard.php");
+        }
+        elseif($role == 'doctor'){
+            header("Location: ../dashboard/dashboard-doc.php");
+        }
+        else{
+            header("Location: ../index.php");
+        }
+    }
+
     #FUNCTION PARA MAIDENTIFY KUNG SAAN UNG DIRECTORY NG BAWAT PHP FILE
     function locationValidation($value){
         if($value == 'folder'){

@@ -79,11 +79,19 @@
             }
 
             #CHINECHECK KUNG MAY USERNAME AND EMAIL SA DATABASE NA UNG TINYPE NG USER
-            $query1 = $connection->execute_query('SELECT * FROM tbl_logininfo WHERE userEmail = ? LIMIT 1', [$email]);
-            $emailQuery = $query1->fetch_assoc();
+            $query1 = $connection->prepare('SELECT * FROM tbl_logininfo WHERE userEmail = ? LIMIT 1');
+            $query1->bind_param('s', $email);
+            $query1->execute();
+            $findEmail = $query1->get_result();
+            $emailQuery = $findEmail->fetch_assoc();
+            $query1->close();
 
-            $query2 = $connection->execute_query('SELECT * FROM tbl_logininfo WHERE username = ? LIMIT 1', [$userName]);
-            $userNameQuery = $query2->fetch_assoc();
+            $query2 = $connection->prepare('SELECT * FROM tbl_logininfo WHERE username = ? LIMIT 1');
+            $query2->bind_param('s', $userName);
+            $query2->execute();
+            $findUsername = $query2->get_result();
+            $userNameQuery = $findUsername->fetch_assoc();
+            $query2->close();
 
             if($emailQuery['userEmail'] == $email && !empty($email)){
                 $emailError = 'Email already found in the database. Please login or register a new email.';
@@ -95,16 +103,13 @@
                 $registerValidation = false;
             }
 
-            $query1->close();
-            $query2->close();
-
             #CHINECHECK YUNG LENGTH NG USERNAME AT PASSWORD
             if($userNameLength < 6 || $passwordLength < 8){
-                if($userNameLength < 6 && !empty($usernameError)){
+                if($userNameLength < 6 && empty($usernameError)){
                     $usernameError = 'Username should be six characters or more.';
                 }
 
-                if($passwordLength < 8 && !empty($passwordError)){
+                if($passwordLength < 8 && empty($passwordError)){
                     $passwordError = 'Password should be eight characters or more.';
                 }
                 $registerValidation = false;
@@ -132,19 +137,20 @@
                 $hashedPass = password_hash($password, PASSWORD_DEFAULT);
                 $userType = 'user';
 
-                $registerAccount = $connection->prepare('INSERT INTO tbl_logininfo (username, userEmail, userpassword, usertype) VALUES (?, ?, ?, ?)');
+                $registerAccount = $connection->prepare('INSERT INTO tbl_logininfo (username, userEmail, userPass, userType) VALUES (?, ?, ?, ?)');
                 $registerAccount->bind_param('ssss', $userName, $email, $hashedPass, $userType);
                 $registerAccount->execute();
-                if ($registerAccount->errno) {
-                    echo "Error executing SQL query: " . $registerAccount->error;
-                }
                 $registerAccount->close();
 
-                $findRegisteredID = $connection->execute_query('SELECT * FROM tbl_logininfo WHERE username = ? LIMIT 1', [$userName]);
-                $foundID = $findRegisteredID->fetch_assoc();
+                $findRegisteredID = $connection->prepare('SELECT * FROM tbl_logininfo WHERE username = ? LIMIT 1');
+                $findRegisteredID->bind_param('s', $userName);
+                $findRegisteredID->execute();
+                $foundRegisteredID = $findRegisteredID->get_result();
+                $foundID = $foundRegisteredID->fetch_assoc();
+                $findRegisteredID->close();
 
-                $registerAdditionalInfo = $connection->prepare('INSERT INTO tbl_userinfo (userID, userLastName, userFirstName, userMiddleInitial, userContactNumber) VALUES (?, ?, ?, ?, ?)');
-                $registerAdditionalInfo->bind_param('issss', $foundID['userID'], $lastName, $firstName, $middleInitial, $contactNumber);
+                $registerAdditionalInfo = $connection->prepare('INSERT INTO tbl_contactinfo (loginID, contactLastName, contactFirstName, contactMiddleInitial, contactNumber, contactAddress, contactType) VALUES (?, ?, ?, ?, ?, ?, ?)');
+                $registerAdditionalInfo->bind_param('issssss', $foundID['loginID'], $lastName, $firstName, $middleInitial, $contactNumber, $address, $userType);
                 $registerAdditionalInfo->execute();
                 $registerAdditionalInfo->close();
 
@@ -241,7 +247,7 @@
                             <label for="txtAddress">Address:</label>
                             <p class="warning">*<?php echo htmlspecialchars($addressError);?></p>
                         </span>
-                        <input type="text" name="txtAddress" id="txtAddress" placeholder="Address" value="<?php echo htmlspecialchars($_POST['txtAddress']);?>">
+                        <input type="text" name="txtAddress" id="txtAddress" class="input-text" placeholder="Address" value="<?php echo htmlspecialchars($_POST['txtAddress']);?>">
                     </div>
 
                     <!--USERNAME FIELD-->

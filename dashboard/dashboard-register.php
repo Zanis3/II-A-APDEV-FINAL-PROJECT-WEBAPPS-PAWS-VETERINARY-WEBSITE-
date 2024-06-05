@@ -14,6 +14,19 @@
         }
     }
 
+    #REDIRECT SA HOME PAGE PAG LOGGED IN NA
+    if($isLoggedIn){
+        if($role == 'user'){
+            header('Location: ../index.php');
+        }
+        elseif($role == 'doctor'){
+            header('Location: dashboard-doc.php');
+        }
+        else{
+            header('Location: Dashboard.php');
+        }
+    }
+
     if($_SERVER['REQUEST_METHOD'] === "POST"){
         $username = $_POST['txtUsername'];
         $email = $_POST['txtEmail'];
@@ -67,7 +80,7 @@
                 $hashedPass = password_hash($password, PASSWORD_DEFAULT);
                 $userType = 'admin';
 
-                $registerAdmin = $connection->prepare('INSERT INTO tbl_logininfo (username, userEmail, userpassword, usertype) VALUES (?, ?, ?, ?)');
+                $registerAdmin = $connection->prepare('INSERT INTO tbl_logininfo (username, userEmail, userPass, userType) VALUES (?, ?, ?, ?)');
                 $registerAdmin->bind_param('ssss', $username, $email, $hashedPass, $userType);
                 $registerAdmin->execute();
                 $registerAdmin->close();

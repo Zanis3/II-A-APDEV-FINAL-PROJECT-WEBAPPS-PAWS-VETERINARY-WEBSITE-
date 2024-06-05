@@ -1,4 +1,16 @@
 <?php
+    #IF TINATRY I ACCESS ANG SPECIFIC ADDRESS NA ITO, BABALIK SA MENU NILA
+    if (basename("dashboard/dash-template/TotalChart.php") == basename($_SERVER["SCRIPT_FILENAME"])){
+        if($role == 'admin'){
+            header("Location: ../Dashboard.php");
+        }
+        elseif($role == 'doctor'){
+            header("Location: ../dashboard-doc.php");
+        }
+        else{
+            header("Location: ../../index.php");
+        }
+    }
 ?>
 <head>
     <title>Total</title>
