@@ -12,20 +12,25 @@
 <body>
     <?php include_once 'dash-template/dashboard-header.php';?>
     <div class="left-content">
-        <div class="admin-container">
-            <table>
-                <tr>
-                    <td rowspan="2">
-                        <div class="circle">
-                            <i class="fas fa-user" style="font-size: 30px; color: white;"></i>
-                        </div>
-                    </td>
-                    <td style="padding-left: 40px;"><h2 style="margin: 0;">Welcome Back Admin!</h2></td>
-                </tr>
-                <tr>
-                    <td style="padding-left: 40px;"><p style="margin: 0;">Check the updates logged so far!</p></td>
-                </tr>
-            </table>
+        <div class="top-container">
+            <div class="admin-container">
+                <table>
+                    <tr>
+                        <td rowspan="2">
+                            <div class="circle">
+                                <i class="fas fa-user" style="font-size: 30px; color: white;"></i>
+                            </div>
+                        </td>
+                        <td style="padding-left: 40px;"><h2 style="margin: 0;">Welcome Back Admin!</h2></td>
+                    </tr>
+                    <tr>
+                        <td style="padding-left: 40px;"><p style="margin: 0;">Check the updates logged so far!</p></td>
+                    </tr>
+                </table>
+            </div>
+            <div class="logout-container">
+                <button type="submit" name="btnLogOut"><b>Log Out</b></button>
+            </div>
         </div>
         <p style="margin-left: 50px;"><b>Choose the Category</b></p>
     </div>

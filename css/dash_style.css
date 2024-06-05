@@ -379,3 +379,16 @@ img{
 .reports-container {
     width: 100%;
 }
+
+.top-container {
+    display: flex;
+}
+
+.logout-container {
+    margin-top: 2%;
+    margin-left: 35%;
+    height: 80px;
+    width: 150px;
+    padding-left: 50px;
+    padding-top: 20px;
+}
