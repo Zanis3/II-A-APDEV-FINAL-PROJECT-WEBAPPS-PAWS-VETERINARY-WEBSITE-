@@ -12,7 +12,15 @@
 
     #REDIRECT SA HOME PAGE PAG LOGGED IN NA
     if($isLoggedIn){
-        header('Location: ../index.php');
+        if($role == 'user'){
+            header('Location: ../index.php');
+        }
+        elseif($role == 'doctor'){
+            header('Location: ../dashboard/dashboard-doc.php');
+        }
+        else{
+            header('Location: ../dashboard/Dashboard.php');
+        }
     }
 
     if($_SERVER['REQUEST_METHOD'] === "POST"){
@@ -33,9 +41,12 @@
             }
 
             #USERNAME FINDER SA DB
-            $findAccount = $connection->execute_query('SELECT * FROM tbl_logininfo WHERE username = ? LIMIT 1', [$username]);
-
-            $account = $findAccount->fetch_assoc();
+            $findAccount = $connection->prepare('SELECT * FROM tbl_logininfo WHERE username = ? LIMIT 1');
+            $findAccount->bind_param('s', $username);
+            $findAccount->execute();
+            $result = $findAccount->get_result();
+            $account = $result->fetch_assoc();
+            $findAccount->close();
 
             if(!$account && empty($userNameError)){
                 $userNameError = 'Username not found. Please try again.';
@@ -44,7 +55,7 @@
             }
 
             #COMPARE USERNAME AND PASSWORD
-            if(!password_verify($password, $account['userpassword']) && empty($passwordError)){
+            if(!password_verify($password, $account['userPass']) && empty($passwordError)){
                 $passwordError = 'Password does not match username.';
 
                 $loginValidation = false;
@@ -54,18 +65,19 @@
             if($loginValidation){
                 $_SESSION['login'] = true;
                 $_SESSION['username'] = $username;
+                $_SESSION['role'] = $account['userType'];
 
                 #REMEMBER ACCOUNT KAHIT I EXIT ANG BROWSER (15 DAYS)
-                if($remember == 'Remember' && $account['usertype'] == 'user'){
+                if($remember == 'Remember' && $account['userType'] == 'user'){
                     setcookie('isLoggedIn', $_SESSION['login'], time() + (86400 * 15), '/');
                     setcookie('username', $_SESSION['username'], time() + (86400 * 15), '/');
                 }
 
                 #REDIRECT ACCOUNT TO THEIR ROLE
-                if($account['usertype'] == 'user'){
+                if($account['userType'] == 'user'){
                     header('Location: ../index.php');
                 }
-                elseif($account['usertype'] == 'doctor'){
+                elseif($account['userType'] == 'doctor'){
                     header('Location: ../dashboard/dashboard_doc.php');
                 }
                 else{

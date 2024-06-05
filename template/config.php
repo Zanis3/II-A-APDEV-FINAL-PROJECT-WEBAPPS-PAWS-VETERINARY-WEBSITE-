@@ -7,6 +7,9 @@
     #REMEMBER LOGIN
     $isLoggedIn = $_SESSION['login'];
 
+    #REMEMBER ROLE
+    $role = $_SESSION['role'];
+
     if(isset($_COOKIE['isLoggedIn'])){
         $isLoggedIn = isset($_COOKIE['isLoggedIn']);
     }

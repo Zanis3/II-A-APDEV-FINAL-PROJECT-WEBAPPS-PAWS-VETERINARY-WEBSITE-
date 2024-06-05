@@ -5,6 +5,7 @@
     $firstNameError = '';
     $emailError = '';
     $contactNoError = '';
+    $addressError = '';
     $usernameError = '';
     $passwordError = '';
     $confirmPasswordError = '';
@@ -19,7 +20,15 @@
 
     #REDIRECT SA HOME PAGE PAG LOGGED IN NA
     if($isLoggedIn){
-        header('Location: ../index.php');
+        if($role == 'user'){
+            header('Location: ../index.php');
+        }
+        elseif($role == 'doctor'){
+            header('Location: ../dashboard/dashboard-doc.php');
+        }
+        else{
+            header('Location: ../dashboard/Dashboard.php');
+        }
     }
 
     if($_SERVER['REQUEST_METHOD'] === "POST"){
@@ -29,6 +38,7 @@
 
         $email = $_POST['txtEmail'];
         $contactNumber = $_POST['txtContactNumber'];
+        $address = $_POST['txtAddress'];
 
         $userName = $_POST['txtUsername'];
         $password = $_POST['txtPassword'];
@@ -42,11 +52,12 @@
         if(isset($_POST['btnRegister'])){
             
             #CHINECHECK KUNG EMPTY UNG REQUIRED FIELDS
-            if(empty($lastName) || empty($firstName) || empty($email) || empty($contactNumber) || empty($userName) || empty($password) || empty($confirmPassword)){
+            if(empty($lastName) || empty($firstName) || empty($email) || empty($contactNumber) || empty($address) || empty($userName) || empty($password) || empty($confirmPassword)){
                 $lastNameError = emptyError($lastName);
                 $firstNameError = emptyError($firstName);
                 $emailError = emptyError($email);
                 $contactNoError = emptyError($contactNumber);
+                $addressError = emptyError($address);
                 $usernameError = emptyError($userName);
                 $passwordError = emptyError($password);
                 $confirmPasswordError = emptyError($confirmPassword);
@@ -224,6 +235,14 @@
                         <input type="tel" name="txtContactNumber" id="txtContactNumber" class="input-text" pattern="(\+639\d{2}|\d{4})[- ]?\d{3}[- ]?\d{4}" placeholder="Contact No. (09XX-XXX-XXXX or +639XX-XXX-XXXX)" maxlength = "14" value="<?php echo htmlspecialchars($_POST['txtContactNumber']);?>">
                     </div>
 
+                    <!--ADDRESS FIELD-->
+                    <div class="contact-item">
+                        <span>
+                            <label for="txtAddress">Address:</label>
+                            <p class="warning">*<?php echo htmlspecialchars($addressError);?></p>
+                        </span>
+                        <input type="text" name="txtAddress" id="txtAddress" placeholder="Address" value="<?php echo htmlspecialchars($_POST['txtAddress']);?>">
+                    </div>
 
                     <!--USERNAME FIELD-->
                     <div class="contact-item">

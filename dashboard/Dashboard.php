@@ -1,4 +1,14 @@
 <?php
+    require '../template/config.php';
+
+    if($role != 'admin'){
+        if($role == 'doctor'){
+            header('Location: dashboard-doc.php');
+        }
+        else{
+            header('Location: ../index.php');
+        }
+    }
 ?>
 <head>
     <title>Dashboard</title>
