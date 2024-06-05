@@ -37,11 +37,10 @@
             <a href="?vet=Dr. Jane Smith" class="container-link"><b>Dr. Jane Smith</b><i class="fas fa-arrow-right"></i></a>
         </div>
     </div>
-    <br>
-    <center>
+    <div class="btn-container">
         <form method="post">
-            <button type="submit" name="back"><b>Go Back</b></button>
+            <button type="submit" name="back" class="btnAppointment"><b>Go Back</b></button>
         </form>
-    </center>
+    </div>
     <?php include_once '../template/footer.php';?>
 </body>

@@ -46,6 +46,105 @@
             </blockquote>
         </div>
     </div>
+    <br>
+    <div class="review-container">
+        <center>
+            <h2 style="color: #064E3B">Reviews</h2>
+            <p><b>Our satisfied clients!</b></p>
+        </center>
+        <center>
+            <div class="feedback-slide active">
+                <center>
+                    <div class="circle">
+                        <i class="fas fa-user" style="font-size: 25px"></i>
+                    </div>
+                </center>
+                <br>
+                <h3 style="margin-top: 0; margin-bottom: 0;">Jestin Clark V. Sacayle</h3>
+                <p style="color: #65A30D; margin-top: 0;"><b>Fur Parent</b></p>
+                <p style="margin-left: 5%; margin-right: 5%;">
+                    Paws Vet Clinic is amazing! The staff are 
+                    friendly and knowledgeable, and they provide 
+                    top-notch care for my pets. The clinic is 
+                    clean and modern, and I love the convenience 
+                    of their appointment scheduling. 
+                    I highly recommend them!
+                </p>
+            </div>
+            <div class="feedback-slide">
+                <center>
+                    <div class="circle">
+                        <i class="fas fa-user" style="font-size: 25px"></i>
+                    </div>
+                </center>
+                <br>
+                <h3 style="margin-top: 0; margin-bottom: 0;">Euvert Zion Pagad</h3>
+                <p style="color: #65A30D; margin-top: 0;"><b>Fur Parent</b></p>
+                <p style="margin-left: 5%; margin-right: 5%;">
+                    Paws Vet Clinic exceeded my expectations. 
+                    The staff was warm, knowledgeable, 
+                    and truly cared for my pet. Highly recommend!
+                </p>
+            </div>
+            <div class="feedback-slide">
+                <center>
+                    <div class="circle">
+                        <i class="fas fa-user" style="font-size: 25px"></i>
+                    </div>
+                </center>
+                <br>
+                <h3 style="margin-top: 0; margin-bottom: 0;">Keannu Manabilang</h3>
+                <p style="color: #65A30D; margin-top: 0;"><b>Fur Parent</b></p>
+                <p style="margin-left: 5%; margin-right: 5%;">
+                    Paws Vet Clinic provided top-notch care for my pet. 
+                    The staff was friendly and knowledgeable, 
+                    and I left feeling reassured about my pet's 
+                    health. Highly recommend their services!
+                </p>
+            </div>
+            <div class="feedback-slide">
+                <center>
+                    <div class="circle">
+                        <i class="fas fa-user" style="font-size: 25px"></i>
+                    </div>
+                </center>
+                <br>
+                <h3 style="margin-top: 0; margin-bottom: 0;">Ijay Jaculbe</h3>
+                <p style="color: #65A30D; margin-top: 0;"><b>Fur Parent</b></p>
+                <p style="margin-left: 5%; margin-right: 5%;">
+                    My experience at Paws Vet Clinic was exceptional. 
+                    The staff was attentive, the facilities were clean, 
+                    and the veterinarians were knowledgeable and 
+                    compassionate. I trust them completely with my pet's care.
+                </p>
+            </div>
+            <div class="feedback-slide">
+                <center>
+                    <div class="circle">
+                        <i class="fas fa-user" style="font-size: 25px"></i>
+                    </div>
+                </center>
+                <br>
+                <h3 style="margin-top: 0; margin-bottom: 0;">Alvin Villanueva</h3>
+                <p style="color: #65A30D; margin-top: 0;"><b>Fur Parent</b></p>
+                <p style="margin-left: 5%; margin-right: 5%;">
+                    Paws Vet Clinic sets the standard for exceptional 
+                    pet care. From the warm welcome at the door to 
+                    the expert attention from the veterinarians, 
+                    every aspect of my visit was outstanding. 
+                    I wouldn't trust anyone else with my furry family member.
+                </p>
+            </div>
+        </center>
+        <div class="number-indicators">
+            <span class="number active" data-index="1">1</span>
+            <span class="number" data-index="2">2</span>
+            <span class="number" data-index="3">3</span>
+            <span class="number" data-index="4">4</span>
+            <span class="number" data-index="5">5</span>
+        </div>
+    </div>
+    <script src="script/feedback.js"></script>
 
     <?php include_once 'template/footer.php';?>
 </body>

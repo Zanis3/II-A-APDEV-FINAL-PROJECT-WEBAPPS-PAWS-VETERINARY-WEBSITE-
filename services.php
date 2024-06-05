@@ -63,9 +63,11 @@
             care tailored to their needs
         </p>
         <p><b>Duration:</b> 30 mins - 1 hr </p>
-        <form method="post">
-            <button type="submit" class="set" name="set"><b>Set Appointment</b></button>
-        </form>
+        <div class="space">
+            <form method="post">  
+                    <button type="submit" class="set" name="set"><b>Set Appointment</b></button>
+            </form>
+        </div>
     </div>
     <div class="floating-ui" id="floatingUI2">
         <h2 style="color: #064E3B">Consultation Details</h2>
@@ -78,9 +80,11 @@
             and peace of mind for every pet owner
         </p>
         <p><b>Duration:</b> 30 mins - 1 hr </p>
-        <form method="post">
-            <button type="submit" class="set" name="set"><b>Set Appointment</b></button>
-        </form>
+        <div class="space">
+            <form method="post">  
+                    <button type="submit" class="set" name="set"><b>Set Appointment</b></button>
+            </form>
+        </div>
     </div>
     <br>
     <div class="container">
@@ -121,9 +125,11 @@
             compassionate care and successful outcomes.
         </p>
         <p><b>Duration:</b> 30 mins - 1 hr+ </p>
-        <form method="post">
-            <button type="submit" class="set" name="set"><b>Set Appointment</b></button>
-        </form>
+        <div class="space">
+            <form method="post">  
+                    <button type="submit" class="set" name="set"><b>Set Appointment</b></button>
+            </form>
+        </div>
     </div>
     <div class="floating-ui" id="floatingUI4">
         <h2 style="color: #064E3B">Dental Details</h2>
@@ -136,9 +142,11 @@
             their comfort and well-being.
         </p>
         <p><b>Duration:</b> 30 mins - 1 hr+ </p>
-        <form method="post">
-            <button type="submit" class="set" name="set"><b>Set Appointment</b></button>
-        </form>
+        <div class="space">
+            <form method="post">  
+                    <button type="submit" class="set" name="set"><b>Set Appointment</b></button>
+            </form>
+        </div>
     </div>
 
     <br>
@@ -180,9 +188,11 @@
             looking and feeling their best.
         </p>
         <p><b>Duration:</b> 30 mins - 1 hr+ </p>
-        <form method="post">
-            <button type="submit" class="set" name="set"><b>Set Appointment</b></button>
-        </form>
+        <div class="space">
+            <form method="post">  
+                    <button type="submit" class="set" name="set"><b>Set Appointment</b></button>
+            </form>
+        </div>
     </div>
     <div class="floating-ui" id="floatingUI6">
         <h2 style="color: #064E3B">Grooming Details</h2>
@@ -196,9 +206,11 @@
             happy and healthy life.
         </p>
         <p><b>Duration:</b> 30 mins - 1 hr </p>
-        <form method="post">
-            <button type="submit" class="set" name="set"><b>Set Appointment</b></button>
-        </form>
+        <div class="space">
+            <form method="post">  
+                    <button type="submit" class="set" name="set"><b>Set Appointment</b></button>
+            </form>
+        </div>
     </div>
 
     <script src="script/floating.js"></script>

@@ -7,7 +7,7 @@
         exit();
     }
     if (isset($_POST['next'])) {
-        header('Location: summary.php');
+        header('Location: appointment-summary.php');
         exit();
     }
 ?>
@@ -109,8 +109,13 @@
                     </div>
                 </div>
             </div>
-            <button type="submit" name="back"><b>Go Back</b></button>
-            <button type="submit" name="next"><b>Next</b></button>
+            <table>
+                <tr>
+                    <td><button type="submit" name="back"><b>Go Back</b></button></td>
+                    <td>&nbsp;</td>
+                    <td><button type="submit" name="next"><b>Next</b></button></td>
+                </tr>
+            </table>
         </form>
     </center>
     <br>

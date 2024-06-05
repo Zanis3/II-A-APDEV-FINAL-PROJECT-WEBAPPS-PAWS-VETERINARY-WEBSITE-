@@ -43,6 +43,25 @@
     margin-top: 4.1%;
     margin-bottom: 4.1%;
 }
+
+.check {
+    height: 50px;
+    padding: 3%;
+    margin-top: 2%;
+    margin-bottom: 2%;
+}
+
+.btnAppointment {
+    margin-top: 0;
+    margin-bottom: 0;
+    height: 50px;
+    width: 100px;
+    border-radius: 5px;
+    border: 1px solid #65A30D;
+    background-color: #064E3B;
+    color: white;
+}
+
 button {
     margin-top: 1.5%;
     margin-bottom: 1%;
@@ -64,10 +83,11 @@ button:active {
     display: flex;
     justify-content: center;
     margin-bottom: 25px;
+    width: 80%;
 }
 .info-container .box {
-    width: 48%; /* Adjust the width as needed */
-    padding: 10px;
+    width: 50%; /* Adjust the width as needed */
+    padding: 20px;
     margin-left: 20px;
     margin-right: 20px;
     border-radius: 10px;

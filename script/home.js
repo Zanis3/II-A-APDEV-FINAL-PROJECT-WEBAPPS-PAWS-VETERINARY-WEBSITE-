@@ -22,15 +22,12 @@ document.addEventListener('DOMContentLoaded', function() {
     }
 
     function nextArticle() {
-        currentIndex = (currentIndex + 1) % (articles.length + 1);
-        if (currentIndex === articles.length + 1) {
-            currentIndex = 1;
-        }
+        currentIndex = (currentIndex % articles.length) + 1;
         showArticle(currentIndex);
     }
 
     function prevArticle() {
-        currentIndex = (currentIndex - 1 + articles.length + 1) % (articles.length + 1);
+        currentIndex = (currentIndex - 1 + articles.length) % articles.length;
         if (currentIndex === 0) {
             currentIndex = articles.length;
         }

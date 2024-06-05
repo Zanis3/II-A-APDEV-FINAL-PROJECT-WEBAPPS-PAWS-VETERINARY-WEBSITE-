@@ -108,6 +108,9 @@
     box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
 }
 
+.space {
+    background-color: #E2EBE7;
+}
 .set {
     background-color: #064E3B;
     color: white;

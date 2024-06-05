@@ -2,6 +2,8 @@
     require '../template/config.php';
     
     $location = 'folder';
+    $errors = [];
+
     if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         $_SESSION['txtLName'] = $_POST['txtLName'] ?? '';
         $_SESSION['txtFName'] = $_POST['txtFName'] ?? '';
@@ -14,11 +16,43 @@
         $_SESSION['txtPType'] = $_POST['txtPType'] ?? '';
         $_SESSION['txtPBreed'] = $_POST['txtPBreed'] ?? '';
 
-        if (isset($_POST['back'])) {
+        // Validation
+
+        if (empty($_SESSION['txtLName']) && empty($_SESSION['txtFName']) && empty($_SESSION['txtContact']) && empty($_SESSION['txtEmail']) && empty($_SESSION['txtAddress']) && empty($_SESSION['txtPName']) && empty($_SESSION['txtPAge']) && empty($_SESSION['txtPGender']) && empty($_SESSION['txtPType']) && empty($_SESSION['txtPBreed'])) {
+            $errors[] = "Please fill in all fields!";
+        }
+        elseif (empty($_SESSION['txtLName']) || empty($_SESSION['txtFName'])) {
+            $errors[] = "Last Name & First Name: Error! Please enter your name!";
+        }
+        elseif (empty($_SESSION['txtContact'])) {
+            $errors[] = "Contact Number: Error! Please enter contact number!";
+        }
+        elseif (empty($_SESSION['txtEmail'])) {
+            $errors[] = "Email: Error! Please enter email address!";
+        }
+        elseif (empty($_SESSION['txtAddress'])) {
+            $errors[] = "Address: Error! Please enter address!";
+        }
+        elseif (empty($_SESSION['txtPName'])) {
+            $errors[] = "Pet Name: Error! Please state your pet's name!";
+        }
+        elseif (empty($_SESSION['txtPAge'])) {
+            $errors[] = "Age: Error! Please state your pet's age!";
+        }
+        elseif (empty($_SESSION['txtPGender'])) {
+            $errors[] = "Gender: Error! Please state your pet's gender!";
+        }
+        elseif (empty($_SESSION['txtPType'])) {
+            $errors[] = "Type: Error! Please state the type of your pet!";
+        }
+        elseif (empty($_SESSION['txtPBreed'])) {
+            $errors[] = "Breed: Error! Please state the breed of your pet!";
+        }
+        elseif (isset($_POST['back'])) {
             header('Location: schedule.php');
             exit();
         }
-        if (isset($_POST['next'])) {
+        elseif (isset($_POST['next']) && empty($errors)) {
             header('Location: result.php');
             exit();
         }
@@ -47,28 +81,28 @@
     <center>
         <form method="post">
             <div class="info-container">
-                <div class="box">
+                <div class="box" style="width: 50%;">
                     <h3>Owner Information</h3>
                     <hr class="line">
                     <br>
                     <table>
                         <tr>
                             <td><label for="txtLName"> Last Name: </label></td>
-                            <td><input type="text" name="txtLName" value="<?php echo $_SESSION['txtLName'] ?? ''; ?>"></td>
+                            <td><input type="text" name="txtLName" size="15" value="<?php echo $_SESSION['txtLName'] ?? ''; ?>"></td>
                             <td><label for="txtFName"> First Name: </td>
-                            <td><input type="text" name="txtFName" value="<?php echo $_SESSION['txtFName'] ?? ''; ?>"></td>
+                            <td><input type="text" name="txtFName" size="15" value="<?php echo $_SESSION['txtFName'] ?? ''; ?>"></td>
                         </tr>
                         <tr>
                             <td><label for="txtContact">Contact Number: </label></td>
-                            <td colspan="3"><input type="text" name="txtContact" size="59" value="<?php echo $_SESSION['txtContact'] ?? ''; ?>"></td>
+                            <td colspan="3"><input type="text" name="txtContact" size="49" value="<?php echo $_SESSION['txtContact'] ?? ''; ?>"></td>
                         </tr>
                         <tr>
                             <td><label for="txtEmail">Email: </label></td>
-                            <td colspan="3"><input type="text" name="txtEmail" size="59" value="<?php echo $_SESSION['txtEmail'] ?? ''; ?>"></td>
+                            <td colspan="3"><input type="text" name="txtEmail" size="49" value="<?php echo $_SESSION['txtEmail'] ?? ''; ?>"></td>
                         </tr>
                         <tr>
                             <td><label for="txtAddress">Address: </label></td>
-                            <td colspan="3"><input type="text" name="txtAddress" size="59" value="<?php echo $_SESSION['txtAddress'] ?? ''; ?>"></td>
+                            <td colspan="3"><input type="text" name="txtAddress" size="49" value="<?php echo $_SESSION['txtAddress'] ?? ''; ?>"></td>
                         </tr>
                     </table>
                 </div>
@@ -101,9 +135,22 @@
                     <br>
                 </div>
             </div>
-            <button type="submit" name="back"><b>Go Back</b></button>
-            <button type="submit" name="next"><b>Next</b></button>
+            <table>
+                <tr>
+                    <td><button type="submit" name="back"><b>Go Back</b></button></td>
+                    <td>&nbsp;</td>
+                    <td><button type="submit" name="next"><b>Next</b></button></td>
+                </tr>
+            </table>
         </form> 
+        <?php
+            // Display error messages
+            if (!empty($errors)) {
+                echo '<script>';
+                echo 'alert("PAWS VET CLINIC\n\n' . implode('\n', $errors) . '");';
+                echo '</script>';
+            }
+        ?>
     </center>
     <br>
     <?php include_once '../template/footer.php';?>
