@@ -1,7 +1,7 @@
 <?php
 ?>
 <head>
-    <title>Appointment</title>
+    <title>Dashboard Summary</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
     <link rel="stylesheet" href="../css/style_general.css">
     <link rel="stylesheet" href="../css/style_appointment.css">
@@ -12,6 +12,7 @@
 </head>
 <body>
     <?php include_once 'dash-template/dashboard-header.php'; ?>
+    <!--
     <div class="total">
         <div class="main">
             <h3> Total Appointments </h3>
@@ -66,6 +67,6 @@
         <br>
     </div>
     <br>
-    <br>
+    <br>-->
     <?php include_once '../template/footer.php'; ?>
 </body>
