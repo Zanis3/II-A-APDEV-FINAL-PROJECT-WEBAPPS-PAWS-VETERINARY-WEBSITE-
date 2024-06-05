@@ -288,3 +288,94 @@ img{
 .filter-options label {
     margin-right: 5px;
 }
+
+.doctor-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+}
+
+.doctor-table th, .doctor-table td {
+    border: 1px solid #ddd;
+    padding: 8px;
+    text-align: left;
+}
+
+.doctor-table th {
+    background-color: #f2f2f2;
+    font-weight: bold;
+}
+
+.calendar-container {
+    margin-top: 20px;
+    padding: 0;
+    width: 100%;
+}
+
+.calendar-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 10px;
+}
+
+.calendar-body {
+    display: flex;
+    flex-direction: column;
+    margin: 2%;
+}
+
+.calendar-days {
+    display: flex;
+    justify-content: space-between;
+    gap: 0.5%;
+    font-weight: bold;
+}
+
+.calendar-dates {
+    display: flex;
+    flex-wrap: wrap;
+    width: 100%;
+}
+
+.calendar-dates div {
+    text-align: center;
+    width: calc(120% / 10);
+    text-align: center;
+    padding-right: 5.5px;
+    padding-left: 5.5px;
+    padding-top: 5px;
+    padding-bottom: 5px;
+    cursor: pointer;
+}
+
+.calendar-dates div.disabled {
+    background-color: #ccc;
+    pointer-events: none;
+}
+
+.popup-container {
+    display: none;
+    margin-top: 20px;
+    text-align: center;
+}
+
+.popup-container.active {
+    display: block;
+}
+
+.reports-buttons {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 20px;
+    align-items: center;
+   
+}
+.reports-buttons button {
+    margin: 5px 0;
+    padding: 10px 20px;
+    width: 50%;
+}
+.reports-container {
+    width: 100%;
+}
