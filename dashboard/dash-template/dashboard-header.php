@@ -21,6 +21,7 @@
     if($_SERVER['REQUEST_METHOD'] === "POST"){
         if(isset($_POST['btnDoctors'])){
             $docSelected = true;
+            $docReg = false;
         }
 
         if(isset($_POST['btnReports'])){
