@@ -16,7 +16,6 @@
     $repSelected = false;
     $calSelected = false;
     $_SESSION['docReg'] = '';
-    $docReg = '';
 
     if($_SERVER['REQUEST_METHOD'] === "POST"){
         if(isset($_POST['btnDoctors'])){
@@ -33,8 +32,7 @@
         }
 
         if(isset($_POST['btnAddDoc'])){
-            $docReg = true;
-            $_SESSION['docReg'] = $docReg;
+            header("Location: dash-template/dashboard-docreg.php");
         }
     }
 ?>
