@@ -150,7 +150,7 @@
 
                 </div>
             </div>
-            <script src="../script/calendar.js"></script>
+            <script src="../script/dash-calendar.js"></script>
         <?php endif;?>
     </div>
 </div>

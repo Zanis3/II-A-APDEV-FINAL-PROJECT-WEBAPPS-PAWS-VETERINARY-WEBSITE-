@@ -38,7 +38,7 @@
                 </div>
                 <div id="time-slots" class="time-slots-container"></div>
                 <div id="selected-date"></div>
-                <script src="../script/calendar.js"></script>
+                <script src="../script/appointment-calendar.js"></script>
             </center>
             <center>
                 <form method="post">
