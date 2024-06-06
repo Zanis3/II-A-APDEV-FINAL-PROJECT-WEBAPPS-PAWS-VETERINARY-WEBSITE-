@@ -112,13 +112,14 @@
                 <h2 style="color: #064E3B;">Generate Reports</h2>
                 <div class="button-container">
                     <form method="post">
-                        <button type="button" name="btnToday" style="width: 50%;" class="btnReports">Appointments Today</button>
-                        <button type="button" name="btnToday" style="width: 50%;"  class="btnReports">Appointments Weekly</button>
-                        <button type="button" name="btnToday" style="width: 50%;"  class="btnReports">Appointments Monthly</button>
+                        <button type="button" id="btnToday" style="width: 50%;" class="btnReports">Appointments Today</button>
+                        <button type="button" id="btnWeekly" style="width: 50%;" class="btnReports">Appointments Weekly</button>
+                        <button type="button" id="btnMonthly" style="width: 50%;" class="btnReports">Appointments Monthly</button>
                     </form>
                 </div>
             </div>
-        <?php endif;?>
+            <script src="../script/reports.js"></script>
+        <?php endif;?>  
     </div>
     <div class="content" id="content">
         <?php if($calSelected):?>

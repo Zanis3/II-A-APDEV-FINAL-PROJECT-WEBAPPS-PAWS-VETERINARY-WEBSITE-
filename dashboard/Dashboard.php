@@ -27,6 +27,30 @@
             $logoutIsClicked = false;
         }
     }
+
+    $checkup = false;
+    $dental = false;
+    $grooming = false;
+    $vaccination = false;
+    $surgery = false;
+
+    if($_SERVER['REQUEST_METHOD']==="POST"){
+        if(isset($_POST['btnCheckUp'])){
+            $checkup = true;
+        }
+        if(isset($_POST['btnDental'])){
+            $dental = true;
+        }
+        if(isset($_POST['btnGrooming'])){
+            $grooming = true;
+        }
+        if(isset($_POST['btnVaccination'])){
+            $vaccination = true;
+        }
+        if(isset($_POST['btnSurgery'])){
+            $surgery = true;
+        }
+    }
 ?>
 <head>
     <title>Dashboard</title>
@@ -95,43 +119,202 @@
         <div class="service-container" onclick="showServiceContent('checkup')">
             <i class="fas fa-clipboard-check" style="font-size: 30px; color: #65A30D"></i>
             <br>
-            <p><b>Check Up</b></p>
+            <input type="submit" name="btnCheckUp" value="Check Up" class="btnServices">
             <hr class="line">
         </div>
         <div class="service-container" onclick="showServiceContent('dental')">
             <i class="fas fa-tooth" style="font-size: 30px; color: #65A30D"></i>
             <br>
-            <p><b>Dental</b></p>
+            <input type="submit" name="btnDental" value="Dental" class="btnServices">
             <hr class="line">
         </div>
         <div class="service-container" onclick="showServiceContent('grooming')">
             <i class="fas fa-cut" style="font-size: 30px; color: #65A30D"></i>
             <br>
-            <p><b>Grooming</b></p>
-            <hr class="line">
-        </div>
-        <div class="service-container" onclick="showServiceContent('consultation')">
-            <i class="fas fa-clipboard-list" style="font-size: 30px; color: #65A30D"></i>
-            <br>
-            <p><b>Consultation</b></p>
+            <input type="submit" name="btnGrooming" value="Grooming" class="btnServices">
             <hr class="line">
         </div>
         <div class="service-container" onclick="showServiceContent('vaccination')">
             <i class="fas fa-syringe" style="font-size: 30px; color: #65A30D"></i>
             <br>
-            <p><b>Vaccination</b></p>
+            <input type="submit" name="btnVaccination" value="Vaccination" class="btnServices">
             <hr class="line">
         </div>
         <div class="service-container" onclick="showServiceContent('surgery')">
             <i class="fas fa-heartbeat" style="font-size: 30px; color: #65A30D"></i>
             <br>
-            <p><b>Surgery</b></p>
+            <input type="submit" name="btnSurgery" value="Surgery" class="btnServices">
             <hr class="line">
         </div>
     </div>
     <br>
     <div id="service-content">
-        <!-- Dynamic content for services will be loaded here -->
+        
+    </div>
+    <div class="hidden">
+        <?php if($checkup):?>
+            <div class="wide">
+                <div class="patient-section">
+                    <h2 id="patient-heading">Patients</h2>
+                    <div class="filter-options">
+                        <label for="filter">Filter:</label>
+                        <select id="filter" onchange="updatePatientHeading(this.value)">
+                            <option value="today">Today</option>
+                            <option value="this-week">This Week</option>
+                            <option value="this-month">This Month</option>
+                        </select>
+                    </div>
+                </div>
+                <table class="patients-table">
+                    <tr>
+                        <th>Appointment ID</th>
+                        <th>Pet Name</th>
+                        <th>Owner</th>
+                        <th>Vet</th>
+                        <th>Schedule</th>
+                    </tr>
+                </table>
+            </div>
+            <div class="narrow">
+                <div class="info-container">
+                    <p><b>You have a total of</b></p>
+                    <h2></h2>
+                    <p><b>Check Up Appointments</b></p>
+                </div>
+            </div>
+        <?php endif; ?>
+    </div>
+    <div class="hidden">
+        <?php if($dental):?>
+            <div class="wide">
+                <div class="patient-section">
+                    <h2 id="patient-heading">Patients</h2>
+                    <div class="filter-options">
+                        <label for="filter">Filter:</label>
+                        <select id="filter" onchange="updatePatientHeading(this.value)">
+                            <option value="today">Today</option>
+                            <option value="this-week">This Week</option>
+                            <option value="this-month">This Month</option>
+                        </select>
+                    </div>
+                </div>
+                <table class="patients-table">
+                    <tr>
+                        <th>Appointment ID</th>
+                        <th>Pet Name</th>
+                        <th>Owner</th>
+                        <th>Vet</th>
+                        <th>Schedule</th>
+                    </tr>
+                </table>
+            </div>
+            <div class="narrow">
+                <div class="info-container">
+                <p><b>You have a total of</b></p>
+                <h2></h2>
+                <p><b>Dental Appointments</b></p>
+                </div>
+            </div>
+        <?php endif; ?>
+    </div>
+    <div class="hidden">
+        <?php if($grooming):?>
+            <div class="wide">
+                <div class="patient-section">
+                    <h2 id="patient-heading">Patients</h2>
+                    <div class="filter-options">
+                        <label for="filter">Filter:</label>
+                        <select id="filter" onchange="updatePatientHeading(this.value)">
+                            <option value="today">Today</option>
+                            <option value="this-week">This Week</option>
+                            <option value="this-month">This Month</option>
+                        </select>
+                    </div>
+                </div>
+                <table class="patients-table">
+                    <tr>
+                        <th>Appointment ID</th>
+                        <th>Pet Name</th>
+                        <th>Owner</th>
+                        <th>Vet</th>
+                        <th>Schedule</th>
+                    </tr>
+                </table>
+            </div>
+            <div class="narrow">
+                <div class="info-container">
+                    <p><b>You have a total of</b></p>
+                    <h2></h2>
+                    <p><b>Grooming Appointments</b></p>
+                </div>
+            </div>
+        <?php endif;?>
+    </div>
+    <div class="hidden">
+        <?php if($vaccination): ?>
+            <div class="wide">
+                <div class="patient-section">
+                    <h2 id="patient-heading">Patients</h2>
+                    <div class="filter-options">
+                        <label for="filter">Filter:</label>
+                        <select id="filter" onchange="updatePatientHeading(this.value)">
+                            <option value="today">Today</option>
+                            <option value="this-week">This Week</option>
+                            <option value="this-month">This Month</option>
+                        </select>
+                    </div>
+                </div>
+                <table class="patients-table">
+                    <tr>
+                        <th>Appointment ID</th>
+                        <th>Pet Name</th>
+                        <th>Owner</th>
+                        <th>Vet</th>
+                        <th>Schedule</th>
+                    </tr>
+                </table>
+            </div>
+            <div class="narrow">
+                <div class="info-container">
+                    <p><b>You have a total of</b></p>
+                    <h2></h2>
+                    <p><b>Vaccination Appointments</b></p>
+                </div>
+            </div>
+        <?php endif; ?>
+    </div>
+    <div class="hidden">
+        <?php if($surgery): ?>
+            <div class="wide">
+                <div class="patient-section">
+                    <h2 id="patient-heading">Patients</h2>
+                    <div class="filter-options">
+                        <label for="filter">Filter:</label>
+                        <select id="filter" onchange="updatePatientHeading(this.value)">
+                            <option value="today">Today</option>
+                            <option value="this-week">This Week</option>
+                            <option value="this-month">This Month</option>
+                        </select>
+                    </div>
+                </div>
+                <table class="patients-table">
+                    <tr>
+                        <th>Appointment ID</th>
+                        <th>Pet Name</th>
+                        <th>Owner</th>
+                        <th>Vet</th>
+                        <th>Schedule</th>
+                    </tr>
+                </table>
+            </div>
+            <div class="narrow">
+                <div class="info-container">
+                    <p><b>You have a total of</b></p>
+                    <h2></h2>
+                    <p><b>Surgery Appointments</b></p>
+                </div>
+            </div>
+        <?php endif; ?>
     </div>
     <script src="../script/dashboard-navbar.js"></script>
     <script src="../script/dashboard-services.js"></script>
