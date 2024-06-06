@@ -10,6 +10,10 @@
         }
     }
 
+    function sanitizeInput($value){
+        return htmlspecialchars(strip_tags(trim($value)));
+    }
+
     #REDIRECT SA HOME PAGE PAG LOGGED IN NA
     if($isLoggedIn){
         if($role == 'user'){
@@ -24,9 +28,9 @@
     }
 
     if($_SERVER['REQUEST_METHOD'] === "POST"){
-        $username = $_POST['txtUsername'];
-        $password = $_POST['txtPassword'];
-        $remember = $_POST['chkRemember'];
+        $username = sanitizeInput($_POST['txtUsername']);
+        $password = sanitizeInput($_POST['txtPassword']);
+        $remember = sanitizeInput($_POST['chkRemember']);
 
         $loginValidation = true;
 

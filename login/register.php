@@ -18,6 +18,10 @@
         }
     }
 
+    function sanitizeInput($value){
+        return htmlspecialchars(strip_tags($value));
+    }
+
     #REDIRECT SA HOME PAGE PAG LOGGED IN NA
     if($isLoggedIn){
         if($role == 'user'){
@@ -32,17 +36,17 @@
     }
 
     if($_SERVER['REQUEST_METHOD'] === "POST"){
-        $lastName = $_POST['txtLastName'];
-        $firstName = $_POST['txtFirstName'];
-        $middleInitial = $_POST['txtMiddleInitial'];
+        $lastName = sanitizeInput(ucwords($_POST['txtLastName']));
+        $firstName = sanitizeInput(ucwords($_POST['txtFirstName']));
+        $middleInitial = sanitizeInput(ucwords($_POST['txtMiddleInitial']));
 
-        $email = $_POST['txtEmail'];
-        $contactNumber = $_POST['txtContactNumber'];
-        $address = $_POST['txtAddress'];
+        $email = sanitizeInput($_POST['txtEmail']);
+        $contactNumber = sanitizeInput($_POST['txtContactNumber']);
+        $address = sanitizeInput($_POST['txtAddress']);
 
-        $userName = $_POST['txtUsername'];
-        $password = $_POST['txtPassword'];
-        $confirmPassword = $_POST['txtConfirmPassword'];
+        $userName = sanitizeInput($_POST['txtUsername']);
+        $password = sanitizeInput($_POST['txtPassword']);
+        $confirmPassword = sanitizeInput($_POST['txtConfirmPassword']);
 
         $userNameLength = strlen($userName);
         $passwordLength = strlen($password);

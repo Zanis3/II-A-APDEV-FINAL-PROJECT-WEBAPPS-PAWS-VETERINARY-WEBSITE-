@@ -3,7 +3,6 @@
 
 @import url('style_general.css');
 
-
 button:hover{
     background:none;
     border:none;
@@ -21,6 +20,18 @@ button:hover{
     flex-direction: column;
     height: 100%;
     width: 100%;
+}
+
+.container{
+    width:90%;
+    height:70%;
+    display:flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    background:var(--lighter-green);
+    border: 3px solid var(--dark-green);
+    gap:10px;
 }
 
 .form-container{
@@ -115,4 +126,51 @@ span .warning{
 
 .add-doc-btn.cancel:hover{
     background-color:var(--light-red);
+}
+
+.information-screen{
+    top: -300px;
+    position:absolute;
+    width:500px;
+    height:250px;
+    background:var(--lighter-green);
+    border-radius:5px;
+    border:5px solid var(--dark-green);
+    animation: slideDown 1s forwards;
+    z-index:4;
+}
+
+.information-header{
+    display:flex;
+    align-items:center;
+    width:100%;
+    height:30px;
+    background:var(--light-green);
+    gap:10px;
+}
+
+.information-desc, .information-header{
+    font-weight: bold;
+    text-align:center;
+    width:100%;
+}
+
+@keyframes slideDown {
+    0% {
+        top: -300px;
+    }
+    100% {
+        top: 20px;
+    }
+}
+
+.black-background{
+    top:0;
+    left:0;
+    width:100%;
+    height:100%;
+    z-index:3;
+    background:black;
+    opacity:0.5;
+    position:absolute;
 }

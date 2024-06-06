@@ -1,21 +1,14 @@
 <?php
-    #IF TINATRY I ACCESS ANG SPECIFIC ADDRESS NA ITO, BABALIK SA MENU NILA
-    if(basename("dashboard/dash-template/dashboard-docreg.php") == basename($_SERVER["SCRIPT_FILENAME"])){
-        if($role == 'admin'){
-            header("Location: ../Dashboard.php");
-        }
-        elseif($role == 'doctor'){
-            header("Location: ../dashboard-doc.php");
-        }
-        else{
-            header("Location: ../../index.php");
-        }
-    }
+    require '../../template/config.php';
 
     function emptyError($value){
         if(empty($value)){
             return 'Empty Field';
         }
+    }
+
+    function sanitizeInput($value){
+        return htmlspecialchars(strip_tags(trim($value)));
     }
 
     $lastNameError = '';
@@ -30,28 +23,28 @@
 
     $docRegValidation = true;
 
+    $registerSuccess = false;
+
     if($_SERVER['REQUEST_METHOD'] == "POST"){
 
-        $lastName = $_POST['txtLastName'];
-        $firstName = $_POST['txtFirstName'];
-        $middleInitial = $_POST['txtMiddleInitial'];
+        $lastName = sanitizeInput(ucwords($_POST['txtLastName']));
+        $firstName = sanitizeInput(ucwords($_POST['txtFirstName']));
+        $middleInitial = sanitizeInput(ucwords($_POST['txtMiddleInitial']));
 
-        $role = $_POST['txtDocRole'];
+        $role = sanitizeInput($_POST['txtDocRole']);
 
-        $email = $_POST['txtEmail'];
-        $contactNumber = $_POST['txtContactNo'];
-        $address = $_POST['txtAddress'];
+        $email = sanitizeInput($_POST['txtEmail']);
+        $contactNumber = sanitizeInput($_POST['txtContactNo']);
+        $address = sanitizeInput($_POST['txtAddress']);
 
-        $username = $_POST['txtUsername'];
-        $password = $_POST['txtPassword'];
-        $confirmPassword = $_POST['txtConfirmPassword'];
+        $username = sanitizeInput($_POST['txtUsername']);
+        $password = sanitizeInput($_POST['txtPassword']);
+        $confirmPassword = sanitizeInput($_POST['txtConfirmPassword']);
 
         $usernameLength = strlen($username);
         $passwordLength = strlen($password);
 
         if(isset($_POST['btnAddDoctor'])){
-
-            $docReg = $_SESSION['docReg'];
 
             #CHINECHECK KUNG EMPTY UNG REQUIRED FIELDS
             if(empty($lastName) || empty($firstName) || empty($role) || empty($email) || empty($contactNumber) || empty($username) || empty($password) || empty($confirmPassword)){
@@ -177,116 +170,143 @@
                 $registerDoctor->bind_param('iss', $contactID, $role, $service);
                 $registerDoctor->execute();
                 $registerDoctor->close();
+
+                $registerSuccess = true;
             }
         }
 
         if(isset($_POST['btnCancel'])){
-            $docReg = false;
+            header('Location: ../Dashboard.php');
         }
     }
 ?>
 
+<head>
+    <link rel="stylesheet" href="../../css/style_general.css">
+    <link rel="stylesheet" href="../../css/dashboard_styles/style_docreg.css">
+    <title>DOCTOR REGISTRATION</title>
+</head>
+
+<!--SCREEN THAT APPEARS WHEN REGISTRATION IS SUCCESSFUL-->
+<div class="information-screen" style="display:<?php if($registerSuccess){echo 'block';}else{echo 'none';}?>">
+    <div class="information-header">
+        <i class="fas fa-check-circle"></i>
+        SUCCESS
+    </div>
+    <div class="information-desc">
+        <p>Doctor has been added.</p>
+        <form action="<?php echo htmlspecialchars($_SERVER['PHP_SELF'])?>" method="post">
+            <input type="submit" name="btnConfirmAdd" value="Okay">
+        </form>
+    </div>
+</div>
+
+<div class="black-background" style="display:<?php if($registerSuccess){echo 'block';}else{echo 'none';}?>"></div>
+
 <form action="<?php echo htmlspecialchars($_SERVER['PHP_SELF'])?>" method="post" id="doc-reg-form">
-    <div class="form-container">
-        <div class="input-container">
-            <span>
-                <label for="txtLastName">Last Name:</label>
-                <p class="warning">*<?php echo htmlspecialchars($lastNameError);?></p>
-            </span>
-            <input type="text" name="txtLastName" id="txtLastName" class="input-text" placeholder="Last Name">
-        </div>
-
-        <div class="input-container">
-            <span>
-                <label for="txtFirstName">First Name:</label>
-                <p class="warning">*<?php echo htmlspecialchars($firstNameError);?></p>
-            </span>
-            <input type="text" name="txtFirstName" id="txtFirstName" class="input-text" placeholder="First Name">
-        </div>
-
-        <div class="input-container">
-            <span>
-                <label for="txtFirstName">Middle Initial:</label>
-            </span>
-            <input type="text" name="txtMiddleInitial" id="txtMiddleInitial" class="input-text mi" placeholder="Middle Initial">
-        </div>
-    </div>
-
-    <div class="form-container">
-        <div class="input-container">
-            <span>
-                <label for="txtDocRole">Role:</label>
-                <p class="warning">*<?php echo htmlspecialchars($selectRoleError);?></p>
-            </span>
-            <select name="txtDocRole" id="txtDocRole" class="input-text select">
-                <option value="" disabled selected hidden>Role</option>
-                <option value="gpv">General Practice Vet (GPV)</option>
-                <option value="ims">Internal Medicine Specialist (IMS)</option>
-                <option value="surgeon">Pet Surgeon</option>
-                <option value="dentist">Dentist</option>
-                <option value="pet groomer">Pet Groomer</option>
-            </select>
-        </div>
-    </div>
-
-    <div class="form-container">
-        <div class="input-container">
-            <span>
-                <label for="txtEmail">Email:</label>
-                <p class="warning">*<?php echo htmlspecialchars($emailError);?></p>
-            </span>
-            <input type="text" name="txtEmail" id="txtEmail" class="input-text" placeholder="Email">
-        </div>
-
-        <div class="input-container">
-            <span>
-                <label for="txtContactNo">Contact Number:</label>
-                <p class="warning">*<?php echo htmlspecialchars($contactNoError);?></p>
-            </span>
-            <input type="tel" name="txtContactNo" id="txtContactNo" class="input-text" pattern="(\+639\d{2}|\d{4})[- ]?\d{3}[- ]?\d{4}" placeholder="Contact Number (09xx xxx xxxx or +639xx xxx xxxx)">
-        </div>
-    </div>
-
-    <div class="form-container">
-        <div class="input-container">
-            <span>
-                <label for="txtUsername">Username:</label>
-                <p class="warning">*<?php echo htmlspecialchars($usernameError);?></p>
-            </span>
-            <input type="text" name="txtUsername" id="txtUsername" class="input-text" placeholder="Username (Minimum 6 characters)">
-        </div>
-    </div>
-
-    <div class="form-container">
-        <div class="input-container row">
+    <div class="container">
+        <div class="form-container">
             <div class="input-container">
                 <span>
-                    <label for="txtPassword">Password:</label>
-                    <p class="warning">*<?php echo htmlspecialchars($passwordError);?></p>
+                    <label for="txtLastName">Last Name:</label>
+                    <p class="warning">*<?php echo htmlspecialchars($lastNameError);?></p>
                 </span>
-                <input type="password" name="txtPassword" id="txtPassword" class="input-text" placeholder="Password (Minimum 8 characters)">
+                <input type="text" name="txtLastName" id="txtLastName" class="input-text" placeholder="Last Name" value="<?php echo htmlspecialchars($_POST['txtLastName']);?>">
             </div>
-            
-            <button type="button" class="btnShowPass" name="btnShowPass">Show</button>
-        </div>
 
-        <div class="input-container row">
             <div class="input-container">
                 <span>
-                    <label for="txtConfirmPassword">Confirm Password:</label>
-                    <p class="warning">*<?php echo htmlspecialchars($confirmPasswordError);?></p>
+                    <label for="txtFirstName">First Name:</label>
+                    <p class="warning">*<?php echo htmlspecialchars($firstNameError);?></p>
                 </span>
-                <input type="password" name="txtConfirmPassword" id="txtConfirmPassword" class="input-text txtPassword" placeholder="Confirm Password">
+                <input type="text" name="txtFirstName" id="txtFirstName" class="input-text" placeholder="First Name" value="<?php echo htmlspecialchars($_POST['txtFirstName']);?>">
             </div>
-            
-            <button type="button" class="btnShowPass" name="btnShowPass">Show</button>
+
+            <div class="input-container">
+                <span>
+                    <label for="txtFirstName">Middle Initial:</label>
+                </span>
+                <input type="text" name="txtMiddleInitial" id="txtMiddleInitial" class="input-text mi" placeholder="Middle Initial" value="<?php echo htmlspecialchars($_POST['txtMiddleInitial']);?>">
+            </div>
+        </div>
+
+        <div class="form-container">
+            <div class="input-container">
+                <span>
+                    <label for="txtDocRole">Role:</label>
+                    <p class="warning">*<?php echo htmlspecialchars($selectRoleError);?></p>
+                </span>
+                <select name="txtDocRole" id="txtDocRole" class="input-text select">
+                    <option value="" disabled selected hidden>Role</option>
+                    <option value="gpv">General Practice Vet (GPV)</option>
+                    <option value="ims">Internal Medicine Specialist (IMS)</option>
+                    <option value="surgeon">Pet Surgeon</option>
+                    <option value="dentist">Dentist</option>
+                    <option value="pet groomer">Pet Groomer</option>
+                </select>
+            </div>
+        </div>
+
+        <div class="form-container">
+            <div class="input-container">
+                <span>
+                    <label for="txtEmail">Email:</label>
+                    <p class="warning">*<?php echo htmlspecialchars($emailError);?></p>
+                </span>
+                <input type="text" name="txtEmail" id="txtEmail" class="input-text" placeholder="Email" value="<?php echo htmlspecialchars($_POST['txtEmail']);?>">
+            </div>
+
+            <div class="input-container">
+                <span>
+                    <label for="txtContactNo">Contact Number:</label>
+                    <p class="warning">*<?php echo htmlspecialchars($contactNoError);?></p>
+                </span>
+                <input type="tel" name="txtContactNo" id="txtContactNo" class="input-text" pattern="(\+639\d{2}|\d{4})[- ]?\d{3}[- ]?\d{4}" placeholder="Contact Number (09xx xxx xxxx or +639xx xxx xxxx)" value="<?php echo htmlspecialchars($_POST['txtContactNo']);?>">
+            </div>
+        </div>
+
+        <div class="form-container">
+            <div class="input-container">
+                <span>
+                    <label for="txtUsername">Username:</label>
+                    <p class="warning">*<?php echo htmlspecialchars($usernameError);?></p>
+                </span>
+                <input type="text" name="txtUsername" id="txtUsername" class="input-text" placeholder="Username (Minimum 6 characters)" value="<?php echo htmlspecialchars($_POST['txtUsername']);?>">
+            </div>
+        </div>
+
+        <div class="form-container">
+            <div class="input-container row">
+                <div class="input-container">
+                    <span>
+                        <label for="txtPassword">Password:</label>
+                        <p class="warning">*<?php echo htmlspecialchars($passwordError);?></p>
+                    </span>
+                    <input type="password" name="txtPassword" id="txtPassword" class="input-text" placeholder="Password (Minimum 8 characters)" value="<?php echo htmlspecialchars($_POST['txtPassword']);?>">
+                </div>
+                
+                <button type="button" class="btnShowPass" name="btnShowPass">Show</button>
+            </div>
+
+            <div class="input-container row">
+                <div class="input-container">
+                    <span>
+                        <label for="txtConfirmPassword">Confirm Password:</label>
+                        <p class="warning">*<?php echo htmlspecialchars($confirmPasswordError);?></p>
+                    </span>
+                    <input type="password" name="txtConfirmPassword" id="txtConfirmPassword" class="input-text txtPassword" placeholder="Confirm Password" value="<?php echo htmlspecialchars($_POST['txtConfirmPassword']);?>">
+                </div>
+                
+                <button type="button" class="btnShowPass" name="btnShowPass">Show</button>
+            </div>
+        </div>
+
+        <div class="form-container" style="gap:10px;padding-top:20px;">
+            <input type="submit" class="add-doc-btn" name="btnAddDoctor" value="Add Doctor">
+            <input type="submit" class="add-doc-btn cancel" name="btnCancel" value="Cancel">
         </div>
     </div>
-
-    <div class="form-container" style="gap:10px;padding-top:20px;">
-        <input type="submit" class="add-doc-btn" name="btnAddDoctor" value="Add Doctor">
-        <input type="submit" class="add-doc-btn cancel" name="btnCancel" value="Cancel">
-    </div>
+    
     
     <script>
         //SHOW OR HIDE PASSWORD
