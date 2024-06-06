@@ -565,6 +565,7 @@ img{
     z-index:4;
     width:1120px;
     height:600px;
+    display:flex;
     background:var(--lighter-green);
 }
 
