@@ -55,12 +55,14 @@
     </div>
 
     <!--ADD DOCTORS-->
-    <div class="registration-screen" style="display:<?php if($docReg){echo 'flex';}else{echo 'none';}?>">
-        <div class="registration-header">
-            REGISTER DOCTOR
+    <?php if($docReg):?>    
+        <div class="registration-screen">
+            <div class="registration-header">
+                REGISTER DOCTOR
+            </div>
+            <?php include_once 'dash-template/dashboard-docreg.php';?>
         </div>
-        <?php include_once 'dash-template/dashboard-docreg.php';?>
-    </div>
+    <?php endif;?>  
 
     <div class="black-background" style="display:<?php if($logoutIsClicked || $docReg){echo 'block';}else{echo 'none';}?>"></div>
 

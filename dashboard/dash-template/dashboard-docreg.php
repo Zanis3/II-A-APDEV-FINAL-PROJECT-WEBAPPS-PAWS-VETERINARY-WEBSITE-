@@ -51,7 +51,7 @@
 
         if(isset($_POST['btnAddDoctor'])){
 
-            $docReg = true;
+            $docReg = $_SESSION['docReg'];
 
             #CHINECHECK KUNG EMPTY UNG REQUIRED FIELDS
             if(empty($lastName) || empty($firstName) || empty($role) || empty($email) || empty($contactNumber) || empty($username) || empty($password) || empty($confirmPassword)){
@@ -136,8 +136,47 @@
             }
 
             if($docRegValidation){
+
                 $hashedPass = password_hash($password, PASSWORD_DEFAULT);
                 $userType = 'doctor';
+
+                $role = $_POST['txtDocRole'];
+                $service = '';
+
+                if($role == 'gpv'){
+                    $service = 'check-up';
+                }
+                elseif($role == "ims"){
+                    $service = 'check-up';
+                }
+                elseif($role == "surgeon"){
+                    $service = 'surgery';
+                }
+                elseif($role == "dentist"){
+                    $service = 'dentist';
+                }
+                else{
+                    $service = 'grooming';
+                }
+
+                $registerAccount = $connection->prepare('INSERT INTO tbl_logininfo (username, userEmail, userPass, userType) VALUES (?, ?, ?, ?)');
+                $registerAccount->bind_param('ssss', $username, $email, $hashedPass, $userType);
+                $registerAccount->execute();
+                $registerAccount->close();
+
+                $loginID = $connection->insert_id;
+
+                $registerAdditionalInfo = $connection->prepare('INSERT INTO tbl_contactinfo (loginID, contactLastName, contactFirstName, contactMiddleInitial, contactNumber, contactAddress, contactType) VALUES (?, ?, ?, ?, ?, ?, ?)');
+                $registerAdditionalInfo->bind_param('issssss', $loginID, $lastName, $firstName, $middleInitial, $contactNumber, $address, $userType);
+                $registerAdditionalInfo->execute();
+                $registerAdditionalInfo->close();
+
+                $contactID = $connection->insert_id;
+
+                $registerDoctor = $connection->prepare('INSERT INTO tbl_doctorinfo (contactID, doctorRole, doctorService) VALUES (?, ?, ?)');
+                $registerDoctor->bind_param('iss', $contactID, $role, $service);
+                $registerDoctor->execute();
+                $registerDoctor->close();
             }
         }
 
@@ -237,7 +276,7 @@
                     <label for="txtConfirmPassword">Confirm Password:</label>
                     <p class="warning">*<?php echo htmlspecialchars($confirmPasswordError);?></p>
                 </span>
-                <input type="password" name="txtConfirmPassword txtPassword" id="txtConfirmPassword" class="input-text" placeholder="Confirm Password">
+                <input type="password" name="txtConfirmPassword" id="txtConfirmPassword" class="input-text txtPassword" placeholder="Confirm Password">
             </div>
             
             <button type="button" class="btnShowPass" name="btnShowPass">Show</button>
