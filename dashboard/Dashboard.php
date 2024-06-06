@@ -11,7 +11,6 @@
     }
 
     $logoutIsClicked = false;
-    $docReg = false;
 
     if($_SERVER['REQUEST_METHOD'] === "POST"){
         if(isset($_POST['btnLogout'])){
@@ -55,8 +54,6 @@
         </form>
     </div>
 
-    <div class="black-background" style="display:<?php if($logoutIsClicked){echo 'block';}else{echo 'none';}?>"></div>
-
     <!--ADD DOCTORS-->
     <div class="registration-screen" style="display:<?php if($docReg){echo 'flex';}else{echo 'none';}?>">
         <div class="registration-header">
@@ -65,7 +62,7 @@
         <?php include_once 'dash-template/dashboard-docreg.php';?>
     </div>
 
-    <div class="black-background" style="display:<?php if($docReg){echo 'block';}else{echo 'none';}?>"></div>
+    <div class="black-background" style="display:<?php if($logoutIsClicked || $docReg){echo 'block';}else{echo 'none';}?>"></div>
 
     <div class="left-content">
         <div class="top-container">

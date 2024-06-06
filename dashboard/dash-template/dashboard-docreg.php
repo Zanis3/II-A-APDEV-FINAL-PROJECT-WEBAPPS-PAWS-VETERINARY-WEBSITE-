@@ -31,6 +31,7 @@
     $docRegValidation = true;
 
     if($_SERVER['REQUEST_METHOD'] == "POST"){
+
         $lastName = $_POST['txtLastName'];
         $firstName = $_POST['txtFirstName'];
         $middleInitial = $_POST['txtMiddleInitial'];
@@ -47,10 +48,6 @@
 
         $usernameLength = strlen($username);
         $passwordLength = strlen($password);
-
-        if(isset($_POST['btnCancel'])){
-            $docReg = false;
-        }
 
         if(isset($_POST['btnAddDoctor'])){
 
@@ -139,8 +136,13 @@
             }
 
             if($docRegValidation){
-
+                $hashedPass = password_hash($password, PASSWORD_DEFAULT);
+                $userType = 'doctor';
             }
+        }
+
+        if(isset($_POST['btnCancel'])){
+            $docReg = false;
         }
     }
 ?>
@@ -212,7 +214,7 @@
                 <label for="txtUsername">Username:</label>
                 <p class="warning">*<?php echo htmlspecialchars($usernameError);?></p>
             </span>
-            <input type="text" name="txtUsername" id="txtUsername" class="input-text" placeholder="Username">
+            <input type="text" name="txtUsername" id="txtUsername" class="input-text" placeholder="Username (Minimum 6 characters)">
         </div>
     </div>
 
@@ -223,7 +225,7 @@
                     <label for="txtPassword">Password:</label>
                     <p class="warning">*<?php echo htmlspecialchars($passwordError);?></p>
                 </span>
-                <input type="password" name="txtPassword" id="txtPassword" class="input-text" placeholder="Password">
+                <input type="password" name="txtPassword" id="txtPassword" class="input-text" placeholder="Password (Minimum 8 characters)">
             </div>
             
             <button type="button" class="btnShowPass" name="btnShowPass">Show</button>

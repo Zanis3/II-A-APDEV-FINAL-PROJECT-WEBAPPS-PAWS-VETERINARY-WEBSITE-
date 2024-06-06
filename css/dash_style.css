@@ -231,10 +231,6 @@ img{
     text-align: center;
 }
 
-.total {
-    /* Add any additional styling for the total */
-}
-
 .info-container {
     display: flex;
     flex-direction: column;
