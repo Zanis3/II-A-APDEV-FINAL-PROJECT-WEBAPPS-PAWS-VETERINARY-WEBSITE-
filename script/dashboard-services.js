@@ -5,7 +5,7 @@ function showServiceContent(service) {
     switch (service) {
         case 'checkup':
             contentHtml = `
-                <div class="content">
+                <div class="hidden">
                     <div class="wide">
                         <div class="patient-section">
                             <h2 id="patient-heading">Patients</h2>
@@ -29,9 +29,6 @@ function showServiceContent(service) {
                         </table>
                     </div>
                     <div class="narrow">
-                        <div class="chart">
-                            <canvas id="donut-chart" class="chart"></canvas>
-                        </div>
                         <div class="info-container">
                             <p><b>You have a total of</b></p>
                             <h2></h2>
@@ -42,7 +39,7 @@ function showServiceContent(service) {
             break;
         case 'dental':
             contentHtml = `
-                <div class="content">
+                <div class="hidden">
                     <div class="wide">
                         <div class="patient-section">
                             <h2 id="patient-heading">Patients</h2>
@@ -66,9 +63,6 @@ function showServiceContent(service) {
                         </table>
                     </div>
                     <div class="narrow">
-                        <div class="chart">
-                            <canvas id="donut-chart" class="chart"></canvas>
-                        </div>
                         <div class="info-container">
                             <p><b>You have a total of</b></p>
                             <h2></h2>
@@ -79,7 +73,7 @@ function showServiceContent(service) {
             break;
         case 'grooming':
             contentHtml = `
-                <div class="content">
+                <div class="hidden">
                     <div class="wide">
                         <div class="patient-section">
                             <h2 id="patient-heading">Patients</h2>
@@ -103,9 +97,6 @@ function showServiceContent(service) {
                         </table>
                     </div>
                     <div class="narrow">
-                        <div class="chart">
-                            <canvas id="donut-chart" class="chart"></canvas>
-                        </div>
                         <div class="info-container">
                             <p><b>You have a total of</b></p>
                             <h2></h2>
@@ -116,7 +107,7 @@ function showServiceContent(service) {
             break;
         case 'consultation':
             contentHtml = `
-                <div class="content">
+                <div class="hidden">
                     <div class="wide">
                         <div class="patient-section">
                             <h2 id="patient-heading">Patients</h2>
@@ -140,9 +131,6 @@ function showServiceContent(service) {
                         </table>
                     </div>
                     <div class="narrow">
-                        <div class="chart">
-                            <canvas id="donut-chart" class="chart"></canvas>
-                        </div>
                         <div class="info-container">
                             <p><b>You have a total of</b></p>
                             <h2></h2>
@@ -153,7 +141,7 @@ function showServiceContent(service) {
             break;
         case 'vaccination':
             contentHtml = `
-                <div class="content">
+                <div class="hidden">
                     <div class="wide">
                         <div class="patient-section">
                             <h2 id="patient-heading">Patients</h2>
@@ -177,9 +165,6 @@ function showServiceContent(service) {
                         </table>
                     </div>
                     <div class="narrow">
-                        <div class="chart">
-                            <canvas id="donut-chart" class="chart"></canvas>
-                        </div>
                         <div class="info-container">
                             <p><b>You have a total of</b></p>
                             <h2></h2>
@@ -190,7 +175,7 @@ function showServiceContent(service) {
             break;
         case 'surgery':
             contentHtml = `
-                <div class="content">
+                <div class="hidden">
                     <div class="wide">
                         <div class="patient-section">
                             <h2 id="patient-heading">Patients</h2>
@@ -214,9 +199,6 @@ function showServiceContent(service) {
                         </table>
                     </div>
                     <div class="narrow">
-                        <div class="chart">
-                            <canvas id="donut-chart" class="chart"></canvas>
-                        </div>
                         <div class="info-container">
                             <p><b>You have a total of</b></p>
                             <h2></h2>
@@ -227,7 +209,7 @@ function showServiceContent(service) {
             break;
         default:
             contentHtml = `
-                <div class="content">
+                <div class="hidden">
                     <div class="wide">
                         <p>Select a service to see details.</p>
                     </div>

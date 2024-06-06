@@ -134,5 +134,4 @@
     <script src="../script/dashboard-navbar.js"></script>
     <script src="../script/dashboard-services.js"></script>
     <script src="../script/filter.js"></script>
-    <script src="../script/chart.js"></script>
 </body>

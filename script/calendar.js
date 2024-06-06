@@ -1,109 +1,144 @@
-const calendar = document.getElementById('calendar');
-const selectedDateDiv = document.getElementById('selected-date');
-const yearDisplay = document.getElementById('year-display');
-const timeSlotsDiv = document.getElementById('time-slots');
-let currentDate = new Date();
-let selectedDate = null;
-let activeTimeSlot = null;
+document.addEventListener('DOMContentLoaded', function() {
+    const yearDisplay = document.getElementById('year-display');
+    const currentYear = new Date().getFullYear();
+    const currentMonth = new Date().getMonth(); // Get the current month (0-11)
+    yearDisplay.textContent = currentYear;
+    let selectedDate = null;
+    const disabledDatesContainer = document.getElementById('disabled-dates-container');
+    const disabledDates = {}; // Object to store disabled dates
 
-function renderCalendar() {
-    calendar.innerHTML = '';
-    const startDate = new Date(currentDate);
-    startDate.setDate(startDate.getDate() - startDate.getDay() + 1); // Start from Monday
-
-    for (let i = 0; i < 6; i++) { // Only show Monday to Saturday
-        const date = new Date(startDate);
-        date.setDate(startDate.getDate() + i);
-        const dateContainer = document.createElement('div');
-        dateContainer.classList.add('date-container');
-        dateContainer.innerHTML = `
-            <div class="date-content">
-                <div class="day">${date.toLocaleString('default', { weekday: 'long' })}</div>
-                <div class="date">${date.getDate()}</div>
-                <div class="month">${date.toLocaleString('default', { month: 'long' })}</div>
-            </div>
-        `;
-        dateContainer.onclick = () => selectDate(date);
-        if (selectedDate && date.toDateString() === selectedDate.toDateString()) {
-            dateContainer.classList.add('selected');
-        }
-        calendar.appendChild(dateContainer);
-    }
-
-    yearDisplay.innerHTML = currentDate.getFullYear();
-}
-
-function moveLeft() {
-    currentDate.setDate(currentDate.getDate() - 7);
-    renderCalendar();
-}
-
-function moveRight() {
-    currentDate.setDate(currentDate.getDate() + 7);
-    renderCalendar();
-}
-
-function selectDate(date) {
-    if (selectedDate && date.toDateString() === selectedDate.toDateString()) {
-        // Unselect the date
-        selectedDate = null;
-        selectedDateDiv.innerHTML = '';
-        timeSlotsDiv.innerHTML = '';
-        setHiddenFields('', ''); // Clear hidden fields
-    } else {
-        // Select the date
-        selectedDate = date;
-        selectedDateDiv.innerHTML = `Selected Date: ${date.toLocaleString('default', { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' })}`;
-        setHiddenFields(date.toISOString().split('T')[0], activeTimeSlot ? activeTimeSlot.innerHTML : ''); // Set hidden fields
-        renderTimeSlots();
-    }
-    renderCalendar();
-}
-
-function renderTimeSlots() {
-    timeSlotsDiv.innerHTML = '';
-    const timeSlots = [
-        '9:00 AM - 10:00 AM',
-        '10:00 AM - 11:00 AM',
-        '11:00 AM - 12:00 PM',
-        '12:00 PM - 1:00 PM',
-        '1:00 PM - 2:00 PM',
-        '2:00 PM - 3:00 PM',
-        '3:00 PM - 4:00 PM',
-        '4:00 PM - 5:00 PM'
-    ];
-
-    const timeSlotsContainer = document.createElement('div');
-    timeSlotsContainer.classList.add('time-slots');
-
-    timeSlots.forEach(slot => {
-        const slotButton = document.createElement('button');
-        slotButton.classList.add('time-slot');
-        slotButton.innerHTML = slot;
-        slotButton.onclick = () => selectTimeSlot(slotButton, slot);
-        timeSlotsContainer.appendChild(slotButton);
+    // Set the month select options
+    const monthSelect = document.getElementById('month-select');
+    const monthNames = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
+    monthNames.forEach((month, index) => {
+        const option = document.createElement('option');
+        option.value = index;
+        option.textContent = month;
+        monthSelect.appendChild(option);
     });
 
-    timeSlotsDiv.appendChild(timeSlotsContainer);
-}
+    // Set the month select to the current month
+    monthSelect.selectedIndex = currentMonth;
 
-function selectTimeSlot(slotButton, slot) {
-    if (activeTimeSlot === slotButton) {
-        // Unselect the currently active time slot
-        slotButton.classList.remove('active');
-        activeTimeSlot = null;
-        selectedDateDiv.innerHTML = `Selected Date: ${selectedDate.toLocaleString('default', { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' })}`;
-        setHiddenFields(selectedDate ? selectedDate.toISOString().split('T')[0] : '', ''); // Clear time field in hidden fields
-    } else {
-        // Select a new time slot
-        if (activeTimeSlot) {
-            activeTimeSlot.classList.remove('active');
+    // Hide the disable button initially
+    document.getElementById('disable-container').style.display = 'none';
+
+    // Function to generate calendar dates
+    function generateCalendar() {
+        const calendarDates = document.querySelector('.calendar-dates');
+        calendarDates.innerHTML = ''; // Clear previous dates
+
+        const selectedMonth = monthSelect.value;
+        const selectedYear = currentYear;
+        const firstDay = new Date(selectedYear, monthSelect.selectedIndex, 1).getDay();
+        const daysInMonth = new Date(selectedYear, monthSelect.selectedIndex + 1, 0).getDate();
+
+        // Adjust firstDay to start from Monday (0 for Monday, 6 for Sunday)
+        const adjustedFirstDay = (firstDay === 0) ? 6 : firstDay - 1;
+
+        // Fill in the dates
+        for (let i = 0; i < adjustedFirstDay; i++) {
+            const emptyDiv = document.createElement('div');
+            emptyDiv.classList.add('disabled');
+            calendarDates.appendChild(emptyDiv);
         }
-        slotButton.classList.add('active');
-        activeTimeSlot = slotButton;
-        selectedDateDiv.innerHTML = `Selected Date: ${selectedDate.toLocaleString('default', { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' })} | ${slot}`;
-        setHiddenFields(selectedDate.toISOString().split('T')[0], slot); // Set hidden fields
-    }
-}
 
-document.addEventListener('DOMContentLoaded', renderCalendar);
+        for (let i = 1; i <= daysInMonth; i++) {
+            const dateDiv = document.createElement('div');
+            dateDiv.textContent = i;
+            dateDiv.addEventListener('click', function() {
+                if (selectedDate && selectedDate !== dateDiv) {
+                    selectedDate.classList.remove('selected');
+                }
+                if (selectedDate !== dateDiv) {
+                    selectedDate = dateDiv;
+                    dateDiv.classList.add('selected');
+                    document.getElementById('disable-container').style.display = 'block';
+                } else {
+                    selectedDate.classList.remove('selected');
+                    selectedDate = null;
+                    document.getElementById('disable-container').style.display = 'none';
+                }
+            });
+            calendarDates.appendChild(dateDiv);
+        }
+
+        // Apply disabled dates for the selected month
+        const monthYearKey = `${selectedYear}-${selectedMonth}`;
+        if (disabledDates[monthYearKey]) {
+            disabledDates[monthYearKey].forEach(day => {
+                const dateDiv = calendarDates.children[adjustedFirstDay + day - 1];
+                dateDiv.classList.add('disabled');
+            });
+        }
+    }
+
+    function confirmDisable() {
+        if (selectedDate) {
+            const confirmDisable = confirm("Are you sure you want to disable this date?");
+            if (confirmDisable) {
+                selectedDate.classList.add('disabled');
+                selectedDate.classList.remove('selected');
+                selectedDate.classList.remove('clickable'); // Remove the clickable class to disable further selection
+                selectedDate.removeEventListener('click', disableDateClick); // Remove the click event listener
+                addDisabledDate(selectedDate);
+                selectedDate = null;
+                document.getElementById('disable-container').style.display = 'none';
+            }
+        }
+    }
+
+    function addDisabledDate(dateDiv) {
+        const selectedMonth = monthSelect.value;
+        const selectedYear = currentYear;
+        const dateText = `${monthNames[selectedMonth]} ${dateDiv.textContent}, ${selectedYear}`;
+
+        const disabledDateButton = document.createElement('button');
+        disabledDateButton.textContent = dateText;
+        disabledDateButton.classList.add('disabled-date-button');
+        disabledDateButton.addEventListener('click', function() {
+            const confirmEnable = confirm("Are you sure you want to enable it again?");
+            if (confirmEnable) {
+                dateDiv.classList.remove('disabled');
+                disabledDatesContainer.removeChild(disabledDateButton);
+                removeDisabledDate(dateDiv.textContent);
+            }
+        });
+
+        disabledDatesContainer.appendChild(disabledDateButton);
+
+        // Store the disabled date
+        const monthYearKey = `${selectedYear}-${selectedMonth}`;
+        if (!disabledDates[monthYearKey]) {
+            disabledDates[monthYearKey] = [];
+        }
+        disabledDates[monthYearKey].push(parseInt(dateDiv.textContent));
+    }
+
+    function removeDisabledDate(day) {
+        const selectedMonth = monthSelect.value;
+        const selectedYear = currentYear;
+        const monthYearKey = `${selectedYear}-${selectedMonth}`;
+        if (disabledDates[monthYearKey]) {
+            disabledDates[monthYearKey] = disabledDates[monthYearKey].filter(d => d !== parseInt(day));
+        }
+    }
+
+    function disableDateClick(event) {
+        const dateDiv = event.currentTarget;
+        if (dateDiv.classList.contains('disabled')) {
+            dateDiv.classList.remove('disabled');
+            const buttons = disabledDatesContainer.querySelectorAll('button');
+            buttons.forEach(button => {
+                if (button.textContent.includes(dateDiv.textContent)) {
+                    disabledDatesContainer.removeChild(button);
+                }
+            });
+        }
+    }
+
+    // Generate calendar on page load and when month changes
+    generateCalendar();
+    monthSelect.addEventListener('change', generateCalendar);
+    document.getElementById('disable-button').addEventListener('click', confirmDisable);
+});

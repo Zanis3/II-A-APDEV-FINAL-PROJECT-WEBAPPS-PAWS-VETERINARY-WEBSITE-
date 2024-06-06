@@ -190,18 +190,18 @@ img{
     width: 30%;
 }
 
-.content {
+.hidden {
     display: flex;
-    align-items: center;
-    justify-content: center;
+    justify-content: left;
     text-align: center;
-    flex-direction: column;
-    padding: 20px;
-    margin-left: 3%;
+    flex-direction: row;
+    padding: 5px;
+    margin-left: 3.7%;
+    width: 72%;
 }
 
-.content .wide {
-    width: 45%;
+.hidden .wide {
+    width: 70%;
     background-color: #E2EBE7;
     padding: 10px;
     padding-left: 20px;
@@ -211,24 +211,20 @@ img{
     display: flex;
     flex-direction: column;
     align-items: center;
+    align-self: flex-start;
 }
 
-.content .narrow {
-    display: flex; /* Use flexbox for layout */
-    justify-content: space-between; /* Space out the items */
-    align-items: center; /* Align items vertically */
+.hidden .narrow {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
     width: 25%;
     background-color: #064E3B;
     color: white;
     padding: 20px;
     border: 1px solid #65A30D;
     border-radius: 5px;
-}
-
-.chart {
-    height: 100px;
-    width: 100px;
-    text-align: center;
+    align-self: flex-start; /* Allow the narrow container to grow independently */
 }
 
 .info-container {
@@ -249,6 +245,7 @@ img{
     margin: 0;
     padding: 5px 0;
 }
+
 
 .patients-table {
     width: 100%;
@@ -306,8 +303,10 @@ img{
 
 .calendar-container {
     margin-top: 20px;
-    padding: 0;
-    width: 100%;
+    margin-left: 5px;
+    margin-right: 5px;
+    padding: 1px;
+    width: 95%;
 }
 
 .calendar-header {
@@ -326,30 +325,69 @@ img{
 .calendar-days {
     display: flex;
     justify-content: space-between;
-    gap: 0.5%;
+    gap: 0;
     font-weight: bold;
+    padding-right: 5%;
+    padding-left: 5%;
 }
 
 .calendar-dates {
     display: flex;
     flex-wrap: wrap;
     width: 100%;
+    text-align: center;
 }
 
 .calendar-dates div {
     text-align: center;
-    width: calc(120% / 10);
-    text-align: center;
-    padding-right: 5.5px;
-    padding-left: 5.5px;
-    padding-top: 5px;
-    padding-bottom: 5px;
+    width: calc(100% / 6);
+    padding: 0px;
     cursor: pointer;
+}
+
+.calendar-dates div:hover {
+    background-color: var(--light-green);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    transition:0.7s;
+    color: white;
+}
+
+.calendar-dates div.selected {
+    background-color: #064E3B;
+    color: white;
 }
 
 .calendar-dates div.disabled {
     background-color: #ccc;
     pointer-events: none;
+}
+
+.btnDissable {
+    background-color: #064E3B;
+    text-align: center;
+    margin-top: 2%;
+}
+
+.btnDissable:hover {
+    background-color: var(--light-green);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    transition:0.7s;
+}
+
+.disabled-date-button {
+    background-color: #064E3B;
+    border: 1px solid #65A30D;
+    color: white;
+    width: 200px;
+    padding: 5px 10px;
+    margin: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s, color 0.3s;
+}
+
+.disabled-date-button:hover {
+    background-color: #65A30D;
+    color: white;
 }
 
 .popup-container {
@@ -361,25 +399,31 @@ img{
 .popup-container.active {
     display: block;
 }
-
-.reports-buttons {
-    display: flex;
-    flex-direction: column;
-    margin-bottom: 20px;
-    align-items: center;
-   
-}
-.reports-buttons button {
-    margin: 5px 0;
-    padding: 10px 20px;
-    width: 50%;
-}
 .reports-container {
     width: 100%;
+    margin-top: 5%;
+    padding-left: 5%;
+    padding-right: 5%;
+    text-align: center;
 }
 
 .top-container {
     display: flex;
+}
+
+.button-container {
+    height: 200px;
+    padding:0;
+}
+
+.btnReports {
+    background-color: #064E3B;
+}
+
+.btnReports:hover {
+    background-color: var(--light-green);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    transition:0.7s;
 }
 
 .logout-container {

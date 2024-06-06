@@ -105,4 +105,50 @@
             </table>
         <?php endif;?>
     </div>
+    <div class="content" id="content">
+        <?php if($repSelected):?>
+            <div class="reports-container">
+                <h2 style="color: #064E3B;">Generate Reports</h2>
+                <div class="button-container">
+                    <form method="post">
+                        <button type="button" name="btnToday" style="width: 50%;" class="btnReports">Appointments Today</button>
+                        <button type="button" name="btnToday" style="width: 50%;"  class="btnReports">Appointments Weekly</button>
+                        <button type="button" name="btnToday" style="width: 50%;"  class="btnReports">Appointments Monthly</button>
+                    </form>
+                </div>
+            </div>
+        <?php endif;?>
+    </div>
+    <div class="content" id="content">
+        <?php if($calSelected):?>
+            <div class="calendar-container">
+                <div class="calendar-header">
+                    <select id="month-select">
+                    </select>
+                    <span id="year-display"></span>
+                </div>
+                <div class="calendar-body">
+                    <div class="calendar-days">
+                        <div>Mon</div>
+                        <div>Tue</div>
+                        <div>Wed</div>
+                        <div>Thu</div>
+                        <div>Fri</div>
+                        <div>Sat</div>
+                    </div>
+                    <div class="calendar-dates">
+                        <!-- JavaScript will populate this with the dates -->
+                    </div>
+                </div>
+                <div id="disable-container" style="text-align: center;">
+                    <button id="disable-button" class="btnDissable" onclick="confirmDisable()">Disable</button>
+                </div>
+                <div id="disabled-dates-container" style="margin-top: 20px; margin-left: 6%;">
+                    <p><b>Disabled Dates:</b></p>   
+
+                </div>
+            </div>
+            <script src="../script/calendar.js"></script>
+        <?php endif;?>
+    </div>
 </div>
