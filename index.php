@@ -5,6 +5,15 @@
         header('Location: appointments.php');
         exit();
     }
+
+    if(!$isLoggedIn || $role != 'user'){
+        if($role == 'doctor'){
+            header('Location: dashboard/dashboard-doc.php');
+        }
+        else{
+            header('Location: dashboard/Dashboard.php');
+        }
+    }
 ?>
 
 <!DOCTYPE html>
