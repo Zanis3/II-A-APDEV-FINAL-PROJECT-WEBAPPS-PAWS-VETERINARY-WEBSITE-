@@ -1,0 +1,60 @@
+.content-container {
+    display: flex;
+    align-items: center;
+    padding: 20px;
+    padding-left: 5%;
+    background-color: #E2EBE7;
+    border: 1px solid #65A30D;
+    border-radius: 10px;
+    height: 40%;
+    width: 50%;
+    margin-top: 5%;
+    margin-bottom: 3%;
+    margin-left: 20%;
+}
+.left-container {
+    flex: 0 0 auto;
+    margin-right: 30px;
+    width: 156px;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+}
+
+.line {
+    height: 0.9%;
+    width: 100%;
+    background-color: #65A30D;
+}
+
+.user-icon {
+    font-size: 100px; 
+/* Adjust the size as needed */
+
+}
+.right-container {
+    flex: 1;
+    margin-right: 10px;
+    width: 60%;
+}
+
+.border {
+    border: 5px solid #65A30D;
+    background-color: white;
+    border-radius: 50%;
+    height: 120px;
+    width: 115px;
+    padding-top: 10%;
+    padding-left: 5%;
+    padding-right: 5%;
+}
+
+.btnEdit {
+    margin-top: 5%;
+    width: 150px;
+    height: 50px;
+    border-radius: 10px;
+    border: 1px solid #65A30D;
+    background-color: #064E3B;
+    color: White;
+}
