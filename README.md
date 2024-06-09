@@ -10,3 +10,14 @@ Members:
 - Villanueva, Alvin
 
 This is for school project purposes only and is not commercialized in any way. All rights reserved.
+
+
+To register an admin:
+- login as an admin (dummy account: username - admin password - adminpass)
+- go to dashboard/dashboard-register.php
+- fill up registration details.
+
+To register a doctor:
+- login as an admin (dummy account: username - admin password - adminpass)
+- Click 'Add Doctor' in the dashboard.
+- fill up registration details.
