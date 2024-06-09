@@ -37,10 +37,10 @@
         </div>
     </div>
     <br>
-    <center>
+    <div class="button-container">
         <form method="post">
-            <button type="submit" name="back"><b>Go Back</b></button>
+            <button type="submit" name="back" class="btnAppointment"><b>Go Back</b></button>
         </form>
-    </center>
+    </div>
     <?php include_once '../template/footer.php';?>
 </body>

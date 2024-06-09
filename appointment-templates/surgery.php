@@ -18,7 +18,7 @@
     <link rel="stylesheet" href="../css/style_general.css">
     <link rel="stylesheet" href="../css/style_appointment.css">
     <link rel="shortcut icon" href="img/gen/web-logo.png" type="image/png">
-    <title>Consultation</title>
+    <title>Surgery</title>
 </head>
 <body>
     <?php include_once '../template/header.php';?>
@@ -37,10 +37,10 @@
         </div>
     </div>
     <br>
-    <center>
+    <div class="button-container">
         <form method="post">
-            <button type="submit" name="back"><b>Go Back</b></button>
+            <button type="submit" name="back" class="btnAppointment"><b>Go Back</b></button>
         </form>
-    </center>
+    </div>
     <?php include_once '../template/footer.php';?>
 </body>

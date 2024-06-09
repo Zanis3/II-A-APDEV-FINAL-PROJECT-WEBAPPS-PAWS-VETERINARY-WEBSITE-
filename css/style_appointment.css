@@ -60,6 +60,11 @@
     color: white;
 }
 
+.button-container {
+    height: 50px;
+    margin-bottom: 7%;
+}
+
 button {
     margin-top: 1.5%;
     margin-bottom: 1%;

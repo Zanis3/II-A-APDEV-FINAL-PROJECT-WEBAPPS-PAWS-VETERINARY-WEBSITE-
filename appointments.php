@@ -13,8 +13,8 @@
             case 'Grooming':
                 header("Location: appointment-templates/grooming.php");
                 break;
-            case 'Consultation':
-                header("Location: appointment-templates/consultation.php");
+            case 'Surgery':
+                header("Location: appointment-templates/surgery.php");
                 break;
             case 'Dental':
                 header("Location: appointment-templates/dental.php");
@@ -81,7 +81,7 @@
             <a href="?service=Dental" class="container-link"><b>Dental</b><i class="fas fa-arrow-right"></i></a>
         </div>
         <div class="container">
-            <a href="?service=Consultation" class="container-link"><b>Consultation</b><i class="fas fa-arrow-right"></i></a>
+            <a href="?service=Surgery" class="container-link"><b>Surgery</b><i class="fas fa-arrow-right"></i></a>
         </div>
         <div class="container">
             <a href="?service=Vaccination" class="container-link"><b>Vaccination</b><i class="fas fa-arrow-right"></i></a>

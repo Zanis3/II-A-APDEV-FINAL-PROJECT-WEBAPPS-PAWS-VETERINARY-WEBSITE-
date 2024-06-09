@@ -37,7 +37,7 @@
             <a href="?vet=Dr. Jane Smith" class="container-link"><b>Dr. Jane Smith</b><i class="fas fa-arrow-right"></i></a>
         </div>
     </div>
-    <div class="btn-container">
+    <div class="button-container">
         <form method="post">
             <button type="submit" name="back" class="btnAppointment"><b>Go Back</b></button>
         </form>

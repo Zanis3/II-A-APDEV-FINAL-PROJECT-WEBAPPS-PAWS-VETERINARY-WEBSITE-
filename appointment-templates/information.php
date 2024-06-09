@@ -17,7 +17,11 @@
         $_SESSION['txtPBreed'] = $_POST['txtPBreed'] ?? '';
 
         // Validation
-
+        if (isset($_POST['back'])) {
+            header('Location: schedule.php');
+            exit();
+        }
+        
         if (empty($_SESSION['txtLName']) && empty($_SESSION['txtFName']) && empty($_SESSION['txtContact']) && empty($_SESSION['txtEmail']) && empty($_SESSION['txtAddress']) && empty($_SESSION['txtPName']) && empty($_SESSION['txtPAge']) && empty($_SESSION['txtPGender']) && empty($_SESSION['txtPType']) && empty($_SESSION['txtPBreed'])) {
             $errors[] = "Please fill in all fields!";
         }
@@ -47,12 +51,7 @@
         }
         elseif (empty($_SESSION['txtPBreed'])) {
             $errors[] = "Breed: Error! Please state the breed of your pet!";
-        }
-        elseif (isset($_POST['back'])) {
-            header('Location: schedule.php');
-            exit();
-        }
-        elseif (isset($_POST['next']) && empty($errors)) {
+        }elseif (isset($_POST['next']) && empty($errors)) {
             header('Location: result.php');
             exit();
         }

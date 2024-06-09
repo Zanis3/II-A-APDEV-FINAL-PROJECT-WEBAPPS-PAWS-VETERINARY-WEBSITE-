@@ -148,3 +148,10 @@ button:disabled {
     background-color: #064E3B; /* Active color */
     color: white; /* Text color for active state */
 }
+
+.disabled {
+    pointer-events: none;
+    opacity: 0.5;
+    background-color: #ccd5cf;
+    color: black;
+}

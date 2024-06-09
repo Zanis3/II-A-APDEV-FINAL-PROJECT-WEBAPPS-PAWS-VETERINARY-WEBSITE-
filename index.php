@@ -1,21 +1,10 @@
 <?php
     require 'template/config.php';
-
     if(isset($_POST['book'])){
         header('Location: appointments.php');
         exit();
     }
-
-    if(!$isLoggedIn || $role != 'user'){
-        if($role == 'doctor'){
-            header('Location: dashboard/dashboard-doc.php');
-        }
-        else{
-            header('Location: dashboard/Dashboard.php');
-        }
-    }
 ?>
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -28,31 +17,25 @@
 <body>
     <?php 
         include_once 'template/header.php';
-
         $nameError = '';
         $dateError = '';
         $timeError = '';
         $radioError = '';
-
         if($_SERVER['REQUEST_METHOD'] === 'POST'){
             if(isset($_POST['btnAppointmentHome'])){
                 $petName = $_POST['txtPetName'];
                 $indexTime = $_POST['txtTimeOfAppointment'];
                 $indexDate = $_POST['txtDateOfAppointment'];
-
                 if(empty($petName) || !isset($_POST['rdoPetType']) || empty($indexDate) || empty($indexTime)){
                     if(empty($petName)){
                         $nameError = "Please input your pet's name and try again.";
                     }
-
                     if(empty($indexDate)){
                         $dateError = "Please input the date of your appointment and try again.";
                     }
-
                     if(empty($indexTime)){
                         $timeError = "Please input the time of your appointment and try again.";
                     }
-
                     if(!isset($_POST['rdoPetType'])){
                         $radioError = "Please select the type of your pet and try again.";
                     }
@@ -67,7 +50,6 @@
             }
         }
     ?>
-
     <!--HERO CONTAINER-->
     <div class="hero-container">
         <div class="hero-text">
@@ -80,7 +62,6 @@
             <img src="img/login/dog.png">
         </div>
     </div>
-
     <!--SERVICES CONTAINER-->
     <br>
     <br>
@@ -261,7 +242,6 @@
         </div>
     </div> 
     <script src="script/home.js"></script>
-
     <!--TEAM CONTAINER-->
     <div class="doc-container">
         <br>
@@ -343,6 +323,8 @@
             </div>
         </div>
     </div>
+    
+    <script src="script/feedback.js"></script>
 
     <!--EMBED MAP-->
     <div class="map-container">
