@@ -39,25 +39,26 @@
                             <table style="margin-left: 70px;">
                                 <tr style="padding: 0;">
                                     <td><p><b>Pet Name: </b></p></td>
-                                    <td></td>
+                                    <td><?php echo $_SESSION['txtPName'];?></td>
                                     <td><p><b>Pet Age:</b></p></td>
-                                    <td></td>
+                                    <td><?php echo $_SESSION['txtPAge'];?></td>
                                     <td><p><b>Gender: </b></p></td>
-                                    <td></td>
+                                    <td><?php echo ucwords($_SESSION['txtPGender']);?></td>
                                 </tr>
                                 <tr>
                                     <td><p><b>Pet Type: </b></p></td>
-                                    <td></td>
+                                    <td><?php echo ucwords($_SESSION['txtPType']);?></td>
                                     <td><p><b>Pet Breed:</b></p></td>
-                                    <td></td>
+                                    <td><?php echo $_SESSION['txtPBreed'];?></td>
                                     <td><p><b>Schedule: </b></p></td>
+                                    <td><p><?php echo $_SESSION['selected_date'] . $_SESSION['selected_time']?></p></td>
                                 </tr>
                             </table>
                         </div>
                         <div class="right-content">
                             <div class="icon-container">
                                 <i class="fas fa-user"></i> <!-- Font Awesome person icon -->
-                            </div> <!-- Font Awesome person icon -->
+                            </div>
                         </div>
                     </div>
                     <div class="lower-part">
@@ -65,17 +66,17 @@
                             <table>
                                 <tr>
                                     <td><p><b>First Name: </b></p></td>
-                                    <td></td>
+                                    <td><?php echo $_SESSION['txtLName'];?></td>
                                     <td><p><b>Last Name: </b></p></td>
-                                    <td></td>
+                                    <td><?php echo $_SESSION['txtFName'];?></td>
                                     <td><p><b>Contact Number: </b></p></td>
-                                    <td></td>
+                                    <td><?php echo $_SESSION['txtContact'];?></td>
                                 </tr>
                                 <tr>
                                     <td><p><b>Email: </b></p></td>
-                                    <td></td>
+                                    <td><?php echo $_SESSION['txtEmail'];?></td>
                                     <td><p><b>Address:</b></p></td>
-                                    <td></td>
+                                    <td><?php echo $_SESSION['txtAddress'];?></td>
                                 </tr>
                             </table>
                         </div>
@@ -83,9 +84,9 @@
                             <table style="margin-right: 10px;">
                                 <tr>
                                     <td><p><b>Type: </b></p></td>
-                                    <td></td>
+                                    <td><?php echo ucwords($_SESSION['selectedService']);?></td>
                                     <td><p><b>Assigned: </b></p></td>
-                                    <td></td>
+                                    <td><?php echo $_SESSION['vetname'];?></td>
                                 </tr>
                                 <tr>
                                     <td colspan="2"></td>

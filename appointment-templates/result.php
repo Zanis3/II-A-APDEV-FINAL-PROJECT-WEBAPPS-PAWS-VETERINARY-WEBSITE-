@@ -3,17 +3,6 @@
 
     $location = 'folder';
 
-    if($_SERVER['REQUEST_METHOD'] === 'POST'){
-        if (isset($_POST['back'])) {
-            header('Location: information.php');
-            exit();
-        }
-        if (isset($_POST['next'])) {
-            header('Location: appointment-summary.php');
-            exit();
-        }
-    }
-
     #KUKUHAIN NAME NG VET
     $getContactInfo = $connection->prepare('SELECT * FROM tbl_contactinfo WHERE contactID = ? LIMIT 1');
     $getContactInfo->bind_param('i', $_SESSION['selectedVetID']);
@@ -21,6 +10,20 @@
     $result = $getContactInfo->get_result();
     $docName = $result->fetch_assoc();
     $getContactInfo->close();
+
+    $name = 'Dr. '.$docName['contactFirstName'] . ' ' . $docName['contactLastName'];
+
+    if($_SERVER['REQUEST_METHOD'] === 'POST'){
+        if (isset($_POST['back'])){
+            header('Location: information.php');
+            exit();
+        }
+        if (isset($_POST['next'])){
+            $_SESSION['vetname'] = $name;
+            header('Location: appointment-summary.php');
+            exit();
+        }
+    }
 ?>
 <head>
     <title>Result</title>
