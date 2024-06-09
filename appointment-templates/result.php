@@ -14,26 +14,15 @@
         }
     }
 
-    #KUHAIN NAME NG VET
-    $getDoctorName = $connection->prepare('SELECT contactID from tbl_doctorinfo WHERE doctorID = ? LIMIT 1');
-    $getDoctorName->bind_param('i', $_SESSION['selectedVetID']);
-    $getDoctorName->execute();
-    $getDoctorName->bind_result($docContactID);
-    $getDoctorName->fetch();
-    $getDoctorName->close();
-
+    #KUKUHAIN NAME NG VET
     $getContactInfo = $connection->prepare('SELECT * FROM tbl_contactinfo WHERE contactID = ? LIMIT 1');
-    $getContactInfo->bind_param('i', $docContactID);
+    $getContactInfo->bind_param('i', $_SESSION['selectedVetID']);
     $getContactInfo->execute();
     $result = $getContactInfo->get_result();
     $docName = $result->fetch_assoc();
     $getContactInfo->close();
 ?>
-<!DOCTYPE html>
-<html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Result</title>
     <link rel="stylesheet" href="../css/style_general.css">
     <link rel="stylesheet" href="../css/style_appointment.css">
@@ -46,7 +35,7 @@
     <br>
     <center>
         <h1>Result</h1>
-        <p><b>Please check all details before confirming.</b></p>
+        <p><b>Please check all details before confirming.</b></p>       
     </center>
     <br>
     <center>
@@ -139,4 +128,3 @@
     <br>
     <?php include_once '../template/footer.php';?>
 </body>
-</html>

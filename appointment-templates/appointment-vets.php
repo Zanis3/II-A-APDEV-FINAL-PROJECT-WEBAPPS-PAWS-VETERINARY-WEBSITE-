@@ -2,7 +2,7 @@
     require '../template/config.php';
 
     $location = 'folder';
-    if (isset($_POST['back']) || $_SESSION['selectedService'] == ''){
+    if (isset($_POST['back']) || empty($_SESSION['selectedService'])){
         header('Location: ../appointments.php');
         exit();
     }
@@ -18,8 +18,6 @@
     $getDoctorInfo->bind_param('s', $_SESSION['selectedService']);
     $getDoctorInfo->execute();
     $docResult = $getDoctorInfo->get_result();
-
-    $doctorID = $connection->insert_id;
 
     $contactIDs = [];
     while ($row = $docResult->fetch_assoc()) {
@@ -51,15 +49,15 @@
             <br>
         </div>
         <div class="center">
-            <?php while($user = $result->fetch_assoc()): ?>
-                <?php if($user > 0): ?>
+            <?php if($result->num_rows > 0): ?>
+                <?php while($user = $result->fetch_assoc()): ?>
                     <div class="container">
-                        <a href="?vet=<?php echo $doctorID;?>" class="container-link"><b>Dr. <?php echo $user['contactLastName'] . ' ' . $user['contactFirstName'];?></b><i class="fas fa-arrow-right"></i></a>
+                        <a href="?vet=<?php echo $user['contactID'];?>" class="container-link"><b>Dr. <?php echo $user['contactLastName'] . ' ' . $user['contactFirstName'];?></b><i class="fas fa-arrow-right"></i></a>
                     </div>
-                <?php else: ?>
-                    <?php echo 'No doctors available for this category.';?>
-                <?php endif; ?>
-            <?php endwhile; ?>
+                <?php endwhile; ?>
+            <?php else: ?>
+                <p>No doctors available for this category.</p>
+            <?php endif; ?>
         </div>
         <div class="button-container">
             <form method="post">
