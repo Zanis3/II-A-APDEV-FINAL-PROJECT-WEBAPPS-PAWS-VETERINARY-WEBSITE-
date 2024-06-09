@@ -255,28 +255,28 @@
                 <img src="img/home/Dr.Doe.png" alt="Image 1">
                 <div class="info-container">
                     <h5>Dr. Doe</h5>
-                    <p>Veterinarian</p>
+                    <p>GPV</p>
                 </div>
             </div>
             <div class="grid-item">
                 <img src="img/home/Dr.Smith.png" alt="Image 2">
                 <div class="info-container">
                     <h5>Dr. Smith</h5>
-                    <p>Veterinarian</p>
+                    <p>GPV</p>
                 </div>
             </div>
             <div class="grid-item">
                 <img src="img/home/Dr.White.png" alt="Image 7">
                 <div class="info-container">
                     <h5>Dr. White</h5>
-                    <p>Veterinarian</p>
+                    <p>IMS</p>
                 </div>
             </div>
             <div class="grid-item">
                 <img src="img/home/Dr.Nguyen.png" alt="Image 8">
                 <div class="info-container">
                     <h5>Dr. Nguyen</h5>
-                    <p>Veterinarian</p>
+                    <p>IMS</p>
                 </div>
             </div>
             <div class="grid-item">
@@ -311,14 +311,14 @@
                 <img src="img/home/Ms.Smith.png" alt="Image 9">
                 <div class="info-container">
                     <h5>Ms. Smith</h5>
-                    <p>GPV</p>
+                    <p>Pet Groomer</p>
                 </div>
             </div>
             <div class="grid-item">
                 <img src="img/home/Mr.Lee.png" alt="Image 10">
                 <div class="info-container">
                     <h5>Mr. Lee</h5>
-                    <p>GPV</p>
+                    <p>Pet Groomer</p>
                 </div>
             </div>
         </div>
