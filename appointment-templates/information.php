@@ -41,19 +41,20 @@
         if(empty($_SESSION['txtLName']) || empty($_SESSION['txtFName']) || empty($_SESSION['txtContact']) || empty($_SESSION['txtEmail']) || empty($_SESSION['txtAddress']) || empty($_SESSION['txtPName']) || empty($_SESSION['txtPAge']) || empty($_SESSION['txtPGender']) || empty($_SESSION['txtPType']) || empty($_SESSION['txtPBreed'])){
             $errors = "Some fields are empty. Please try again.";
         }
+
+        if(isset($_POST['next']) && empty($errors)){
+            header('Location: result.php');
+            exit();
+        }
     }
 ?>
-<!DOCTYPE html>
-<html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Information</title>
     <link rel="stylesheet" href="../css/style_general.css">
     <link rel="stylesheet" href="../css/style_appointment.css">
     <link rel="stylesheet" href="../css/calendar.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
-    <link rel="shortcut icon" href="img/gen/web-logo.png" type="image/png">
+    <link rel="shortcut icon" href="../img/gen/web-logo.png" type="image/png">
 </head>
 <body>
     <?php include_once '../template/header.php';?>
@@ -109,8 +110,8 @@
                             <td>
                                 <select name="txtPGender" id="txtPGender" style="width:100%;">
                                     <option disabled selected value="">Select gender</option>
-                                    <option value="male" <?php if($_POST['txtPGender'] == 'male'){echo 'checked';}?>>Male</option>
-                                    <option value="female" <?php if($_POST['txtPGender'] == 'female'){echo 'checked';}?>>Female</option>
+                                    <option value="male" <?php if($_POST['txtPGender'] == 'male'){echo 'selected';}?>>Male</option>
+                                    <option value="female" <?php if($_POST['txtPGender'] == 'female'){echo 'selected';}?>>Female</option>
                                 </select>    
                             </td>
                         </tr>
@@ -118,9 +119,9 @@
                             <td><label for="txtPType">Type: </label></td>
                             <td>
                                 <select name="txtPType" id="txtPType" style="width:100%;">
-                                <option disabled selected value="">Select pet</option>
-                                    <option value="cat" <?php if($_POST['txtPType'] == 'cat'){echo 'checked';}?>>Cat</option>
-                                    <option value="dog" <?php if($_POST['txtPType'] == 'dog'){echo 'checked';}?>>Dog</option>
+                                <option disabled selected value="">Select pet type</option>
+                                    <option value="cat" <?php if($_POST['txtPType'] == 'cat'){echo 'selected';}?>>Cat</option>
+                                    <option value="dog" <?php if($_POST['txtPType'] == 'dog'){echo 'selected';}?>>Dog</option>
                                 </select>  
                             </td>
                         </tr>
@@ -152,4 +153,3 @@
     <br>
     <?php include_once '../template/footer.php';?>
 </body>
-</html>

@@ -13,6 +13,21 @@
             exit();
         }
     }
+
+    #KUHAIN NAME NG VET
+    $getDoctorName = $connection->prepare('SELECT contactID from tbl_doctorinfo WHERE doctorID = ? LIMIT 1');
+    $getDoctorName->bind_param('i', $_SESSION['selectedVetID']);
+    $getDoctorName->execute();
+    $getDoctorName->bind_result($docContactID);
+    $getDoctorName->fetch();
+    $getDoctorName->close();
+
+    $getContactInfo = $connection->prepare('SELECT * FROM tbl_contactinfo WHERE contactID = ? LIMIT 1');
+    $getContactInfo->bind_param('i', $docContactID);
+    $getContactInfo->execute();
+    $result = $getContactInfo->get_result();
+    $docName = $result->fetch_assoc();
+    $getContactInfo->close();
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -24,7 +39,7 @@
     <link rel="stylesheet" href="../css/style_appointment.css">
     <link rel="stylesheet" href="../css/calendar.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
-    <link rel="shortcut icon" href="img/gen/web-logo.png" type="image/png">
+    <link rel="shortcut icon" href="../img/gen/web-logo.png" type="image/png">
 </head>
 <body>
     <?php include_once '../template/header.php';?>
@@ -41,19 +56,19 @@
                     <table>
                         <tr>
                             <td><label for="txtAppointment"><b>Appointment: </b></label></td>
-                            <td><input type="text" name="txtAppointment" value="<?php echo $_SESSION['selectedService'] ?? ''; ?>" disabled></td>
+                            <td><input type="text" name="txtAppointment" value="<?php echo htmlspecialchars(ucwords($_SESSION['selectedService'])); ?>" disabled></td>
                         </tr>
                         <tr>
                             <td><label for="txtAssigned"><b>Vet: </b></label></td>
-                            <td><input type="text" name="txtAssigned" value="<?php echo $_SESSION['selectedVet'] ?? ''; ?>" disabled></td>
+                            <td><input type="text" name="txtAssigned" value="<?php echo htmlspecialchars('Dr. '.$docName['contactFirstName'] . ' ' . $docName['contactLastName']); ?>" disabled></td>
                         </tr>
                         <tr>
                             <td><label for="txtDate"><b>Date: </b></label></td>
-                            <td><input type="text" name="txtDate" value="<?php echo $_SESSION['selected_date'] ?? ''; ?>" disabled></td>
+                            <td><input type="text" name="txtDate" value="<?php echo htmlspecialchars($_SESSION['selected_date']);?>" disabled></td>
                         </tr>
                         <tr>
                             <td><label for="txtTime"><b>Time: </b></label></td>
-                            <td><input type="text" name="txtTime" value="<?php echo $_SESSION['selected_time'] ?? ''; ?>" disabled></td>
+                            <td><input type="text" name="txtTime" value="<?php echo htmlspecialchars($_SESSION['selected_time']);?>" disabled></td>
                         </tr>
                         <tr>
                             <td><br></td>
@@ -63,23 +78,23 @@
                         </tr>
                         <tr>
                             <td><label for="txtFName"><b>First Name: </b></label></td>
-                            <td><input type="text" name="txtFName" value="<?php echo $_SESSION['txtFName'] ?? ''; ?>" disabled></td>
+                            <td><input type="text" name="txtFName" value="<?php echo htmlspecialchars($_SESSION['txtFName']);?>" disabled></td>
                         </tr>
                         <tr>
                             <td><label for="txtLName"><b>Last Name: </b></label></td>
-                            <td><input type="text" name="txtLName" value="<?php echo $_SESSION['txtLName'] ?? ''; ?>" disabled></td>
+                            <td><input type="text" name="txtLName" value="<?php echo htmlspecialchars($_SESSION['txtLName']);?>" disabled></td>
                         </tr>
                         <tr>
                             <td><label for="txtContact"><b>Contact Number: </b></label></td>
-                            <td><input type="text" name="txtContact" value="<?php echo $_SESSION['txtContact'] ?? ''; ?>" disabled></td>
+                            <td><input type="text" name="txtContact" value="<?php echo htmlspecialchars($_SESSION['txtContact']);?>" disabled></td>
                         </tr>
                         <tr>
                             <td><label for="txtEmail"><b>Email: </b></label></td>
-                            <td><input type="text" name="txtEmail" value="<?php echo $_SESSION['txtEmail'] ?? ''; ?>" disabled></td>
+                            <td><input type="text" name="txtEmail" value="<?php echo htmlspecialchars($_SESSION['txtEmail']);?>" disabled></td>
                         </tr>
                         <tr>
                             <td><label for="txtAddress"><b>Address: </b></label></td>
-                            <td><input type="text" name="txtAddress" value="<?php echo $_SESSION['txtAddress'] ?? ''; ?>" disabled></td>
+                            <td><input type="text" name="txtAddress" value="<?php echo htmlspecialchars($_SESSION['txtAddress']);?>" disabled></td>
                         </tr>
                     </table>
                 </div>
@@ -87,23 +102,23 @@
                     <table>
                         <tr>
                             <td><label for="txtPName"><b>Pet Name: </b></label></td>
-                            <td><input type="text" name="txtPName" value="<?php echo $_SESSION['txtPName'] ?? ''; ?>" disabled></td>
+                            <td><input type="text" name="txtPName" value="<?php echo htmlspecialchars($_SESSION['txtPName']);?>" disabled></td>
                         </tr>
                         <tr>
                             <td><label for="txtPAge"><b>Pet Age: </b></label></td>
-                            <td><input type="text" name="txtPAge" value="<?php echo $_SESSION['txtPAge'] ?? ''; ?>" disabled></td>
+                            <td><input type="text" name="txtPAge" value="<?php echo htmlspecialchars($_SESSION['txtPAge']);?>" disabled></td>
                         </tr>
                         <tr>
                             <td><label for="txtPGender"><b>Pet Gender: </b></label></td>
-                            <td><input type="text" name="txtGender" value="<?php echo $_SESSION['txtPGender'] ?? ''; ?>" disabled></td>
+                            <td><input type="text" name="txtGender" value="<?php echo htmlspecialchars(ucwords(($_SESSION['txtPGender']))); ?>" disabled></td>
                         </tr>
                         <tr>
                             <td><label for="txtPType"><b>Pet Type: </b></label></td>
-                            <td><input type="text" name="txtPType" value="<?php echo $_SESSION['txtPType'] ?? ''; ?>" disabled></td>
+                            <td><input type="text" name="txtPType" value="<?php echo htmlspecialchars(ucwords($_SESSION['txtPType'])); ?>" disabled></td>
                         </tr>
                         <tr>
                             <td><label for="txtPBreed"><b>Pet Breed: </b></label></td>
-                            <td><input type="text" name="txtPBreed" value="<?php echo $_SESSION['txtPBreed'] ?? ''; ?>" disabled></td>
+                            <td><input type="text" name="txtPBreed" value="<?php echo htmlspecialchars($_SESSION['txtPBreed']); ?>" disabled></td>
                         </tr>
                     </table>
                     <div class="reminder">

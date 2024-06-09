@@ -17,12 +17,12 @@
     $getDoctorInfo = $connection->prepare('SELECT contactID FROM tbl_doctorinfo WHERE doctorService = ?');
     $getDoctorInfo->bind_param('s', $_SESSION['selectedService']);
     $getDoctorInfo->execute();
-    $result = $getDoctorInfo->get_result();
+    $docResult = $getDoctorInfo->get_result();
 
     $doctorID = $connection->insert_id;
 
     $contactIDs = [];
-    while ($row = $result->fetch_assoc()) {
+    while ($row = $docResult->fetch_assoc()) {
         $contactIDs[] = $row['contactID'];
     }
 
@@ -52,9 +52,13 @@
         </div>
         <div class="center">
             <?php while($user = $result->fetch_assoc()): ?>
-                <div class="container">
-                    <a href="?vet=<?php echo $doctorID;?>" class="container-link"><b>Dr. <?php echo $user['contactFirstName'] . ' ' . $user['contactLastName'];?></b><i class="fas fa-arrow-right"></i></a>
-                </div>
+                <?php if($user > 0): ?>
+                    <div class="container">
+                        <a href="?vet=<?php echo $doctorID;?>" class="container-link"><b>Dr. <?php echo $user['contactLastName'] . ' ' . $user['contactFirstName'];?></b><i class="fas fa-arrow-right"></i></a>
+                    </div>
+                <?php else: ?>
+                    <?php echo 'No doctors available for this category.';?>
+                <?php endif; ?>
             <?php endwhile; ?>
         </div>
         <div class="button-container">
