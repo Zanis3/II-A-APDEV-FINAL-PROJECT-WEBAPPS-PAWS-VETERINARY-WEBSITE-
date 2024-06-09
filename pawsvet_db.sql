@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jun 06, 2024 at 12:14 AM
+-- Generation Time: Jun 09, 2024 at 01:22 PM
 -- Server version: 10.4.32-MariaDB
 -- PHP Version: 8.2.12
 
@@ -60,7 +60,18 @@ CREATE TABLE `tbl_contactinfo` (
 INSERT INTO `tbl_contactinfo` (`contactID`, `loginID`, `contactLastName`, `contactFirstName`, `contactMiddleInitial`, `contactNumber`, `contactAddress`, `contactType`) VALUES
 (1, 1, 'Anderson', 'Tester', 'T.', '09603278727', '2 Test Street, Testing City, Philippines', 'user'),
 (2, 2, 'Tester', 'Pangalawang', 'B.', '09155553142', '45 Test Avenue, Testing City, Philippines', 'user'),
-(4, 4, 'Testing', 'Pangatlong', '', '09565551234', 'Test Road, Testing City, Philippines', 'user');
+(4, 4, 'Testing', 'Pangatlong', '', '09565551234', 'Test Road, Testing City, Philippines', 'user'),
+(5, 5, 'SACAYLE', 'JESTIN', 'V.', '09060920223', 'Blk. 133 Lt. 11 P.Hererra St. Brgy. Rizal Makati City', 'user'),
+(7, 7, 'Jane', 'Smith', '', '09078990987', '', 'doctor'),
+(9, 9, 'Samantha', 'White', '', '09887889099', '', 'doctor'),
+(10, 10, 'Kevin', 'Nguyen', '', '09989008977', '', 'doctor'),
+(11, 11, 'Sarah', 'Johnson', '', '09987689877', '', 'doctor'),
+(12, 12, 'Michael', 'Patel', '', '09765675766', '', 'doctor'),
+(13, 13, 'Emily', 'Chen', '', '09761234546', '', 'doctor'),
+(14, 14, 'David', 'Rodriguez', '', '09892314325', '', 'doctor'),
+(15, 15, 'Rachel', 'Smith', '', '09783452341', '', 'doctor'),
+(16, 16, 'James', 'Lee', '', '09651456347', '', 'doctor'),
+(17, 17, 'Doe', 'John', '', '09878901234', '', 'doctor');
 
 -- --------------------------------------------------------
 
@@ -74,6 +85,22 @@ CREATE TABLE `tbl_doctorinfo` (
   `doctorRole` enum('gpv','ims','surgeon','dentist','pet groomer') NOT NULL,
   `doctorService` enum('check-up','surgery','dentist','grooming','vaccination') NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dumping data for table `tbl_doctorinfo`
+--
+
+INSERT INTO `tbl_doctorinfo` (`doctorID`, `contactID`, `doctorRole`, `doctorService`) VALUES
+(1, 7, 'gpv', 'check-up'),
+(2, 9, 'ims', 'check-up'),
+(3, 10, 'ims', 'check-up'),
+(4, 11, 'surgeon', 'surgery'),
+(5, 12, 'surgeon', 'surgery'),
+(6, 13, 'dentist', 'dentist'),
+(7, 14, 'dentist', 'dentist'),
+(8, 15, 'pet groomer', 'grooming'),
+(9, 16, 'pet groomer', 'grooming'),
+(10, 17, 'gpv', 'check-up');
 
 -- --------------------------------------------------------
 
@@ -111,7 +138,18 @@ INSERT INTO `tbl_logininfo` (`loginID`, `username`, `userEmail`, `userPass`, `us
 (1, 'usertest', 'testeranderson@gmail.com', '$2y$10$gAF6KUDIVD1uov1tnlCFpu8b0lFZT2ZXSFj5HRO8AvtkpitGYj1Am', 'user'),
 (2, 'usertesttwo', 'testertwo@gmail.com', '$2y$10$JIqiOF.gKcVn/LTqI6FMluhD9ivdR1AlD5OR.OAaTvOAPyVL4hRv6', 'user'),
 (3, 'admin', 'euvertzionpagad@gmail.com', '$2y$10$EhQ6I9fmzIJEAXNkf3TNvO4Hi18dfeWn94o2s./SIHjLAPt9N9qim', 'admin'),
-(4, 'testthree', 'testthree@gmail.com', '$2y$10$zZQtSPnulIzUHGhXovCXL.qJYo499HrjQOO1P67NEy1im./2Idcc.', 'user');
+(4, 'testthree', 'testthree@gmail.com', '$2y$10$zZQtSPnulIzUHGhXovCXL.qJYo499HrjQOO1P67NEy1im./2Idcc.', 'user'),
+(5, 'Jestin', 'sacayleclark4@gmail.com', '$2y$10$5nZUulWrECZIDlKKcqDBp.KSx2bQ7t8ursnK63BFN4Qg1H4PY.g7q', 'user'),
+(7, 'Dr. Smith', 'janesmith@gmail.com', '$2y$10$B724fDfYxMfcWR8heTp4meWO/6QGGk8U46Ce382m65Xd0rQC/Aq3u', 'doctor'),
+(9, 'Dr. White', 'samantha@gmail.com', '$2y$10$ufxU4xrAQ4Qrv2R1OsNbjuibu177Mm1EpMBk2ELOlTQwcPrk.R18S', 'doctor'),
+(10, 'Dr. Nguyen', 'nguyen@gmail.com', '$2y$10$0BLTjEqIzLJXSGaFWPUQd.E0skc5qcaxySb7wwUozXsep6wZWJmPW', 'doctor'),
+(11, 'Dr. Johnson', 'johnson@gmail.com', '$2y$10$Jq5KOrSZZKJArXDyQ3muv.rXDNek4rBDFPhMXF3yjZU6FguvcMIny', 'doctor'),
+(12, 'Dr. Patel', 'patel@gmail.com', '$2y$10$PKuWFOoct0hoL.MlV1Vun.2DpqoqKdSEIAYbPnpU861IE79gc3O1y', 'doctor'),
+(13, 'Dr. Chen', 'chen@gmail.com', '$2y$10$AKZTscEBh7KXXOssZg7l.upuMfNszQkOEt89wiNNlMyVxqNu4ms5C', 'doctor'),
+(14, 'Dr. Rodriguez', 'rodriguez@gmail.com', '$2y$10$hGuRewR646s/OAlOfMAltexJJ/yHyrG.SxSXH2/.VFFQbQYo9sDpi', 'doctor'),
+(15, 'Ms. Smith', 'rachel@gmail.com', '$2y$10$xbBuJNlUXPaTU4vXWs1Se.ouf15q2x1jkMvJxyyksLHfm/JQ54dz6', 'doctor'),
+(16, 'Dr. Lee', 'lee@gmail.com', '$2y$10$FWIuyyrfH8yX.Vz7nbrA1uV62vfEidzEAe.8ZNgSiJIpJMUJi.Ldq', 'doctor'),
+(17, 'Dr. Doe', 'doe@gmail.com', '$2y$10$7gzyU.uRetMPH5L9tOSi0OZjZS.2Gm.dTdQkrGU24Q4WNBbQho7XG', 'doctor');
 
 -- --------------------------------------------------------
 
@@ -147,7 +185,8 @@ CREATE TABLE `tbl_userinfo` (
 INSERT INTO `tbl_userinfo` (`userID`, `contactID`) VALUES
 (1, 1),
 (2, 2),
-(3, 4);
+(3, 4),
+(4, 5);
 
 --
 -- Indexes for dumped tables
@@ -221,13 +260,13 @@ ALTER TABLE `tbl_appointment`
 -- AUTO_INCREMENT for table `tbl_contactinfo`
 --
 ALTER TABLE `tbl_contactinfo`
-  MODIFY `contactID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `contactID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=18;
 
 --
 -- AUTO_INCREMENT for table `tbl_doctorinfo`
 --
 ALTER TABLE `tbl_doctorinfo`
-  MODIFY `doctorID` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `doctorID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
 
 --
 -- AUTO_INCREMENT for table `tbl_doctorschedule`
@@ -239,7 +278,7 @@ ALTER TABLE `tbl_doctorschedule`
 -- AUTO_INCREMENT for table `tbl_logininfo`
 --
 ALTER TABLE `tbl_logininfo`
-  MODIFY `loginID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `loginID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=18;
 
 --
 -- AUTO_INCREMENT for table `tbl_petinfo`
@@ -251,7 +290,7 @@ ALTER TABLE `tbl_petinfo`
 -- AUTO_INCREMENT for table `tbl_userinfo`
 --
 ALTER TABLE `tbl_userinfo`
-  MODIFY `userID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `userID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
 -- Constraints for dumped tables
