@@ -2,13 +2,16 @@
     require '../template/config.php';
 
     $location = 'folder';
-    if (isset($_POST['back'])) {
-        header('Location: information.php');
-        exit();
-    }
-    if (isset($_POST['next'])) {
-        header('Location: appointment-summary.php');
-        exit();
+
+    if($_SERVER['REQUEST_METHOD'] === 'POST'){
+        if (isset($_POST['back'])) {
+            header('Location: information.php');
+            exit();
+        }
+        if (isset($_POST['next'])) {
+            header('Location: appointment-summary.php');
+            exit();
+        }
     }
 ?>
 <!DOCTYPE html>

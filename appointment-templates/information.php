@@ -2,58 +2,44 @@
     require '../template/config.php';
     
     $location = 'folder';
-    $errors = [];
+    $errors = '';
 
-    if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-        $_SESSION['txtLName'] = $_POST['txtLName'] ?? '';
-        $_SESSION['txtFName'] = $_POST['txtFName'] ?? '';
-        $_SESSION['txtContact'] = $_POST['txtContact'] ?? '';
-        $_SESSION['txtEmail'] = $_POST['txtEmail'] ?? '';
-        $_SESSION['txtAddress'] = $_POST['txtAddress'] ?? '';
-        $_SESSION['txtPName'] = $_POST['txtPName'] ?? '';
-        $_SESSION['txtPAge'] = $_POST['txtPAge'] ?? '';
-        $_SESSION['txtPGender'] = $_POST['txtPGender'] ?? '';
-        $_SESSION['txtPType'] = $_POST['txtPType'] ?? '';
-        $_SESSION['txtPBreed'] = $_POST['txtPBreed'] ?? '';
+    if($isLoggedIn){
+        $getLoginID = $connection->prepare('SELECT loginID, userEmail FROM tbl_loginInfo WHERE username = ?');
+        $getLoginID->bind_param('s', $_SESSION['username']);
+        $getLoginID->execute();
+        $getLoginID->bind_result($loginID, $email);
+        $getLoginID->fetch();
+        $getLoginID->close();
+        
+        $getUserInfo = $connection->prepare('SELECT * FROM tbl_contactinfo WHERE loginID = ? LIMIT 1');
+        $getUserInfo->bind_param('i', $loginID);
+        $getUserInfo->execute();
+        $stmt = $getUserInfo->get_result();
+        $user = $stmt->fetch_assoc();
+        $getUserInfo->close();
+    }
 
-        // Validation
+    if ($_SERVER['REQUEST_METHOD'] === 'POST'){
+        $_SESSION['txtLName'] = $_POST['txtLName'];
+        $_SESSION['txtFName'] = $_POST['txtFName'];
+        $_SESSION['txtContact'] = $_POST['txtContact'];
+        $_SESSION['txtEmail'] = $_POST['txtEmail'];
+        $_SESSION['txtAddress'] = $_POST['txtAddress'];
+        $_SESSION['txtPName'] = $_POST['txtPName'];
+        $_SESSION['txtPAge'] = $_POST['txtPAge'];
+        $_SESSION['txtPGender'] = $_POST['txtPGender'];
+        $_SESSION['txtPType'] = $_POST['txtPType'];
+        $_SESSION['txtPBreed'] = $_POST['txtPBreed'];
+
         if (isset($_POST['back'])) {
             header('Location: schedule.php');
             exit();
         }
-        
-        if (empty($_SESSION['txtLName']) && empty($_SESSION['txtFName']) && empty($_SESSION['txtContact']) && empty($_SESSION['txtEmail']) && empty($_SESSION['txtAddress']) && empty($_SESSION['txtPName']) && empty($_SESSION['txtPAge']) && empty($_SESSION['txtPGender']) && empty($_SESSION['txtPType']) && empty($_SESSION['txtPBreed'])) {
-            $errors[] = "Please fill in all fields!";
-        }
-        elseif (empty($_SESSION['txtLName']) || empty($_SESSION['txtFName'])) {
-            $errors[] = "Last Name & First Name: Error! Please enter your name!";
-        }
-        elseif (empty($_SESSION['txtContact'])) {
-            $errors[] = "Contact Number: Error! Please enter contact number!";
-        }
-        elseif (empty($_SESSION['txtEmail'])) {
-            $errors[] = "Email: Error! Please enter email address!";
-        }
-        elseif (empty($_SESSION['txtAddress'])) {
-            $errors[] = "Address: Error! Please enter address!";
-        }
-        elseif (empty($_SESSION['txtPName'])) {
-            $errors[] = "Pet Name: Error! Please state your pet's name!";
-        }
-        elseif (empty($_SESSION['txtPAge'])) {
-            $errors[] = "Age: Error! Please state your pet's age!";
-        }
-        elseif (empty($_SESSION['txtPGender'])) {
-            $errors[] = "Gender: Error! Please state your pet's gender!";
-        }
-        elseif (empty($_SESSION['txtPType'])) {
-            $errors[] = "Type: Error! Please state the type of your pet!";
-        }
-        elseif (empty($_SESSION['txtPBreed'])) {
-            $errors[] = "Breed: Error! Please state the breed of your pet!";
-        }elseif (isset($_POST['next']) && empty($errors)) {
-            header('Location: result.php');
-            exit();
+
+        #VALIDATION
+        if(empty($_SESSION['txtLName']) || empty($_SESSION['txtFName']) || empty($_SESSION['txtContact']) || empty($_SESSION['txtEmail']) || empty($_SESSION['txtAddress']) || empty($_SESSION['txtPName']) || empty($_SESSION['txtPAge']) || empty($_SESSION['txtPGender']) || empty($_SESSION['txtPType']) || empty($_SESSION['txtPBreed'])){
+            $errors = "Some fields are empty. Please try again.";
         }
     }
 ?>
@@ -87,21 +73,21 @@
                     <table>
                         <tr>
                             <td><label for="txtLName"> Last Name: </label></td>
-                            <td><input type="text" name="txtLName" size="15" value="<?php echo $_SESSION['txtLName'] ?? ''; ?>"></td>
+                            <td><input type="text" name="txtLName" size="15" value="<?php if($isLoggedIn){echo htmlspecialchars($user['contactLastName']);}else{echo htmlspecialchars($_POST['txtLName']);} ?>"></td>
                             <td><label for="txtFName"> First Name: </td>
-                            <td><input type="text" name="txtFName" size="15" value="<?php echo $_SESSION['txtFName'] ?? ''; ?>"></td>
+                            <td><input type="text" name="txtFName" size="15" value="<?php if($isLoggedIn){echo htmlspecialchars($user['contactFirstName']);}else{echo htmlspecialchars($_POST['txtFName']);} ?>"></td>
                         </tr>
                         <tr>
                             <td><label for="txtContact">Contact Number: </label></td>
-                            <td colspan="3"><input type="text" name="txtContact" size="49" value="<?php echo $_SESSION['txtContact'] ?? ''; ?>"></td>
+                            <td colspan="3"><input type="text" name="txtContact" size="49" value="<?php if($isLoggedIn){echo htmlspecialchars($user['contactNumber']);}else{echo htmlspecialchars($_POST['txtContact']);} ?>"></td>
                         </tr>
                         <tr>
                             <td><label for="txtEmail">Email: </label></td>
-                            <td colspan="3"><input type="text" name="txtEmail" size="49" value="<?php echo $_SESSION['txtEmail'] ?? ''; ?>"></td>
+                            <td colspan="3"><input type="text" name="txtEmail" size="49" value="<?php if($isLoggedIn){echo htmlspecialchars($email);}else{echo htmlspecialchars($_POST['txtEmail']);} ?>"></td>
                         </tr>
                         <tr>
                             <td><label for="txtAddress">Address: </label></td>
-                            <td colspan="3"><input type="text" name="txtAddress" size="49" value="<?php echo $_SESSION['txtAddress'] ?? ''; ?>"></td>
+                            <td colspan="3"><input type="text" name="txtAddress" size="49" value="<?php if($isLoggedIn){echo htmlspecialchars($user['contactAddress']);}else{echo htmlspecialchars($_POST['txtAddress']);} ?>"></td>
                         </tr>
                     </table>
                 </div>
@@ -112,23 +98,35 @@
                     <table>
                         <tr>
                             <td><label for="txtPName">Pet Name:</label></td>
-                            <td><input type="text" name="txtPName" value="<?php echo $_SESSION['txtPName'] ?? ''; ?>"></td>
+                            <td><input type="text" name="txtPName" value="<?php echo htmlspecialchars($_POST['txtPName']); ?>"></td>
                         </tr>
                         <tr>
                             <td><label for="txtPAge">Age: </label></td>
-                            <td><input type="text" name="txtPAge" value="<?php echo $_SESSION['txtPAge'] ?? ''; ?>"></td>
+                            <td><input type="text" name="txtPAge" value="<?php echo htmlspecialchars($_POST['txtPAge']); ?>"></td>
                         </tr>
                         <tr>
                             <td><label for="txtPGender">Gender: </label></td>
-                            <td><input type="text" name="txtPGender" value="<?php echo $_SESSION['txtPGender'] ?? ''; ?>"></td>
+                            <td>
+                                <select name="txtPGender" id="txtPGender" style="width:100%;">
+                                    <option disabled selected value="">Select gender</option>
+                                    <option value="male" <?php if($_POST['txtPGender'] == 'male'){echo 'checked';}?>>Male</option>
+                                    <option value="female" <?php if($_POST['txtPGender'] == 'female'){echo 'checked';}?>>Female</option>
+                                </select>    
+                            </td>
                         </tr>
                         <tr>
-                            <td><label for="txtPType">Type (Cat/Dog): </label></td>
-                            <td><input type="text" name="txtPType" value="<?php echo $_SESSION['txtPType'] ?? ''; ?>"></td>
+                            <td><label for="txtPType">Type: </label></td>
+                            <td>
+                                <select name="txtPType" id="txtPType" style="width:100%;">
+                                <option disabled selected value="">Select pet</option>
+                                    <option value="cat" <?php if($_POST['txtPType'] == 'cat'){echo 'checked';}?>>Cat</option>
+                                    <option value="dog" <?php if($_POST['txtPType'] == 'dog'){echo 'checked';}?>>Dog</option>
+                                </select>  
+                            </td>
                         </tr>
                         <tr>
                             <td><label for="txtPBreed">Breed: </label></td>
-                            <td><input type="text" name="txtPBreed" value="<?php echo $_SESSION['txtPBreed'] ?? ''; ?>"></td>
+                            <td><input type="text" name="txtPBreed" value="<?php echo htmlspecialchars($_POST['txtPBreed']); ?>"></td>
                         </tr>
                     </table>
                     <br>
@@ -146,7 +144,7 @@
             // Display error messages
             if (!empty($errors)) {
                 echo '<script>';
-                echo 'alert("PAWS VET CLINIC\n\n' . implode('\n', $errors) . '");';
+                echo 'alert("PAWS VET CLINIC\n\n' . $errors . '");';
                 echo '</script>';
             }
         ?>
