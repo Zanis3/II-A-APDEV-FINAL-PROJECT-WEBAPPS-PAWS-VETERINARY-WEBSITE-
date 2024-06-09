@@ -2,8 +2,6 @@
     require '../template/config.php';
     $location = 'folder';
 
-    session_start(); // Ensure session is started
-
     $error_message = '';
 
     if ($_SERVER['REQUEST_METHOD'] === 'POST') {

@@ -140,7 +140,7 @@
                     $service = 'check-up';
                 }
                 elseif($role == "ims"){
-                    $service = 'check-up';
+                    $service = 'vaccination';
                 }
                 elseif($role == "surgeon"){
                     $service = 'surgery';

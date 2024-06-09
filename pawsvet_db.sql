@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jun 09, 2024 at 01:22 PM
+-- Generation Time: Jun 09, 2024 at 01:53 PM
 -- Server version: 10.4.32-MariaDB
 -- PHP Version: 8.2.12
 
@@ -92,8 +92,8 @@ CREATE TABLE `tbl_doctorinfo` (
 
 INSERT INTO `tbl_doctorinfo` (`doctorID`, `contactID`, `doctorRole`, `doctorService`) VALUES
 (1, 7, 'gpv', 'check-up'),
-(2, 9, 'ims', 'check-up'),
-(3, 10, 'ims', 'check-up'),
+(2, 9, 'ims', 'vaccination'),
+(3, 10, 'ims', 'vaccination'),
 (4, 11, 'surgeon', 'surgery'),
 (5, 12, 'surgeon', 'surgery'),
 (6, 13, 'dentist', 'dentist'),
@@ -159,7 +159,7 @@ INSERT INTO `tbl_logininfo` (`loginID`, `username`, `userEmail`, `userPass`, `us
 
 CREATE TABLE `tbl_petinfo` (
   `petID` int(11) NOT NULL,
-  `contactID` int(11) NOT NULL,
+  `userID` int(11) NOT NULL,
   `petName` varchar(50) NOT NULL,
   `petAge` varchar(50) NOT NULL,
   `petGender` enum('male','female') NOT NULL,
@@ -237,7 +237,7 @@ ALTER TABLE `tbl_logininfo`
 --
 ALTER TABLE `tbl_petinfo`
   ADD PRIMARY KEY (`petID`),
-  ADD KEY `tbl_petinfo link tbl_contactinfo` (`contactID`);
+  ADD KEY `tbl_petinfo link tbl_contactinfo` (`userID`);
 
 --
 -- Indexes for table `tbl_userinfo`
@@ -328,7 +328,7 @@ ALTER TABLE `tbl_doctorschedule`
 -- Constraints for table `tbl_petinfo`
 --
 ALTER TABLE `tbl_petinfo`
-  ADD CONSTRAINT `tbl_petinfo link tbl_contactinfo` FOREIGN KEY (`contactID`) REFERENCES `tbl_contactinfo` (`contactID`) ON DELETE CASCADE ON UPDATE CASCADE;
+  ADD CONSTRAINT `tbl_petinfo link tbl_contactinfo` FOREIGN KEY (`userID`) REFERENCES `tbl_userinfo` (`userID`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
 -- Constraints for table `tbl_userinfo`
